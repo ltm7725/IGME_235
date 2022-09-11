@@ -1,0 +1,97 @@
+@font-face{
+    font-family: "Determination Mono";
+    src: url("../fonts/dtm-mono-webfont.woff") format("woff")
+}
+@font-face {
+    font-family: "Determination Sans";
+    src: url("../fonts/dtm-sans-webfont.woff") format("woff");
+}
+body {
+    background-color: #19162b;
+    color: white;
+    font-family:"Determination Mono";
+}
+h1{
+    font-family: "Determination Sans";
+    font-size: 5vw;
+}
+#logo {
+    width: 75vw;
+    margin-left: 12.5vw;
+    margin-bottom: 3vw;
+}
+#description-right {
+    font-size: 1.5vw;
+    padding-left: 30vw;
+    padding-right: 2vw;
+    padding-top: 0.75vw;
+}
+#description-left {
+    font-size: 1.41vw;
+    padding-right: 30vw;
+    padding-left: 2vw;
+}
+#description-mid {
+    font-size: 1.75vw;
+    padding-left: 15vw;
+    padding-right: 15vw;
+}
+#left-desc-gif {
+    border: .5vw solid rgb(202, 190, 230);
+    float: left;
+    margin-left: 2.5vw;
+    margin-top: 2.5vw;
+    width: 23.5vw;
+}
+#right-desc-gif {
+    border: .5vw solid rgb(255, 128, 128);
+    float: right;
+    margin-right: 3.75vw;
+    width: 23vw;
+    margin-bottom: 0.5vw;
+}
+#GI {
+    font-size: 4vw;
+    margin-left: 4.75vw;
+}
+#GameInfoList {
+    font-size: 2vw;
+    margin-left: 4.75vw;
+}
+dd {
+    text-align: right;
+    margin-right: 59vw;
+}
+#quote {
+    float: right;
+    font-size: 2.5vw;
+    margin-right: 4.75vw;
+    background-color: black;
+    border: 0.5vw solid white;
+    margin-top: 20vw;
+}
+#name {
+    text-align: center;
+}
+#hearts {
+    margin-left: 25vw;
+    width: 50vw;
+    margin-top: 7vw;
+}
+#link {
+    color: white;
+}
+footer {
+    background-color: rgb(202, 190, 230);
+    
+}
+.highlight {
+    color: rgb(202, 190, 230);
+}
+.doublehighlight {
+    color:rgb(255, 128, 128);
+}
+.divider {
+    border-bottom: 0.25vw solid rgb(255, 128, 128);
+    margin: 5vw;
+}

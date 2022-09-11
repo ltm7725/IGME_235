@@ -1,0 +1,48 @@
+    h1 { 
+        color:red;
+        font-family: sans-serif;
+        border-bottom: 2px solid #603041;
+        }
+    blockquote { 
+        background-color: #603041;
+        color: white;
+        padding: 1rem;
+        }
+    dfn {
+        font-style: italic;
+    }
+    #categories {
+        margin-left: 50px;
+    }
+    #HeadDivider {
+        border-bottom: 2px solid #603041;
+    }
+    .Line {
+        border-bottom: 2px solid #aa5774;
+    }
+    body {
+        background-color:#a1365c79;
+    }
+    h2 {
+        font-family: 'Franklin Gothic Medium';
+        color: #603041
+    }
+    a {
+        color: gray;
+    }
+    .RightPhoto{
+        float:right;
+        margin-right: 25vw;
+    }
+    #TheQuote {
+        margin-left: 25vw;
+        margin-right: 25vw;
+    }
+    #logo{
+        margin-left: 5vw;
+    }
+    /* Below is done instead of tagging <p>
+    due to wanting to keep lines to the left */
+    .content {
+        margin-left: 25vw;
+    }
