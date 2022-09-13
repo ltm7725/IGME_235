@@ -4,34 +4,44 @@
         border-bottom: 2px solid #603041;
         }
     blockquote { 
-        background-color: #603041;
-        color: white;
+        background-color: #cbcbd6;
+        color: #522c01;
         padding: 1rem;
         }
     dfn {
         font-style: italic;
     }
     #categories {
-        margin-left: 50px;
+        margin-left: 5vw;
     }
     #HeadDivider {
         border-bottom: 2px solid #603041;
     }
     .Line {
-        border-bottom: 2px solid #aa5774;
+        border-bottom: 3px solid #b82200;
+        margin-left: 12.5vw;
+        margin-right: 12.5vw;
     }
     body {
-        background-color:#a1365c79;
+        background-color: #bca56d;
+        background: linear-gradient(#cbcbd6, #cbcbd6, #cbcbd6, #bca56d,  #bca56d, #bca56d,  #bca56d);
+        font-size: 1.7vw;
+        color: #522c01;
     }
     h2 {
         font-family: 'Franklin Gothic Medium';
-        color: #603041
+        color: #522c01;
+        font-size: 2.5vw;
     }
-    a {
-        color: gray;
+    #desc {
+        margin-left: 3vw;
+    }
+    a :link, a :visited, a :focus, a :hover, a :active {
+        color: #970000;
     }
     .RightPhoto{
-        float:right;
+        float: right;
+        width: 25vw;
         margin-right: 25vw;
     }
     #TheQuote {
@@ -40,9 +50,8 @@
     }
     #logo{
         margin-left: 5vw;
+        width: 35vw;
     }
-    /* Below is done instead of tagging <p>
-    due to wanting to keep lines to the left */
     .content {
         margin-left: 25vw;
     }
