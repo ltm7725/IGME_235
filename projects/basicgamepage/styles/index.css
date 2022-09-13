@@ -52,7 +52,7 @@ h1{
 }
 #GI {
     font-size: 4vw;
-    margin-left: 4.75vw;
+    margin-left: 5vw;
 }
 #GameInfoList {
     font-size: 2vw;
@@ -68,7 +68,7 @@ dd {
     margin-right: 4.75vw;
     background-color: black;
     border: 0.5vw solid white;
-    margin-top: 20vw;
+    margin-top: 17vw;
 }
 #name {
     text-align: center;
@@ -80,10 +80,6 @@ dd {
 }
 #link {
     color: white;
-}
-footer {
-    background-color: rgb(202, 190, 230);
-    
 }
 .highlight {
     color: rgb(202, 190, 230);
