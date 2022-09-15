@@ -1,0 +1,53 @@
+/* Do everything in this file */
+h2 {
+    border-bottom: 2px solid red;
+}
+figure img {
+    width: 40vw;
+    float: right;
+    padding-left: 3vw;
+    clear: right;
+}
+main p {
+    padding-left: 3vw;
+}
+/* Each tetromino is referred to by (...) */
+main :nth-child(5) {
+    clear: both;
+}
+/* Meet the Tetrominos */
+main :nth-child(4) {
+    float: right;
+    clear: both;
+    padding-right: 14vw;
+}
+#tetlist .aliases{
+    clear: both;
+    padding-left: 10px;
+}
+#tetlist .name {
+    float: left;
+    margin-bottom: 10px;
+}
+#tetlist div img {
+    width: 20vw;
+    float: left;
+    border: 3px dashed gray;
+    align-items: left;
+    margin: 10px 0;
+    padding: 1vw;
+    clear: both;
+    
+    /*clear: both;*/
+}
+#tetlist div.tet {
+    float: left;
+    align-items: left;
+    margin: 10px 0;
+}
+footer {
+    padding: 25px 0;
+    clear: both;
+    text-align: center;
+    z-index: -1;
+}

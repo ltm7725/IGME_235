@@ -1,0 +1,45 @@
+/* Diagram of all 19 tetraminos */
+figure img {
+    max-width: 650px;
+    width: 60vw;
+    display: block;
+    margin: 0 auto;
+}
+/* Unboxed content */
+header, main p, main h2, main h3, footer {
+    width: 90vw;
+    text-align: left;
+    margin: 15px auto;
+}
+/* Diagram caption */
+figcaption {
+    display: block;
+    max-width: 650px;
+    width: 60vw;
+    margin: 0 auto;
+}
+/* Full tetromino boxes */
+#tetlist .tet {
+    display: flex;
+
+    flex: 1 0 250px; /* Not doing anything for some reason; using width for now instead */
+    width: 250px;
+    
+    flex-flow: row wrap;
+    border: 1px solid black;
+}
+/* Tetromino images */
+#tetlist .tet img {
+    width: 60%;
+    margin: 2% auto;
+}
+/* Tetromino names */
+#tetlist span, #tetlist .aliases{
+    width: 90%;
+    display: block;
+    margin: 4% auto;
+    text-align: center;
+}
+#tetlist span {
+    font-weight: bold;
+}
