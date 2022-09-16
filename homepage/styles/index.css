@@ -1,0 +1,110 @@
+@font-face {
+    font-family: "SmoothMarker";
+    src: url("../fonts/SmoothMarker-45d6.woff") format("woff");
+}
+header, body, footer {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+body {
+    background-image: url("../media/pink-galaxy.jpg");
+    background-size: 100vw;
+}
+#nameMini {
+    font-size: 1.8vw;
+    color: #d5c8e3;
+    float:none;
+}
+h1 {
+    font-weight: bolder;
+    border: .6vw solid #4c3a61;
+    font-size: 4vw;
+    border-radius: 4vw;
+    background-color: #906eb7;
+    color: whitesmoke;
+    width: 30vw;
+    margin: 0 auto;
+    margin-top: 19vw;
+    padding: 1.3vw;
+    text-align: center;
+    filter: drop-shadow(1vw 1vw .5vw #4c3a61);
+}
+h2 {
+    font-size: 2.5vw;
+}
+#photo1, #photo2 {
+    display: block;
+    position: absolute;
+    top: 2.5vw;
+    left: 43vw;
+    width: 15vw;
+    z-index: -1;
+}
+#photo1 {
+    filter: drop-shadow(2vw 2vw 1vw #31253e);
+}
+#photo2 {
+    filter: drop-shadow(0 0 1vw white);
+}
+#whiteboard {
+    position: absolute;
+    width: 75vw;
+    top: 41.5vw;
+    left: 12vw;
+    z-index: -3;
+    filter: hue-rotate(315deg);
+}
+#bio {
+    display: block;
+    z-index: 10;
+    width: 75vw;
+    margin-top: 10vw;
+    margin-left: 18.5vw;
+    font-family: SmoothMarker;
+    font-size: 2.75vw;
+    color: rgb(247, 0, 255);
+}
+footer {
+    display: block;
+    font-size: 1vw;
+    border-top: .6vw solid #4c3a61;
+    background-color: #906eb7;
+    width: 101.8%;
+    margin-left: -1vw;
+    margin-top: 10vw;
+    margin-bottom: -2vw;
+    padding-top: 3vw;
+    padding-bottom: 3vw;
+    color: white;
+    text-align: center;
+}
+#links1, #links2 {
+    color: #4c3a61;
+    position: absolute;
+    background-color:rgb(156, 199, 255);
+    text-align: center;
+    width: 25vw;
+    border: .6vw solid rgb(92, 133, 186);
+    border-radius: 2vw;
+}
+#links1 {
+    padding-right: 2vw;
+    top: 3vw;
+    left: 2.5vw;
+}
+#links2 {
+  top: 5vw;
+  right: 2.5vw;
+}
+.links {
+    font-size: 2vw;
+}
+.links li {
+    margin: 1vw auto;
+}
+.links a:link, .links a:visited, .links a:hover, .links a:focus, .links a:active {
+    text-decoration: none;
+    color: rgb(190, 0, 196);
+    background-color: rgb(185, 215, 255);
+    padding: .1vw 0.75vw;
+    border-radius: 2vw;
+}
