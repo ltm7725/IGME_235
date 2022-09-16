@@ -6,8 +6,9 @@ header, body, footer {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 body {
-    background-image: url("../media/pink-galaxy.jpg");
-    background-size: 100vw;
+    background-image: url("../media/galaxy.jpg");
+    background-size: 119vw;
+    background-repeat: repeat-y;
 }
 #nameMini {
     font-size: 1.8vw;
@@ -16,27 +17,29 @@ body {
 }
 h1 {
     font-weight: bolder;
-    border: .6vw solid #4c3a61;
+    border: .6vw solid #2b005c;
     font-size: 4vw;
     border-radius: 4vw;
-    background-color: #906eb7;
-    color: whitesmoke;
+    background-color: rgba(119, 0, 255, .5);
+    color: rgba(245, 245, 245, .85);
     width: 30vw;
     margin: 0 auto;
-    margin-top: 21vw;
+    margin-top: 27vw;
     padding: 1.3vw;
     text-align: center;
-    filter: drop-shadow(1vw 1vw .5vw #4c3a61);
+    filter: drop-shadow(1vw 1vw .5vw #280055);
 }
 h2 {
     font-size: 2.5vw;
+    width: 100%;
+    margin: 1vw auto;
 }
 #photo1, #photo2 {
     display: block;
     position: absolute;
-    top: 4.5vw;
-    left: 43vw;
-    width: 15vw;
+    top: 1vw;
+    left: 40vw;
+    width: 20vw;
     z-index: -1;
 }
 #photo1 {
@@ -48,7 +51,7 @@ h2 {
 #whiteboard {
     position: absolute;
     width: 75vw;
-    top: 43.5vw;
+    top: 48vw;
     left: 12vw;
     z-index: -3;
     filter: hue-rotate(315deg);
@@ -57,7 +60,7 @@ h2 {
     display: block;
     z-index: 10;
     width: 75vw;
-    margin-top: 10vw;
+    margin-top: 8vw;
     margin-left: 18.5vw;
     font-family: SmoothMarker;
     font-size: 2.75vw;
@@ -66,34 +69,42 @@ h2 {
 footer {
     display: block;
     font-size: 1vw;
-    border-top: .6vw solid #4c3a61;
-    background-color: #906eb7;
+    border-top: .6vw solid rgb(40, 0, 86);
+    background-color: rgba(119, 0, 255, .5);
     width: 101.8%;
+    padding-top: 3vw;
+    padding-bottom: 4vw;
+    color: rgb(255, 255, 255);
+    text-align: center;
+
+    position: absolute;
+    bottom: -9vw;
+    left: -1vw;
+    top: 97vw;
+
+    /*
     margin-left: -1vw;
     margin-top: 10vw;
     margin-bottom: -2vw;
-    padding-top: 3vw;
-    padding-bottom: 3vw;
-    color: white;
-    text-align: center;
+    */
 }
 #links1, #links2 {
-    color: #4c3a61;
+    color: rgba(255, 255, 255, 0.779);
     position: absolute;
-    background-color:rgb(156, 199, 255);
+    background-color:rgba(37, 131, 255, 0.5);
     text-align: center;
     width: 25vw;
-    border: .6vw solid rgb(92, 133, 186);
+    border: .6vw solid rgb(19, 67, 131);
     border-radius: 2vw;
 }
 #links1 {
     padding-right: 2vw;
-    top: 3vw;
-    left: 2.5vw;
+    top: 5.5vw;
+    left: 2vw;
 }
 #links2 {
-  top: 5vw;
-  right: 2.5vw;
+  top: 7.5vw;
+  right: 3vw;
 }
 .links {
     font-size: 2vw;
@@ -103,8 +114,8 @@ footer {
 }
 .links a:link, .links a:visited, .links a:hover, .links a:focus, .links a:active {
     text-decoration: none;
-    color: rgb(190, 0, 196);
-    background-color: rgb(185, 215, 255);
+    color: rgb(250, 108, 255);
+    background-color: rgba(19, 68, 131, 0.5);
     padding: .1vw 0.75vw;
     border-radius: 2vw;
 }
