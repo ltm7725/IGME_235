@@ -23,7 +23,7 @@ h1 {
     color: whitesmoke;
     width: 30vw;
     margin: 0 auto;
-    margin-top: 19vw;
+    margin-top: 21vw;
     padding: 1.3vw;
     text-align: center;
     filter: drop-shadow(1vw 1vw .5vw #4c3a61);
@@ -34,7 +34,7 @@ h2 {
 #photo1, #photo2 {
     display: block;
     position: absolute;
-    top: 2.5vw;
+    top: 4.5vw;
     left: 43vw;
     width: 15vw;
     z-index: -1;
