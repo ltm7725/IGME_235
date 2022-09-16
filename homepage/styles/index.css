@@ -48,7 +48,7 @@ h2 {
 #whiteboard {
     position: absolute;
     width: 75vw;
-    top: 41.5vw;
+    top: 43.5vw;
     left: 12vw;
     z-index: -3;
     filter: hue-rotate(315deg);
