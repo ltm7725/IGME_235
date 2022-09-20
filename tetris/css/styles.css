@@ -13,31 +13,39 @@ header, main p, main h2, main h3, footer {
 }
 /* Diagram caption */
 figcaption {
-    display: block;
     max-width: 650px;
     width: 60vw;
     margin: 0 auto;
 }
+#tetlist {
+    display: flex;
+    margin: 25px 30px;
+}
 /* Full tetromino boxes */
 #tetlist .tet {
     display: flex;
-
-    flex: 1 0 250px; /* Not doing anything for some reason; using width for now instead */
-    width: 250px;
-    
     flex-flow: row wrap;
     border: 1px solid black;
+    justify-content: center;
+
+    flex: 1 0 250px;
+    height: 350px;
+    /* margin: 25px auto; */
 }
 /* Tetromino images */
 #tetlist .tet img {
     width: 60%;
-    margin: 2% auto;
+    margin: auto auto;
+}
+footer {
+    clear: both;
+    padding-top: 13px;
+    padding-bottom: 13px;
 }
 /* Tetromino names */
 #tetlist span, #tetlist .aliases{
     width: 90%;
-    display: block;
-    margin: 4% auto;
+    margin: 8% auto;
     text-align: center;
 }
 #tetlist span {
