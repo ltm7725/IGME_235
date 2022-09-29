@@ -19,16 +19,18 @@ figcaption {
 }
 #tetlist {
     display: flex;
-    margin: 25px 30px;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin: 25px 25px;
 }
 /* Full tetromino boxes */
 #tetlist .tet {
     display: flex;
     flex-flow: row wrap;
     border: 1px solid black;
-    justify-content: center;
+    align-content: center;
 
-    flex: 1 0 250px;
+    flex: 0 1 250px;
     height: 350px;
     /* margin: 25px auto; */
 }
@@ -37,13 +39,19 @@ figcaption {
     width: 60%;
     margin: auto auto;
 }
+#tetlist .aliases {
+    text-align: left;
+    margin: 8% auto;
+    margin-left: 15px;
+    width: 90%;
+}
 footer {
     clear: both;
     padding-top: 13px;
     padding-bottom: 13px;
 }
 /* Tetromino names */
-#tetlist span, #tetlist .aliases{
+#tetlist span {
     width: 90%;
     margin: 8% auto;
     text-align: center;

@@ -1,0 +1,220 @@
+#wrapper {
+    display: grid;
+    grid-template-areas: 
+        "logo"
+        "menu"
+        "intro"
+        "playground"
+        "footer";
+}
+h1.game { 
+    grid-area: logo;
+    height: 350px;
+    width: 500px;
+    background: url(../images/tetris-logo.png) no-repeat;
+    text-indent: -9999px;
+    margin: auto 0;
+}
+ul.menu { 
+    grid-area: menu;
+}
+#introduction { 
+    grid-area: intro;
+    margin: auto 2em;
+    padding: 2rem 1rem;
+ }
+#tetgrid { 
+    grid-area: playground;
+ }
+footer { 
+    grid-area: footer;
+ }
+ ul.menu {
+    list-style: none;
+    width: 823px;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    z-index: 2;
+}
+.menu a {
+    display: block;
+    background: gray;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    transition: transform 0.1s ease-in, background-color 0.5s linear;
+}
+.menu li {
+    width: 25%;
+}
+.menu a:hover {
+	background: red;
+	color: yellow;
+    transform:scale(1.1);
+}
+ul.menu ul li {
+    width:100%;
+}
+ul.menu ul {
+    display:none;
+}
+ul.menu li:hover ul {
+    display:flex;
+}
+.menu .submenu li>a {
+    background:red;
+    color:yellow;
+}
+.menu .submenu>a:after {
+    content: "+";
+    padding-left:5px;
+}
+#tetgrid {
+    display: grid;
+    grid-template-columns: repeat(6, 100px);
+    grid-template-rows: repeat(6, 100px);
+    margin: 0 auto;
+}
+#o {
+    grid-column: 1/span 2;
+    grid-row: 1/span 2;
+}
+#i {
+    grid-column: 3/span 4;
+    grid-row: 1/span 1;
+}
+#z {
+    grid-column: 2/span 2;
+    grid-row: 2/span 3;
+    transform-origin: 0 0;
+    transform: translateX(205px) rotate(90deg);
+}
+#j {
+    transform-origin: 0 0;
+    transform: translateX(305px) translateY(205px) rotate(180deg);
+    grid-column: 4/span 3;
+    grid-row: 3/span 2;
+}
+#l {
+    transform-origin: 0 0;
+    transform: translateY(305px) rotate(270deg);
+    grid-column: 1/span 2;
+    grid-row: 3/span 3;
+}
+#s {
+    grid-column: 6/span 3;
+    grid-row: 2/span 2;
+}
+#t {
+    grid-column: 4/span 3;
+    grid-row: 2/span 2;
+}
+footer {
+    text-align: center;
+    margin: -70px 5vw 30px 5vw;
+    width: 90vw;
+}
+img {
+    transform-origin: 1% 1%;
+    transition-property: transform;
+    transition-duration: 2s;
+}
+img:hover {
+    transform: rotate(90deg);
+}
+
+@media only screen and (max-width: 850px)
+{
+   #wrapper {
+        grid-template-areas:
+        "logo       logo"
+        "menu       menu"
+        "intro       intro"
+        "playground playground"
+        "footer     footer";
+   }
+   h1.game { 
+       margin: 0 auto;
+   }
+   .menu li {
+       width: 98vw;
+   }
+   ul.menu {
+    margin: 0;
+    width: 100vw;
+   }
+   #introduction {
+       width: 90vw;
+   }
+   h1.game {
+    margin: 0 auto;
+   }
+   #tetgrid {
+    margin: 0;
+   }
+}
+
+@media only screen and (min-width: 850px)
+{
+    #wrapper {
+        grid-template-areas:
+        "logo       intro"
+        "menu       menu"
+        "playground playground"
+        "footer     footer";
+        grid-template-columns: 500px 1fr;
+    }
+    ul.menu {
+        width: 822px;
+        margin: 0 auto;
+    }
+    .menu li {
+        width: 274px;
+    }
+    footer {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 597px)
+{
+    h1.game {
+        display: block;
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 822px)
+{
+    #s {
+        opacity: 0;
+        transition: opacity 0.5s ease-in;
+    }
+}
+
+@media only screen and (min-width: 823px)
+{
+    #s {
+        opacity: 100;
+        transition: opacity 0.5s ease-in;
+    }
+}
+
+@media only screen and (max-width: 622px)
+{
+    #i, #t, #j {
+        opacity: 0;
+        transition: opacity 0.5s ease-in;
+    }
+}
+
+@media only screen and (min-width: 623px)
+{
+    #i, #t, #j {
+        opacity: 100;
+        transition: opacity 0.5s ease-in;
+    }
+}
