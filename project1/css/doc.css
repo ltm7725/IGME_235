@@ -1,0 +1,39 @@
+#intro {
+    margin: 0 5vw;
+    font-size: 1.9vw;
+}
+#spec {
+    text-align: center;
+}
+#links {
+    width: 20vw;
+    margin: 0 auto;
+}
+#layout {
+    width: 30vw;
+    float:left;
+    margin-left: 5vw;
+    border: 2px solid black;
+}
+#links li a:link, #links li a:visited,#links li a:focus, #links li a:hover, #links li a:active {
+    font-size: 2vw;
+}
+#grid {
+    width: 30vw;
+    float: right;
+    margin-right: 5vw;
+}
+h1 {
+    font-size: 4vw;
+    text-align: center;
+}
+html {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color:darksalmon;
+}
+#LayoutDesc {
+    text-align: center;
+    margin: 0 auto;
+    font-size: 2.5vw;
+    margin-top: 8vw;
+}
