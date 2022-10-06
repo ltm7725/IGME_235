@@ -37,7 +37,7 @@ html {
     grid-area: text2;
 }
 #box1, #box2, #box3, #box4, #box5 {
-    background-color: rgba(20, 20, 20, .5);
+    background-color: rgba(20, 20, 20, 1);
     color: white;
     size: 100%;
     overflow: hidden;
@@ -55,7 +55,7 @@ html {
     grid-column: 6/7;
     margin-top: 10%;
     margin-bottom: 72%;
-    margin-right: 5%;
+    margin-right: 4.5%;
 }
 #box3 {
     grid-row: 3/4;
@@ -63,11 +63,63 @@ html {
     margin-top: 85%;
     margin-left: 20%;
 }
-#box4 {
+#p1 {
+    width: 100%;
     grid-row: 2/3;
+    grid-column: 2/4;
+    z-index: 2;
+}
+#p2 {
+    z-index: 1;
+    grid-row: 1/2;
+    grid-column: 3;
+    width: 88.4%;
+    height: 100%;
+}
+#p3 {
+    z-index: 1;
+    grid-row: 1/3;
+    grid-column: 5;
+    width: 135.7%;
+    transform: translateX(-100%) translateY(29%);
+    overflow: hidden;
+    clear: both;
+}
+#p4 {
+    grid-row: 1/3;
+    grid-column: 5/7;
+    height: 53.1%;
+    transform-origin: 0 100%;
+    transform: scale(85.7%);
+}
+#p5 {
+    grid-row: 2/4;
+    grid-column: 4/5;
+    width: 93%;
+    transform: translateY(45%);
+}
+#p6 {
+    grid-row: 2/3;
+    grid-column: 6;
+    width: 103.8%;
+    transform-origin: 0 0%;
+    transform: translateX(-100%) translateY(-7.7%);
+    height: 85%;
+    z-index: 2;
+}
+#p7 {
+    z-index: -100;
+    grid-row: 4;
+    grid-column: 5/6;
+    width: 100%;
+    transform-origin: 0 100%;
+    transform: translateY(-100%) translateX(-8.3%) scale(224.2%);
+}
+#p8 {
+    grid-row: 4;
     grid-column: 4/5;
 }
-#box5 {
-    grid-row: 1/2;
-    grid-column: 5/6;
+#p9 {
+    grid-row: ;
+    grid-column: ;
 }
