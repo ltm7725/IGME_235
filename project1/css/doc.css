@@ -8,6 +8,7 @@
 #links {
     width: 20vw;
     margin: 0 auto;
+    font-size: 2vw;
 }
 #layout {
     width: 30vw;
@@ -22,6 +23,8 @@
     width: 30vw;
     float: right;
     margin-right: 5vw;
+    margin-bottom: -2px;
+    border: 2px solid black;
 }
 h1 {
     font-size: 4vw;
@@ -36,4 +39,50 @@ html {
     margin: 0 auto;
     font-size: 2.5vw;
     margin-top: 8vw;
+}
+#thin {
+    margin-top: 2%;
+    float: left;
+    width: 40vw;
+    float:left;
+    margin-left: 3vw;
+    border: 2px solid black;
+}
+#wide {
+    float: right;
+    width: 50%;
+    margin-right: 3vw;
+    margin-top: 5%;
+    margin-bottom: 8vw;
+    border: 2px solid black;
+}
+#thinP {
+    text-align: center;
+    margin-left: 5%;
+    margin-right: 58%;
+    font-size: 2vw;
+    margin-top: 8vw;
+    justify-content: center;
+}
+#wideP {
+    text-align: center;
+    margin-left: 47%;
+    margin-right: 3%;
+    font-size: 2vw;
+    justify-content: center;
+}
+footer {
+    text-align: left;
+    margin-left: 3vw;
+    margin-bottom: 3vw;
+    margin-top: 0;
+}
+#specP {
+    margin: 5vw 10vw;
+    font-size: 2vw;
+}
+#linksTitle {
+    text-align: center;
+    margin-right: 15%;
+    font-size: 2vw;
 }
