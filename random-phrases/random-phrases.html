@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang = "en"> 
+    <head>
+        <meta charset="UTF-8">
+        <title>Random Phrases</title>
+        <style>
+            @font-face {
+                font-family: "Halloween";
+                src: url("Halloween.woff") format("woff");
+            }
+            @font-face {
+                font-family: "Spooky";
+                src: url("Spooky.woff") format("woff");
+            }
+            html {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: radial-gradient(closest-side, black, sienna, black, sienna, black, sienna, black, sienna, black, sienna, black, sienna, black, sienna, black, sienna, black, sienna, black, sienna, black, sienna, black, sienna, black, sienna, black, sienna);
+                font-family: "Halloween", "Spooky";
+                background-repeat: no-repeat;
+                height: 100vh;
+            }
+            #content {
+                position: relative;
+                border: 2px solid white;
+                height: 500px;
+                width: 889px;
+                background: url(https://i.ytimg.com/vi/oPlZ9UdgPnI/maxresdefault.jpg);
+                background-size: 100%;
+            }
+            h1 {
+                font-family: "Halloween";
+                font-size: 4em;
+                text-align: center;
+                color: rgb(223, 64, 28);
+                background-color: rgba(0, 0, 0, .5);
+            }
+            footer {
+                position: absolute;
+                bottom: 10px;
+                left: 10px;
+                z-index: 100;
+                font-family: "Spooky";
+                color: rgba(223, 116, 67, 0.9);
+                text-align: center;
+            }
+            #textBox {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: -42px;
+                height: 250px;
+            }
+            p {
+                z-index: 1;
+                font-size: 4em;
+                font-family: "Spooky";
+                color: rgba(256, 256, 256, .85);
+                text-align: center;
+                line-height: 70px;
+            }
+            button {
+                border: none;
+                background: none;
+            }
+            #pumpkin {
+                z-index: 0;
+                width: 150px;
+                position: absolute;
+                bottom: 10px;
+                left: 350px;
+                border: none;
+            }
+            img, button {
+                -webkit-user-drag: none;
+                user-select: none;
+                -moz-user-select: none;
+                -webkit-user-drag: none;
+                -webkit-user-select: none;
+                -ms-user-select: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="content">
+            <header>
+                <h1>Spooooky thought of the day</h1>
+            </header>
+
+            <div id="textBox">
+                <p></p>
+            </div>
+            
+            <button><img id="pumpkin" src="pumpkin.png" alt="A pumpkin with the word ANOTHER written on it"></button>
+
+            <footer>
+                Copyright 2022 Luke Mavroudakis
+            </footer>
+        </div>
+
+        <script>
+
+            function displayQuote() {
+
+                let array = [
+                "Your bones are wet.", 
+                "Babies' adult teeth are located just under their eyes.", 
+                "The Sun may have exploded, and we wouldn't know it for at least 8 minutes.", 
+                ">50% of commercial pilots have admitted to falling asleep while flying a plane.", 
+                "Disneyland's famous Pirates of the Caribbean ride used real skeletons.", 
+                "Climate change is making spiders bigger.",
+                "Time goes faster as you get older because each second's a smaller fraction of your life.",
+                "You're ~7 connections away from someone living during the American Revolution.",
+                "There are roughly 29 vacant homes per homeless person in the United States.",
+                "In a month, you consume about a Lego brick's worth of microplastics."
+                ];
+                let s = array[Math.floor(Math.random() * array.length)];
+                document.querySelector("#textBox p").innerHTML = s;
+            }
+
+            displayQuote();
+
+            document.querySelector("button").onmousedown = () => {
+                document.querySelector("button").innerHTML = "<img id=\"pumpkin\" draggable=\"false\" src=\"pumpkin-1.png\">";
+                document.querySelector("button").style.color = "rgb(126, 0, 0)";
+                displayQuote();
+            }
+            document.querySelector("button").onmouseup = () => {
+                document.querySelector("button").innerHTML = "<img id=\"pumpkin\" src=\"pumpkin.png\">";
+                document.querySelector("button").style.color = "rgb(251, 125, 125)";
+            }
+
+        </script>
+    </body>
+</html>
