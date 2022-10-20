@@ -38,23 +38,49 @@
 </div>
 
 <script>
-    function colorSelected() {
-        document.querySelector("#info").innerHTML = "You have selected " + "\"" + this.value + "\"!";
+
+	let finalized = false; 
+
+    function colorSelected(e) {
+        if(!finalized) {
+			document.querySelector("#info").innerHTML = "You have selected " + "\"" + e.target.value + "\"!";
+
+			for(let i of document.querySelectorAll("input")) {
+				i.state = "unselected";
+			}
+
+			e.target.state = "selected";
+		}
+		else {
+			for(let i of document.querySelectorAll("input")) {
+				if(i.state == "selected") {
+					i.click();
+				}
+			}
+		}
     }
 
-    function colorSubmitted() {
-        document.querySelector("#info").innerHTML = "Your FINAL CHOICE is " + "\"" + this + "\"!";
-        document.querySelector("legend").style.color = this;
-    }
+	document.querySelector("#colorButton").onclick = () => {
 
-    let v = "black";
+		let v = "black";
 
-    for(let i of document.querySelectorAll("[name=\"colorGroup\"]")) {
-        i.onchange = colorSelected;
-        if(i.checked) v = i.value;
-    }
+		for(let i of document.querySelectorAll("input")) {
+			if(i.state == "selected") {
+				v = i.value;
+			}
+		}
 
-    document.querySelector("#colorButton").onclick = v.colorSubmitted;
+		if(!finalized) {
+			document.querySelector("#info").innerHTML = "Your FINAL CHOICE is " + "\"" + v + "\"!";
+        	document.querySelector("legend").style.color = v;
+			finalized = true;
+		}
+	}
+
+	for(let i of document.querySelectorAll("input")) {
+		i.onchange = colorSelected;
+	}
+
 
 </script>
 </body>
