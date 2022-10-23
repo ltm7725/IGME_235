@@ -71,6 +71,25 @@ html {
     font-size: 2vw;
     justify-content: center;
 }
+.centerP {
+    text-align: center;
+    font-size: 2vw;
+    margin: 0 10vw;
+    justify-content: center;
+}
+.preP {
+    text-align: left;
+    font-size: 2vw;
+    margin-left: -12vw;
+    margin-right: 10vw;
+    overflow-wrap: break-word;
+}
+.sideP {
+    text-align: left;
+    font-size: 2vw;
+    margin: 0 3vw;
+    overflow-wrap: break-word;
+}
 footer {
     text-align: left;
     margin-left: 3vw;
@@ -85,4 +104,8 @@ footer {
     text-align: center;
     margin-right: 15%;
     font-size: 2vw;
+}
+#docsnap {
+    width: 90vw;
+    margin-left: 4vw;
 }

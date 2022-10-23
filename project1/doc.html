@@ -11,8 +11,9 @@
     <br><h1><i>Project 1 Documentation</i></h1>
     <h2 id="linksTitle"><u>Links</u></h2>
     <ul id="links">
-        <li><a href="/src/layout.png">Original layout</a></li>
+        <li><a href="src/layout.png">Original layout</a></li>
         <li><a href="spec.html">spec.html</a></li>
+        <li><a href="index.html">Final Product</a></li>
     </ul>
     <br><br>
 
@@ -26,7 +27,57 @@
     <img id="thin" src="src/rLayout1.png" alt="">
     <p id="wideP">...and when it gets wider, I want it to keep the aspect ratio that was used on the original print layout, but zoomed as shown above. <br><br>This will change completely with the next part of the project, but at least for the sake of "build to spec" keeping it close to the original in that way looks the best stylistically in my humble opinion.<br><br><br><br><br><br></p>
     <p id="specP">All in all, this first part of the project was a lot to handle, honestly. I delved into some things regarding CSS Grids that I've never experienced before, and managed to come to a product that was pretty close to the original layout and moved with the screen's bounds really well. The hardest part was figuring out how to make the text look good, even though there was absolutely no way for it to stay proportionate with screen sizings very much at all; it was very confusing, but in the end I came out on top and I feel good about it.</p>
-    <br><footer>Caslon 540 Italic from <a href="https://www.ffonts.net/">FFonts</a>
+    <br><br>
+    <h1>Phase 2</h1>
+    <br><p class="centerP">During this phase, I jotted down some of the insane calculations and methods I used to get everything working in my own ways. I really think it turned out great too!</p>
+    <br> <p class="centerP">Snapshot of my "Big mode" in-progress:</p><br>
+    <img id="docsnap" src="src/docsnap1.png" alt="Snapshot of the index.html page associated with this site as it was being developed">
+    <br><br><p class="centerP"><u>My Phase 2 "development log":</u></p>
+    <br>
+        <pre class="preP">
+            - "Big Mode"
+                - Created div outside of grid wrapper
+                - Made it so div is only visible when >996px width
+                - Made it so grid layout only takes up a portion of the width of the screen, and the new sidebar div takes the rest
+                - Tried making it so the text on the grid layout could move itself and replace content to fit into the sidebar, but wasn't selectable so it wasn't preferable
+                - Took out arrow navigation
+                - Realized I wanted to make it so hovering on the photos makes them larger to see
+                    - Realized I had used transformations for moving photos into place, so I replaced those with margin arguments so that a transition animation wouldn't automatically launch on them once the page loads
+                - Added the Sidebar title and picture to a div, floated left and setup display: sticky with a top value calculated by subtracting a factor of viewport height by a factor of viewport width to, without fail, keep the items in the sidebar centered vertically in the viewport
+                    - A lot of my size values are based on a factor of vw (text size, image size, etc.), so by subtracting half of the height of my sidebar information (determined in terms of vw based on the width of the photo and pixel height/width) from half of the viewport height.
+                - Next goal: Make grid layout wrapper width dynamic, with the sidebar content having a height of consistently 79.638009vh
+                    - 704/884: ratio of sidebar content height to 100vh
+                    - 477/884: ratio of photo height to 100vh (tonal.height = 53.959276vh)
+                        - tonal.width = 30.3167421vh
+                    - 66.2861/884: em to 100vh (#sideBarTitle.font-size = 7.498428vh)
+                    - line height = 1.26em (line-height = 9.448019vh)
+                    - text-underline-offset = 0.2em (text-underline-offset: 1.4996856vh)
+                    - Set it all and it works! Tinkered with numbers a bit to make things look clean
+                    - To have grid layout wrapper have dynamic width: set margin-left in terms of vh
+                    - Optimal margin-left of current dimensions is 33.442838vw, and considering current dimensions are 708x1234.4 that equals 58.3076832vh (our wrapper margin-left value!)
+                    - margin-right of wrapper is 25px, or 1.642576vw, or 2.8638359vh
+                    - Now, we have enough values to deduce:
+                        - Full screen width = 100vw (174.350282vh)
+                        - margin-left = 58.3076832vh
+                        - margin-right = 2.8638359vh
+                        - 174.350282vh - 58.3076832vh - 2.8638359vh = 113.178763vh (64.9145854vw)... The wrapper's width in this current case!
+                    - Now, we adjust rows and columns of the grid to stay in proportion
+                        - Simply replaced grid-columns values with the width of the wrapper calculated, multiplied by the percentage of space each column takes up which was calculated much before
+                        - It takes more work to find the row heights, but all you really have to do is find the current wrapper width and multiply that by the ratio of height to width of that row (which I can find roughly by referencing my original layout)
+                            - Row 1: 207/769 (0.26918075)
+                            - Row 2: 211/769 (0.27438231)
+                            - Row 3: 226/769 (0.29388817)
+                            - Row 4: (auto for adjusting text)
+                        - That didn't work AMAZINGLY; certain images were out of line so I added a screenshot of the images in the correct places as a background in the wrapper, and manually moved photos based on margins
+                    - Now just tintering with grid width and trying to smooth out the sidebar stickiness
+            - Most of the work is done by this point, I just had to even out the text in the text box, make the size nice and responsive, and add fancy color transitions when things are hovered over. I also added important links to the sidebar of my big mode
+                </pre>
+
+    <p class="centerP"><u>FINAL THOUGHTS</u></p>
+    <br><p class="sideP">
+        All in all, I am incredibly happy with how this turned out, even if it took a bit of struggle to polish out nearing the end. I really enjoyed doing it, though. I figured out a lot more new little ways to tinker with html and css in my independent work here than I think I could ever happen to pick up through the labs in class (although I of course take in what's intended to be!!). There is absolutely more that I intend to do with this site, as it stands as the first portfolio that I've ever really put together. Integrating CSS Frameworks like Bootsrap and Materialize; in my small bit of work with them so far, there already seems like there is a crazy amount of functionality I could add to this site once it's beyond some project grade. But for now, I'm happy with that I got.
+    </p>
+    <br><br><br><footer>Caslon 540 Italic from <a href="https://www.ffonts.net/">FFonts</a>
     <br>Y Ming Hei PRC W7 from <a href="http://www.onlinewebfonts.com">Online Web Fonts</a>, licensed by CC BY 3.0</footer>
 </body>
 
