@@ -72,7 +72,7 @@ footer h2 a:hover, footer h2 a:active, footer h2 a:focus {
     text-decoration: underline dashed;
 }
 footer h2:has(> a:hover), footer h2:has(> a:active), footer h2:has(> a:focus) {
-    background: url("/media/index/altBullet3.png") no-repeat;
+    background: url("../media/index/altBullet3.png") no-repeat;
     background-size: calc(.9rem * 0.64) calc(.8rem * 0.64);
     background-position: 16% 50%;
 }
@@ -324,7 +324,7 @@ h1 {
 }
 .paragraph:hover h2 {
     transition: color 0.25s ease-in-out;
-    background: url("/media/index/altBullet.png") no-repeat;
+    background: url("../media/index/altBullet.png") no-repeat;
     background-size: .8rem .7rem;
     background-position: 0 50%;
     color: white;
@@ -367,11 +367,11 @@ p {
 }
 #downArrow:hover {
     margin-left: 10px;
-    content: "<img id=\"downArrow\" src=\"media/index/arrow1.png\" alt=\"an arrow\">";
+    content: url("../media/index/arrow_hover.png");
 }
 #upArrow:hover {
     margin-left: 10px;
-    content: url("media/index/arrow1_hover.png");
+    content: url("../media/index/arrow1_hover.png");
 }
 #upArrow {
     grid-row: 4/5;
@@ -433,7 +433,7 @@ p {
         display:inline;
         max-width: 2560px;
     }
-    footer {
+    footer, #downArrow, #upArrow {
         display: none;
     }
     #sideBarTitle {
@@ -478,7 +478,7 @@ p {
     }
     #sidebarLinks h2 {
         text-transform: none;
-        background: url("/media/index/altBullet2.png") no-repeat;
+        background: url("../media/index/altBullet2.png") no-repeat;
         background-size: calc(.9rem * 0.64) calc(.8rem * 0.64);
         display: inline;
         margin: 0;
@@ -498,7 +498,7 @@ p {
         text-decoration: underline dashed;
     }
     #sidebarLinks h2:has(> a:hover), #sidebarLinks h2:has(> a:active), #sidebarLinks h2:has(> a:focus) {
-        background: url("/media/index/altBullet3.png") no-repeat;
+        background: url("../media/index/altBullet3.png") no-repeat;
         background-size: calc(.9rem * 0.64) calc(.8rem * 0.64);
         background-position: 0 50%;
     }
@@ -557,7 +557,7 @@ p {
     }
     .paragraph:hover h2 {
         transition: all 0.25s ease-in-out;
-        background: url("/media/index/altBullet.png") no-repeat;
+        background: url("../media/index/altBullet.png") no-repeat;
         background-size: .6rem .5rem;
         background-position: 0 50%;
         color: white;
@@ -655,10 +655,10 @@ p {
         margin-left: -1.6%;
         width: 101%;
         height: 120%;
+        background-color: wheat;
         text-align: center;
         padding: 5%;
         padding-top: 19%;
-        font-size: calc(9vh - 1.3vw);
         font-family: "Caslon 540 Italic";
         font-weight: bolder;
         transform:scaleY(120%);
@@ -666,7 +666,7 @@ p {
         text-underline-offset: .3em;
         line-height: 1.3em;
         text-indent: -9999px;
-        background: url("/media/index/galleryInst.png") no-repeat;
+        background: url("../media/index/galleryInst.png") no-repeat;
         background-size: 100% 90%;
     }
     h1 {
