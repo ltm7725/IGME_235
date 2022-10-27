@@ -367,7 +367,7 @@ p {
 }
 #downArrow:hover {
     margin-left: 10px;
-    content: url("media/index/arrow_hover.png");
+    content: "<img id=\"downArrow\" src=\"media/index/arrow1.png\" alt=\"an arrow\">";
 }
 #upArrow:hover {
     margin-left: 10px;
