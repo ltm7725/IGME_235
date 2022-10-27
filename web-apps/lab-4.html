@@ -41,7 +41,7 @@
             "New Media Club" : "http://newmediaclub.cias.rit.edu"
         }
 
-    function createList(listElement, array = defList) {
+    const createList = (listElement, array = defList) => {
 
         for(let i = 0; i < array.length; i++) {
             let li = document.createElement("li");
