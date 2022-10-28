@@ -50,6 +50,9 @@ if (storedColor){
 	colorSelect.querySelector(`option[value='${storedColor}']`).selected = true;
     document.body.style.backgroundColor = storedColor;
 }
+else {
+	document.body.style.backgroundColor = "red";
+}
 
 /* This stuff happens later when the user does something */
 // when the user changes their favorites, update localStorage
