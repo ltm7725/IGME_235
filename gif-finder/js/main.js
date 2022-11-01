@@ -88,7 +88,8 @@ function dataLoaded(e){
     // 9 - Start building an HTML string we will display to the user
     let results = obj.data;
     console.log("results.length = " + results.length);
-    let bigString = "<p><i>Here are " + results.length + " results for '" + displayTerm + "'</i></p>";
+    document.querySelector("#hereAre").innerHTML = "<p><i>Here are " + results.length + " results for '" + displayTerm + "'</i></p>";
+    let bigString = "";
 
     // 10 - loop through the array of results
     for(let result of results){
@@ -103,7 +104,7 @@ function dataLoaded(e){
         // 13 - Build a <div> to hold each result
         // ES6 String Templating
         let line = '<div class=\'result\'><img src=\'' + smallURL + '\' title= \'' + result.id + '\' />';
-        line += '<span>Rating: ' + result.rating.toUpperCase() + '<a target=\'_blank\' href=\'' + url + '\'><br>View on Giphy</a></span></div>';
+        line += '<span>Rating: <b>' + result.rating.toUpperCase() + '</b><a target=\'_blank\' href=\'' + url + '\'><br>View on Giphy</a></span></div>';
         if(!result.rating) line = '<div class=\'result\'><img src=\'' + smallURL + '\' title= \'' + result.id + '\' /><span>Rating: N/A<a target=\'_blank\' href=\'' + url + '\'><br>View on Giphy</a></span></div>';
 
         // 15 - add the <div> to the 'bigString' and loop
