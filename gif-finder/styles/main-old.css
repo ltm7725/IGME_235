@@ -20,27 +20,14 @@
      height:32px;
  }
 
- .result {
-    display: flex;
-    flex-direction: column;
-    margin: 0;
- }
-
- .result span p{
-    order: -1;
- }
-
  #content{
     display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 10px ;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
  }
 
- .result img{
-    width: 100%;
- }
-
- /* .result {
+ .result {
     position: relative;
     height: 175px;
     width: 108px;
@@ -75,7 +62,7 @@
 
 .result audio{
     width: 130px;
-} */
+}
 
 button{
   display : inline-block;

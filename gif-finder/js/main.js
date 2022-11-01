@@ -91,8 +91,7 @@ function dataLoaded(e){
     let bigString = "<p><i>Here are " + results.length + " results for '" + displayTerm + "'</i></p>";
 
     // 10 - loop through the array of results
-    for(let i = 0; i < results.length; i++){
-        let result = results[i];
+    for(let result of results){
 
         // 11 - get the URL to the GIF
         let smallURL = result.images.fixed_width_small.url;
@@ -105,6 +104,7 @@ function dataLoaded(e){
         // ES6 String Templating
         let line = '<div class=\'result\'><img src=\'' + smallURL + '\' title= \'' + result.id + '\' />';
         line += '<span>Rating: ' + result.rating.toUpperCase() + '<a target=\'_blank\' href=\'' + url + '\'><br>View on Giphy</a></span></div>';
+        if(!result.rating) line = '<div class=\'result\'><img src=\'' + smallURL + '\' title= \'' + result.id + '\' /><span>Rating: N/A<a target=\'_blank\' href=\'' + url + '\'><br>View on Giphy</a></span></div>';
 
         // 15 - add the <div> to the 'bigString' and loop
         bigString += line;
@@ -115,12 +115,6 @@ function dataLoaded(e){
 
     // 17 - update the status
     document.querySelector("#status").innerHTML = "<b>Success!</b>";
-
-    for(let i = 0; i < results.length; i++){
-        let result = results[i];
-
-        document.querySelectorAll(".result")[i].style.height = "calc(38px + " + result.images.fixed_width_small.height + "px)";
-    }
 }
 
 function dataError(e){
