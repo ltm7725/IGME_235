@@ -1,0 +1,362 @@
+/*FROM COLORPICKER*/
+a {
+	color: #aaaaaa;
+}
+
+#testPatch {
+	position: relative;
+    width: 100px;
+    float: right;
+    margin-right: 50px;
+    margin-top: 70px;
+	text-align: center;
+	line-height: 48px;
+	font-family: Courier,mono;
+	border: 1px solid #444;
+	cursor: default;
+}
+#contrastPatch {
+	position: relative;
+    float: right;
+    clear: right;
+	width: 100px;
+	height: 48px;
+    margin-right: 50px;
+    margin-top: 20px;
+	text-align: center;
+	line-height: 48px;
+	font-family: Courier,mono;
+	border: 1px solid #444;
+	cursor: default;
+}
+#contrastPatch div {
+	position: absolute;
+	top: 5px;
+	right: 50%;
+	bottom: 5px;
+	left: 5px;
+}
+#contrastPatch i {
+	display: block;
+	position: absolute;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	font-weight: bold;
+}
+#colorValues {
+	position: relative;
+	height: 102px;
+	width: 200px;
+    margin-top: 200px;
+    margin-left: 110px;
+	font-family: Courier,mono;
+	border: 1px solid #444;
+	color: #aaaaaa;
+	padding: 2px 0px 2px 4px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	font-size: 14px;
+	white-space: pre-wrap;
+	line-height: 16px;
+	background-color: #222;
+	cursor: default;
+}
+.sliders {
+	position: relative;
+	width: 303px;
+    margin-top: 40px;
+    float: right;
+    margin-right: 110px;
+}
+.sliders div {
+	height: 10px;
+	margin-bottom: 10px;
+	border: 1px solid #444;
+	background-color: #222;
+}
+.sliders div div {
+	height: 10px;
+	margin-bottom: 0px;
+	border: none;
+	background-color: rgb(155, 155, 155);
+	border-right: 1px solid #555;
+}
+#rgbr {
+	background-color: #0ff;
+}
+#rgbg {
+	background-color: #f0f;
+}
+#rgbb {
+	background-color: #ff0;
+}
+#rgbr div {
+	background-color: #c00;
+}
+#rgbg div {
+	background-color: #0a0;
+}
+#rgbb div {
+	background-color: #00f;
+}
+#cmyc div {
+	background-color: #0ff;
+}
+#cmym div {
+	background-color: #f0f;
+}
+#cmyy div {
+	background-color: #ff0;
+}
+
+#rgbr:before, #rgbg:before, #rgbb:before,
+#hslh:before, #hsls:before, #hsll:before,
+#cmyc:before, #cmym:before, #cmyy:before{
+	display: block;
+	float: left;
+	margin-left: -18px;
+	margin-top: -3px;
+	color: #808080;
+	
+	font-family: Courier,mono;
+	font-size: 15px;
+	line-height: 15px;
+	cursor: default;
+}
+#rgbr:after, #rgbg:after, #rgbb:after {
+	display: block;
+	float: right;
+	margin-top: -12px;
+	margin-right: -1em;
+	color: #808080;
+	
+	font-family: Courier,mono;
+	font-size: 15px;
+	line-height: 15px;
+	cursor: default;
+}
+#rgbr:before {
+	content: 'R';	
+}
+#rgbg:before {
+	content: 'G';	
+}
+#rgbb:before {
+	content: 'B';	
+}
+#rgbr:after {
+	content: 'C';
+}
+#rgbg:after {
+	content: 'M';
+}
+#rgbb:after {
+	content: 'Y';
+}
+#hslh:before {
+	content: 'H';	
+}
+#hsls:before {
+	content: 'S';	
+}
+#hsll:before {
+	content: 'L';	
+}
+#cmyc:before {
+	content: 'C';	
+}
+#cmym:before {
+	content: 'M';	
+}
+#cmyy:before {
+	content: 'Y';	
+}
+#hsv_map {
+    z-index: 1;
+	width: 240px;
+	height: 200px;
+	position: relative;
+}
+#surface {
+    color: white;
+}
+#hsv_map{
+    position: relative;
+    margin-left: 68px;
+}
+#hsv_map .cover {
+    z-index: 2;
+    width: 200px;
+    height: 200px;
+	opacity: 0;
+	background-color: #000;
+	position: relative;
+	border-radius: 50%;
+	cursor: crosshair;
+    margin-top: -200px;
+}
+.bar-bg, .bar-white, #luminanceBar, .hsv-barcursors{
+    position: relative;
+    margin-top: 220px;
+    margin-right: -100px;
+}
+#hsv_map .bar-bg, #hsv_map .bar-white {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 25px;
+	height: 200px;
+}
+#hsv_map .bar-white {
+	background-color: #fff;
+}
+.hsv-cursor {
+	position: absolute;
+	border: 1px solid #eee;
+	border-radius: 50%;
+	width: 9px;
+	height: 9px;
+	cursor: default;
+	margin: -5px;
+	cursor: crosshair;
+}
+.dark .hsv-cursor {
+	border-color: #333;
+}
+.no-cursor .hsv-cursor, #hsv_map.no-cursor .cover {
+	cursor: none; /* also works in IE8 */
+	/*url(_blank.gif), url(_blank.png), url(_blank.cur), auto;*/
+}
+#luminanceBar {
+	position: absolute;
+	right: 0;
+	top: 0;
+	/* background-color: red; */
+}
+.hsv-barcursors {
+	position: absolute;
+	right: 0;
+	width: 25px;
+	top: 0;
+	height: 200px;
+	overflow: hidden;
+}
+.hsv-barcursor-l, .hsv-barcursor-r {
+	position: absolute;
+	width: 0;
+	height: 0;
+	border: 4px solid transparent;
+	margin-top: -4px;
+}
+.hsv-barcursor-l {
+	left: 0;
+	border-left: 4px solid #eee;
+}
+.hsv-barcursor-r {
+	right: 0;
+	border-right: 4px solid #eee;
+}
+.dark .hsv-barcursor-l {
+	border-left-color: rgb(255, 255, 255);
+}
+.dark .hsv-barcursor-r {
+	border-right-color: rgb(255, 255, 255);
+}
+
+#color_squares {
+	position: relative;
+    top: 10px;
+    left: 55px;
+}
+#color_squares div {
+    z-index: 3;
+    position:relative;
+    display: block;
+	width: 27px;
+	height: 27px;
+	margin-left: 6px;
+	float: left;
+	border: 1px solid #444;
+}
+#color_squares div:nth-child(1){
+    margin-top: -70px;
+    margin-left: -10px;
+}
+#color_squares div:nth-child(2){
+    margin-left: 15px;
+    margin-top: -36px;
+}
+#color_squares div:nth-child(3){
+    margin-top: -10px;
+    margin-left: 47px;
+}
+#color_squares div:nth-child(4), #color_squares div:nth-child(5){
+    margin-top: 5px;
+}
+#color_squares div:nth-child(6){
+    margin-top: -10px;
+}
+#color_squares div:nth-child(7){
+    margin-left: 11px;
+    margin-top: -36px;
+}
+#color_squares div:nth-child(8){
+    margin-left: 37px;
+    margin-top: -70px;
+}
+
+/*FROM ME*/
+
+#mainMenu{
+    display: flex;
+    height: 100%;
+    flex-flow: column;
+    background-color: aqua;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+#bigLogo{
+    width: 70%;
+    margin-top: 0vw;
+}
+h2{
+    text-align: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2vw;
+    font-style: italic;
+}
+button{
+    width: 15vw;
+    height: 8vw;
+    font-size: 4vw;
+    margin-top: 5vw;
+}
+.pcr-app{
+    height: 400px;
+    margin-top: 100px;
+}
+.pcr-button{
+    display: none;
+    margin-left: -9999px;
+}
+.alpha-bg-w{
+    display: none;
+}
+#description select{
+    display: none;
+}
+text{
+    display: none;
+}
+#game{
+}
+#cp{
+    background-color: white;
+    height: 500px;
+    width: 460px;
+    margin: 0 auto;
+    margin-top: -9999px;
+    margin-left: -9999px;
+}

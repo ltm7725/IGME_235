@@ -1,27 +1,93 @@
+<!-- <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="css/main.css" rel="stylesheet" type="text/css">
+    <title>colorPicker_new</title>
+    
+    <body>
+    
+        <div id="cp">
+
+        </div>
+        
+    </body></html> -->
+    
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>What's That Color?</title>
-        <link rel="stylesheet" href="">
-        <style>
-            #n6{
-                width: 50px;
-                height: 50px;
-            }
-        </style>
+        <title>CMBYS</title>
         <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script type="module" src="test.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/monolith.min.css"/>
+        <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
+        <link rel="stylesheet" href="css/main.css">
+        <script type="module" src="js/main.js"></script>
     </head>
     <body>
-        <div id="n1"></div>
-        <div id="n2"></div>
-        <div id="n3"></div>
-        <div id="n4"></div>
-        <div id="n5"></div>
-        <div id="n5point5"></div>
-        <div id="n6"></div>
-        <div id="n7"></div>
-        <div id="n8"></div>
+        <div id="mainMenu">
+            <img id="bigLogo" src="media/CallMeByYourShade.png">
+            <h2>The phrase-to-color game you didn't know you didn't need</h2>
+            <button id="start">Start</button>
+        </div>
+        <div id="game">
+            <!--EVERYTHING WITHIN THIS DIV IS NOT MY CODE-->
+            <div id="cp">
+                <div id="testPatch" style="background-color: rgba(161, 168, 204, 0.8); color: rgb(34, 34, 34);">#A1A8CC</div>
+            
+                <div id="contrastPatch" style="background-color: rgb(255, 255, 255); color: rgba(161, 168, 204, 0.8);"><div style="background-color: rgba(204, 82, 37, 0.8);"></div><i>-Test-</i></div>
+                
+                <div id="hsv_map" class="">
+                <canvas id="surface" width="200" height="200"></canvas>
+                <div class="cover" style="opacity: 0.2;"></div>
+                <div class="hsv-cursor" style="left: 87.27px; top: 115.2px; border-color: rgb(51, 51, 51);"></div>
+                <div class="bar-bg" style="background-color: rgb(0, 42, 255);"></div>
+                <div class="bar-white" style="opacity: 0.791299;"></div>
+                <canvas id="luminanceBar" width="25" height="200"></canvas>
+                <div class="hsv-barcursors dark dark" id="hsv_cursors">
+                    <div class="hsv-barcursor-l" style="top: 40px;"></div>
+                    <div class="hsv-barcursor-r" style="top: 40px;"></div>
+                </div>
+                </div>
+                
+                <div id="color_squares">
+                <div style="background-color: rgb(243, 32, 224);"></div>
+                <div style="background-color: rgb(79, 55, 153);"></div>
+                <div style="background-color: rgb(102, 254, 145);"></div>
+                <div style="background-color: rgb(164, 251, 149);"></div>
+                <div style="background-color: rgb(79, 24, 196);"></div>
+                <div style="background-color: rgb(82, 55, 19);"></div>
+                <div style="background-color: rgb(130, 170, 160);"></div>
+                <div style="background-color: rgb(130, 120, 160);"></div>
+                </div>
+
+                <div id="sliders" class="sliders">
+                    <div id="rgbr"><div style="width: 63.1373%;"></div></div>
+                    <div id="rgbg"><div style="width: 65.8824%;"></div></div>
+                    <div id="rgbb"><div style="width: 80%;"></div></div>
+                    
+                    <div id="hslh"><div style="width: 63.8889%;"></div></div>
+                    <div id="hsls"><div style="width: 29%;"></div></div>
+                    <div id="hsll"><div style="width: 72%;"></div></div>
+                </div>
+
+                <div id="colorValues">rgba(161,168,204,0.8)
+                hsva(230,21,80,0.8)
+                hsla(230,29%,72%,0.8)
+                CMYK(21,17,0,20)
+                CMY(37,34,20)
+                Lab(70,5,-19)
+                </div>
+                
+                <div id="description"><select></select></div>
+    
+                <script type="text/javascript" src="libs/colorPicker-master/colors.js"></script>
+                <script type="text/javascript" src="libs/colorPicker-master/colorPicker.data.js"></script>
+                <script type="text/javascript" src="libs/colorPicker-master/colorPicker.js"></script>
+                <script type="text/javascript" src="libs/colorPicker-master/index.js"></script>
+                
+                <div class="cp-opacity" style="background-color: rgb(159, 131, 205);"></div><div class="cp-exit"></div><div class="cp-resize"></div><div class="cp-resizer" style=""><div></div></div>
+            </div>
+        </div>
     </body>
 </html>
