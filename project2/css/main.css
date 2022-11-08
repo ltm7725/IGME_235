@@ -191,10 +191,10 @@ a {
     height: 200px;
 	opacity: 0;
 	background-color: #000;
-	position: relative;
+	position: absolute;
+	top: 0;
 	border-radius: 50%;
 	cursor: crosshair;
-    margin-top: -200px;
 }
 .bar-bg, .bar-white, #luminanceBar, .hsv-barcursors{
     position: relative;
