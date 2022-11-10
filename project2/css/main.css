@@ -319,19 +319,19 @@ a {
 }
 #bigLogo{
     width: 70%;
-    margin-top: 0vw;
+    margin-top: 0;
 }
 h2{
     text-align: center;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 2vw;
+    font-size: 20px;
     font-style: italic;
 }
 button{
-    width: 15vw;
-    height: 8vw;
-    font-size: 4vw;
-    margin-top: 5vw;
+    width: 125px;
+    height: 75px;
+    font-size: 40px;
+    margin-top: 25px;
 }
 .pcr-app{
     height: 400px;
@@ -351,12 +351,83 @@ text{
     display: none;
 }
 #game{
+	display: flex;
+	position: absolute;
+	top: -9999px;
+	flex-direction: column;
 }
 #cp{
     background-color: white;
+	position: relative;
+	margin: 450px auto;
     height: 500px;
     width: 460px;
-    margin: 0 auto;
-    margin-top: -9999px;
-    margin-left: -9999px;
+}
+#theWord{
+	text-align: center;
+	height: 65px;
+	margin: 0 auto;
+	margin-top: 150px;
+	margin-bottom: -350px;
+}
+#guessButton{
+	z-index: 2;
+	margin: 0 auto;
+	margin-top: 350px;
+	margin-bottom: -350px;
+	width: 300px;
+}
+#guessNum{
+	text-align: center;
+	margin-top: 100px;
+	margin-bottom: -130px;
+}
+#highOrLow{
+	z-index: 1;
+	float: left;
+	margin-top: 300px;
+	height: 200px;
+	margin-bottom: -500px;
+	margin-left: 100px;
+	margin-right: -1000px;
+}
+#endGame{
+	display: none;
+	flex-flow: column;
+	height: 100%;
+	width: 100vw;
+	background-color:cadetblue;
+	justify-content: center;
+	align-items: center;
+}
+
+#endGame p{
+	float: left;
+	font-size: 30px;
+	color: white;
+}
+#backToMenu{
+	float: left;
+	clear: left;
+	width: 300px;
+}
+#colors{
+	display: flex;
+	flex-flow: row;
+}
+#colorTitles{
+	display: flex;
+	flex-flow: row;
+}
+#colorTitle1, #colorTitle2{
+	float: left;
+	margin: 0 60px;
+	color: white;
+}
+#guessColor, #answerColor{
+	float: left;
+	width: 150px;
+	height: 150px;
+	margin: 0 20px;
+	background-color: #0a0;
 }

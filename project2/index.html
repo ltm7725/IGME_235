@@ -19,6 +19,7 @@
         <title>CMBYS</title>
         <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <script src="https://colorjs.io/dist/color.global.js"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/monolith.min.css"/>
         <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
         <link rel="stylesheet" href="css/main.css">
@@ -33,6 +34,10 @@
             <button id="start">Start</button>
         </div>
         <div id="game">
+            <div id="guessNum">1 / 10</div>
+            <div id="theWord"></div>
+            <button id="guessButton">Make A Guess</button>
+            <div id="highOrLow"></div>
             <!--EVERYTHING WITHIN THIS DIV IS NOT MY CODE-->
             <div id="cp">
                 <div id="testPatch" style="background-color: rgba(161, 168, 204, 0.8); color: rgb(34, 34, 34);">#A1A8CC</div>
@@ -90,6 +95,18 @@
                 
                 <div class="cp-opacity" style="background-color: rgb(159, 131, 205);"></div><div class="cp-exit"></div><div class="cp-resize"></div><div class="cp-resizer" style=""><div></div></div>
             </div>
+        </div>
+        <div id="endGame">
+            <p></p>
+            <div id="colorTitles">
+                <div id="colorTitle1">Your Color</div>
+                <div id="colorTitle2">Real Color<br></div>
+            </div>
+            <div id="colors">
+                <div id="guessColor"></div>
+                <div id="answerColor"></div>
+            </div>
+            <button id="backToMenu">Back to Menu</button>
         </div>
     </body>
 </html>
