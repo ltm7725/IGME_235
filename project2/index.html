@@ -34,10 +34,7 @@
             <button id="start">Start</button>
         </div>
         <div id="game">
-            <div id="guessNum">1 / 10</div>
-            <div id="theWord"></div>
             <button id="guessButton">Make A Guess</button>
-            <div id="highOrLow"></div>
             <!--EVERYTHING WITHIN THIS DIV IS NOT MY CODE-->
             <div id="cp">
                 <div id="testPatch" style="background-color: rgba(161, 168, 204, 0.8); color: rgb(34, 34, 34);">#A1A8CC</div>
@@ -68,6 +65,15 @@
                 <div style="background-color: rgb(130, 120, 160);"></div>
                 </div>
 
+                <div id="inputs">
+                    <input id="tR" type="number" readonly>
+                    <input id="tG" type="number" readonly>
+                    <input id="tB" type="number" readonly>
+                    <input id="tH" type="number" readonly>
+                    <input id="tS" type="number" readonly>
+                    <input id="tL" type="number" readonly>
+                </div>
+
                 <div id="sliders" class="sliders">
                     <div id="rgbr"><div style="width: 63.1373%;"></div></div>
                     <div id="rgbg"><div style="width: 65.8824%;"></div></div>
@@ -95,6 +101,9 @@
                 
                 <div class="cp-opacity" style="background-color: rgb(159, 131, 205);"></div><div class="cp-exit"></div><div class="cp-resize"></div><div class="cp-resizer" style=""><div></div></div>
             </div>
+            <div id="guessNum">1 / 10</div>
+            <div id="theWord"></div>
+            <div id="highOrLow"></div>
         </div>
         <div id="endGame">
             <p></p>

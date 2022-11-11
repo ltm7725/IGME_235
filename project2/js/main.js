@@ -9,23 +9,28 @@ Color.defaults.deltaE = "2000";
 let black = new Color("rgb(0,0,0)");
 let white = new Color ("rgb(128,128,128)");
 document.querySelector("#backToMenu").onclick = backToMenu;
-
+document.querySelector("#cp").onmousemove = setBoxes;
+document.querySelector("#cp").onmousedown = setBoxes;
+document.querySelector("#cp").onclick = setBoxes;
 function startGame(){
+
+    $.getJSON('https://www.colourlovers.com/api/colors/random?jsonCallback=?', (data) => {
+        console.log(data[0]);
+        apiData = data[0];
+        loadData();
+        });
+
     document.querySelector("#mainMenu").style.display = "none";
     document.querySelector("#game").style.position = "relative";
     document.querySelector("#game").style.top = "0";
-
-    $.getJSON('https://www.colourlovers.com/api/colors/random?jsonCallback=?', (data) => {
-    console.log(data[0]);
-    apiData = data[0];
-    loadData();
-    });
 }
 
 function loadData(){
     document.querySelector("#theWord").innerHTML = "Your clue is...<br>\"" + apiData.title + "\"";
     theColor = new Color("a98rgb-linear", [apiData.rgb.red / 255, apiData.rgb.green / 255, apiData.rgb.blue / 255]);
+    setBoxes();
 }
+
 
 function incrementRound(){
     round++;
@@ -115,4 +120,14 @@ function backToMenu(){
     document.querySelector("#highOrLow").innerHTML = "";
     document.querySelector("#theWord").innerHTML = "Your clue is...<br>\"";
 
+}
+
+function setBoxes(){
+    document.querySelector("#tR").value = document.querySelector("#colorValues").innerHTML.substring(document.querySelector("#colorValues").innerHTML.indexOf("(") + 1, document.querySelector("#colorValues").innerHTML.indexOf(","));
+    document.querySelector("#tG").value = document.querySelector("#colorValues").innerHTML.substring(document.querySelector("#colorValues").innerHTML.indexOf(",") + 1, findNth(document.querySelector("#colorValues").innerHTML, ",", 2));
+    document.querySelector("#tB").value = document.querySelector("#colorValues").innerHTML.substring(findNth(document.querySelector("#colorValues").innerHTML, ",", 2) + 1, findNth(document.querySelector("#colorValues").innerHTML, ",", 3));
+    guessColor = new Color("a98rgb-linear", [document.querySelector("#colorValues").innerHTML.substring(document.querySelector("#colorValues").innerHTML.indexOf("(") + 1, document.querySelector("#colorValues").innerHTML.indexOf(",")) / 255, document.querySelector("#colorValues").innerHTML.substring(document.querySelector("#colorValues").innerHTML.indexOf(",") + 1, findNth(document.querySelector("#colorValues").innerHTML, ",", 2)) / 255, document.querySelector("#colorValues").innerHTML.substring(findNth(document.querySelector("#colorValues").innerHTML, ",", 2) + 1, findNth(document.querySelector("#colorValues").innerHTML, ",", 3)) / 255]);
+    document.querySelector("#tH").value = document.querySelector("#colorValues").innerHTML.substring(findNth(document.querySelector("#colorValues").innerHTML, "(", 3) + 1, findNth(document.querySelector("#colorValues").innerHTML, ",", 7));
+    document.querySelector("#tS").value = document.querySelector("#colorValues").innerHTML.substring(findNth(document.querySelector("#colorValues").innerHTML, ",", 7) + 1, findNth(document.querySelector("#colorValues").innerHTML, ",", 8) - 1);
+    document.querySelector("#tL").value = document.querySelector("#colorValues").innerHTML.substring(findNth(document.querySelector("#colorValues").innerHTML, ",", 8) + 1, findNth(document.querySelector("#colorValues").innerHTML, ",", 9) - 1);
 }
