@@ -345,45 +345,47 @@ text{
 }
 #game{
 	display: flex;
-	background-color:mediumturquoise;
 	position: absolute;
-	top: -9999px;
+	margin-top: -9999px;
 	flex-direction: column;
 	align-items: center;
-	height: 100vh;
+	width: 100vw;
+	height: 60vw;
 }
 #cp{
 	position: relative;
-	margin-top: 425px;
+	margin-top: 4vw;
     height: 26.5vw;
     width: 80vw;
 }
 #theWord{
 	text-align: center;
 	position: absolute;
-	height: 65px;
-	top: 150px;
+	margin-top: 10vw;
+	font-size: 2.5vw;
 	text-align: center;
 }
 #guessButton{
 	z-index: 2;
 	margin: 0 auto;
-	margin-top: 225px;
-	margin-bottom: -350px;
-	width: 300px;
+	margin-top: 19vw;
+	width: 25vw;
+	height: 6vw;
+	font-size: 3.5vw;
 }
 #guessNum{
 	position: absolute;
 	top: 0;
-	margin-top: 100px;
+	margin-top: 4vw;
+	font-size: 3vw;
 }
 #highOrLow{
 	z-index: 1;
 	position: absolute;
-	top: 7vw;
-	left: 65vw;
-	height: 200px;
-	font-size: 1vw;
+	top: 6vw;
+	left: 70vw;
+	font-size: 1.5vw;
+	line-height: 3vw;
 	float: left;
 	
 }
@@ -437,6 +439,7 @@ text{
 	height: 2.1vw;
 	margin-left: 6.5vw;
 	font-size: 2vw;
+	padding: 0;
 	text-align: center;
 }
 #tR{
@@ -456,6 +459,18 @@ text{
 	font-family: Courier,mono;
 	font-size: 1vw;
 	cursor: default;
+}
+#distance{
+	position: absolute;
+	top: 27vw;
+	font-size: 2vw;
+}
+div{
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+body{
+	justify-content: center;
+	align-items: center;
 }
 
 @media only screen and (max-width: 700px) {
@@ -495,5 +510,11 @@ text{
 	}
 	#tR, #tG, #tB, #tH, #tS, #tL{
 		font-size: 1px;
+	}
+}
+/* When screen's aspect ratio is too slim for the game*/
+@media only screen and (min-aspect-ratio: 10/6){
+	#guessButton{
+		color: yellow;
 	}
 }

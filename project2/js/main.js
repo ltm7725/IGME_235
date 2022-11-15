@@ -12,6 +12,8 @@ document.querySelector("#backToMenu").onclick = backToMenu;
 document.querySelector("#cp").onmousemove = setBoxes;
 document.querySelector("#cp").onmousedown = setBoxes;
 document.querySelector("#cp").onclick = setBoxes;
+let loop = 0;
+
 function startGame(){
 
     $.getJSON('https://www.colourlovers.com/api/colors/random?jsonCallback=?', (data) => {
@@ -21,8 +23,8 @@ function startGame(){
         });
 
     document.querySelector("#mainMenu").style.display = "none";
-    document.querySelector("#game").style.position = "relative";
-    document.querySelector("#game").style.top = "0";
+    document.querySelector("#game").style.margin = "0 auto";
+    loop = 1;
 }
 
 function loadData(){
@@ -31,12 +33,17 @@ function loadData(){
     setBoxes();
 }
 
+function gameLoop(){
+    document.querySelector("#game").style.marginTop = (window.innerHeight - document.querySelector("#game").clientHeight) / 2;
+}
+
+setInterval(() => gameLoop(), 1);
 
 function incrementRound(){
     round++;
     document.querySelector("#guessNum").innerHTML = round + " / 10";
     guessColor = new Color("a98rgb-linear", [document.querySelector("#colorValues").innerHTML.substring(document.querySelector("#colorValues").innerHTML.indexOf("(") + 1, document.querySelector("#colorValues").innerHTML.indexOf(",")) / 255, document.querySelector("#colorValues").innerHTML.substring(document.querySelector("#colorValues").innerHTML.indexOf(",") + 1, findNth(document.querySelector("#colorValues").innerHTML, ",", 2)) / 255, document.querySelector("#colorValues").innerHTML.substring(findNth(document.querySelector("#colorValues").innerHTML, ",", 2) + 1, findNth(document.querySelector("#colorValues").innerHTML, ",", 3)) / 255]);
-    document.querySelector("#theWord").innerHTML = "Your clue is...<br>\"" + apiData.title + "\"<br><br><br><br><br><br>" + "You're " + Color.deltaE(guessColor, theColor, "2000").toFixed(2) + "% away from the color!";
+    document.querySelector("#distance").innerHTML = "You're " + Color.deltaE(guessColor, theColor, "2000").toFixed(2) + "% away from the color!";
     document.querySelector("#highOrLow").innerHTML = highOrLow(guessColor, theColor);
     if(round > 10 || Color.deltaE(guessColor, theColor, "2000") == 0){
         endGame();
