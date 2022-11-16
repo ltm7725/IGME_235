@@ -126,6 +126,7 @@ function endGame(){
     document.querySelector("#answerColor").style.backgroundColor = "rgb(" + theColor.r * 255 + ", " + theColor.g * 255 + ", " + theColor.b * 255 + ")";
     document.querySelector("#game").style.position = "absolute";
     document.querySelector("#game").style.top = "-9999px";
+    document.querySelector("#distance").innerHTML = "";
     document.querySelector("#endGame").style.display = "flex";
     if(round > 10){
         document.querySelector("#endGame p").innerHTML = "Ran out of guesses!"
@@ -138,7 +139,7 @@ function endGame(){
 function backToMenu(){
     document.querySelector("#endGame").style.display = "none";
     document.querySelector("#mainMenu").style.display = "flex";
-    round = 0;
+    round = 1;
     document.querySelector("#guessNum").innerHTML = round + " / 10";
     document.querySelector("#highOrLow").innerHTML = "";
     document.querySelector("#theWord").innerHTML = "Your clue is...<br>\"\"";
