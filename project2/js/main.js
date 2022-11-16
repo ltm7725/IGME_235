@@ -15,6 +15,7 @@ document.querySelector("#cp").onclick = setBoxes;
 let loop;
 let baseWidth = window.innerWidth;
 let baseHeight = window.innerHeight;
+reloadHistory();
 
 function startGame(){
 
@@ -25,6 +26,8 @@ function startGame(){
         });
 
     document.querySelector("#mainMenu").style.display = "none";
+    document.querySelector("#pastGames").style.display = "none";
+    document.querySelector("#mainFooter").style.display = "none";
     document.querySelector("#game").style.margin = "0 auto";
     loop = setInterval(() => gameLoop(), 1);
 
@@ -68,9 +71,6 @@ function incrementRound(){
 
 function highOrLow(guess, answer){
     let string = "";
-
-    console.log(guess);
-    console.log(answer);
 
     string += "Red: "
     if(guess.r * 255 == answer.r * 255) string += "PERFECT!";
@@ -122,6 +122,33 @@ function findNth(string, char, num){
 
 function endGame(){
     clearInterval(loop);
+
+    if(localStorage.getItem('1') == null){
+        let i = 1;
+        console.log(i);
+        localStorage.setItem(i.toString(), document.querySelector("#distance").innerHTML.substring(document.querySelector("#distance").innerHTML.indexOf("e") + 2, document.querySelector("#distance").innerHTML.indexOf("%")));
+        localStorage.setItem(i.toString() + "g", guessColor.r * 255 + "," + guessColor.g * 255 + "," + guessColor.b * 255);
+        localStorage.setItem(i.toString() + "r", theColor.r * 255 + "," + theColor.g * 255 + "," + theColor.b * 255);
+        console.log(localStorage.getItem(i.toString()));
+        console.log(localStorage.getItem(i.toString() + "g"));
+        console.log(localStorage.getItem(i.toString() + "r"));
+    }
+    else{
+        let i = 1;
+        while(localStorage.getItem(i.toString()) != null){
+            i++;
+        }
+        console.log(i);
+        localStorage.setItem(i.toString(), document.querySelector("#distance").innerHTML.substring(document.querySelector("#distance").innerHTML.indexOf("e") + 2, document.querySelector("#distance").innerHTML.indexOf("%")));
+        localStorage.setItem(i.toString() + "g", guessColor.r * 255 + "," + guessColor.g * 255 + "," + guessColor.b * 255);
+        localStorage.setItem(i.toString() + "r", theColor.r * 255 + "," + theColor.g * 255 + "," + theColor.b * 255);
+        console.log(localStorage.getItem(i.toString()));
+        console.log(localStorage.getItem(i.toString() + "g"));
+        console.log(localStorage.getItem(i.toString() + "r"));
+    }
+
+    reloadHistory();
+
     document.querySelector("#guessColor").style.backgroundColor = "rgb(" + guessColor.r * 255 + ", " + guessColor.g * 255 + ", " + guessColor.b * 255 + ")";
     document.querySelector("#answerColor").style.backgroundColor = "rgb(" + theColor.r * 255 + ", " + theColor.g * 255 + ", " + theColor.b * 255 + ")";
     document.querySelector("#game").style.position = "absolute";
@@ -136,9 +163,48 @@ function endGame(){
     }
 }
 
+function reloadHistory(){
+    document.querySelector("#history").innerHTML = "";
+
+    let i = 1;
+
+    while(localStorage.getItem(i.toString()) != null){
+        i++;
+    }
+
+    i--;
+
+    console.log(i);
+
+    if(i == 0) document.querySelector("#pastGames h1").innerHTML = "<i>Check back here for your game history!</i>"
+    else {
+        document.querySelector("#pastGames h1").innerHTML = "↓ <i>Past Games</i> ↓";
+        for(let j = i; j > 0; j--){
+            let mainDiv = document.createElement("div");
+            let color1 = document.createElement("div");
+            let color2 = document.createElement("div");
+            let p1 = document.createElement("p");
+            let p2 = document.createElement("p");
+            let distance = localStorage.getItem(j.toString());
+            p1.innerHTML = "<u>Game " + j.toString() + "</u>";
+            p2.innerHTML = "<i>" + distance + "% Away</i>";
+            color1.style.backgroundColor = "rgb(" + localStorage.getItem(j.toString() + "g").substring(0, localStorage.getItem(j.toString() + "g").indexOf(",")) + ", " + localStorage.getItem(j.toString() + "g").substring(findNth(localStorage.getItem(j.toString() + "g"), ",", 1) + 1, findNth(localStorage.getItem(j.toString() + "g"), ",", 2)) + ", " + localStorage.getItem(j.toString() + "g").substring(findNth(localStorage.getItem(j.toString() + "g"), ",", 2) + 1) + ")";
+            color2.style.backgroundColor = "rgb(" + localStorage.getItem(j.toString() + "r").substring(0, localStorage.getItem(j.toString() + "r").indexOf(",")) + ", " + localStorage.getItem(j.toString() + "r").substring(findNth(localStorage.getItem(j.toString() + "r"), ",", 1) + 1, findNth(localStorage.getItem(j.toString() + "r"), ",", 2)) + ", " + localStorage.getItem(j.toString() + "r").substring(findNth(localStorage.getItem(j.toString() + "r"), ",", 2) + 1) + ")";
+            mainDiv.appendChild(p1);
+            mainDiv.appendChild(color1);
+            mainDiv.appendChild(color2);
+            mainDiv.appendChild(p2);
+            document.querySelector("#history").appendChild(mainDiv);
+            console.log("added to history");
+    }
+    }
+}
+
 function backToMenu(){
     document.querySelector("#endGame").style.display = "none";
     document.querySelector("#mainMenu").style.display = "flex";
+    document.querySelector("#pastGames").style.display = "block";
+    document.querySelector("#mainFooter").style.display = "block";
     round = 1;
     document.querySelector("#guessNum").innerHTML = round + " / 10";
     document.querySelector("#highOrLow").innerHTML = "";
