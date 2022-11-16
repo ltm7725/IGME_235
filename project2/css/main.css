@@ -583,8 +583,8 @@ body, html{
 /* When screen's aspect ratio is too slim for the game*/
 @media only screen and (min-aspect-ratio: 10/6){
 	#game{
-		display: flex;
-		width: 100%;
+		width: 100vw;
+		margin: 0;
 		height: 100%;
 	}
 	#cp{
@@ -592,7 +592,7 @@ body, html{
 		width: 40vw;
 		float: left;
 		margin-top: -24vw;
-		margin-left: 7.5vw;
+		margin-left: -40vw;
 	}
 	#guessNum, #guessButton, #highOrLow, #distance, #theWord{
 		float: right;
@@ -600,21 +600,21 @@ body, html{
 	}
 	#guessNum{
 		margin-top: 4vw;
-		margin-left: 69vw;
+		margin-left: 38vw;
 	}
 	#theWord{
 		margin-top: 9vw;
-		margin-left: 65vw;
+		margin-left: 60vw;
 		width: 30vw;
 	}
 	#guessButton{
 		margin-top: 18vw;
 		margin-bottom: 0vw;
-		margin-right: 14vw;
+		margin-right: 10vw;
 	}
 	#distance{
 		margin-top: 9vw;
-		margin-left: 57vw;
+		margin-left: 40vw;
 	}
 	#luminanceBar{
 		height: 20vw;
@@ -624,7 +624,7 @@ body, html{
 		line-height: 2.5vw;
 		font-size: 2vw;
 		text-align: center;
-		margin-left: -7vw;
+		margin-left: -10vw;
 	}
 	#testPatch,#contrastPatch{
 		z-index: 20;
