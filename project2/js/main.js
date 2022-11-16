@@ -12,7 +12,9 @@ document.querySelector("#backToMenu").onclick = backToMenu;
 document.querySelector("#cp").onmousemove = setBoxes;
 document.querySelector("#cp").onmousedown = setBoxes;
 document.querySelector("#cp").onclick = setBoxes;
-let loop = 0;
+let loop;
+let baseWidth = window.innerWidth;
+let baseHeight = window.innerHeight;
 
 function startGame(){
 
@@ -24,7 +26,10 @@ function startGame(){
 
     document.querySelector("#mainMenu").style.display = "none";
     document.querySelector("#game").style.margin = "0 auto";
-    loop = 1;
+    loop = setInterval(() => gameLoop(), 1);
+
+    if(document.querySelector("#cp").clientHeight >= (window.innerHeight * 0.5)) document.querySelector("#luminanceBar").style.height = "20vw"
+    else document.querySelector("#luminanceBar").style.height = "25.4vw"
 }
 
 function loadData(){
@@ -34,10 +39,20 @@ function loadData(){
 }
 
 function gameLoop(){
-    document.querySelector("#game").style.marginTop = (window.innerHeight - document.querySelector("#game").clientHeight) / 2;
+    document.querySelector("#game").style.top = (window.innerHeight - document.querySelector("#game").clientHeight) / 2;
+    
+    if(baseWidth != window.innerWidth || baseHeight != window.innerHeight){
+        document.querySelector(".cover").click();
+        console.log("ar change!");
+        baseWidth = window.innerWidth;
+        baseHeight = window.innerHeight;
+    }
+    
+    if(document.querySelector("#cp").clientHeight >= (window.innerHeight * 0.5)) {
+        document.querySelector("#theWord").style.marginLeft = window.innerWidth * 0.475 + (window.innerWidth * 0.525 - document.querySelector("#theWord").clientWidth) / 2;
+    }
+        else document.querySelector("#theWord").style.marginLeft = 0;
 }
-
-setInterval(() => gameLoop(), 1);
 
 function incrementRound(){
     round++;
@@ -59,33 +74,33 @@ function highOrLow(guess, answer){
 
     string += "Red: "
     if(guess.r * 255 == answer.r * 255) string += "PERFECT!";
-    else if(guess.r < answer.r) string += "Too Low ↓";
-    else if (guess.r > answer.r) string += "Too High ↑";
+    else if(guess.r < answer.r) string += "Too Low ↑";
+    else if (guess.r > answer.r) string += "Too High ↓";
     string += "<br>"
     string += "Green: "
     if(guess.g * 255 == answer.g * 255) string += "PERFECT!";
-    else if(guess.g < answer.g) string += "Too Low ↓";
-    else if (guess.g > answer.g) string += "Too High ↑";
+    else if(guess.g < answer.g) string += "Too Low ↑";
+    else if (guess.g > answer.g) string += "Too High ↓";
     string += "<br>"
     string += "Blue: "
     if(guess.b * 255 == answer.b * 255) string += "PERFECT!";
-    else if(guess.b < answer.b) string += "Too Low ↓";
-    else if (guess.b > answer.b) string += "Too High ↑";
+    else if(guess.b < answer.b) string += "Too Low ↑";
+    else if (guess.b > answer.b) string += "Too High ↓";
     string += "<br>"
     string += "Hue: "
     if(guess.hsl[0] == answer.hsl[0]) string += "PERFECT!";
-    else if(guess.hsl[0] < answer.hsl[0]) string += "Too Low ↓";
-    else if (guess.hsl[0] > answer.hsl[0]) string += "Too High ↑";
+    else if(guess.hsl[0] < answer.hsl[0]) string += "Too Low ↑";
+    else if (guess.hsl[0] > answer.hsl[0]) string += "Too High ↓";
     string += "<br>"
     string += "Saturation: "
     if(guess.hsl[1] == answer.hsl[1]) string += "PERFECT!";
-    else if(guess.hsl[1] < answer.hsl[1]) string += "Too Low ↓";
-    else if (guess.hsl[1] > answer.hsl[1]) string += "Too High ↑";
+    else if(guess.hsl[1] < answer.hsl[1]) string += "Too Low ↑";
+    else if (guess.hsl[1] > answer.hsl[1]) string += "Too High ↓";
     string += "<br>"
     string += "Luminance: "
     if(guess.hsl[2] == answer.hsl[2]) string += "PERFECT!";
-    else if(guess.hsl[2] < answer.hsl[2]) string += "Too Low ↓";
-    else if (guess.hsl[2] > answer.hsl[2]) string += "Too High ↑";
+    else if(guess.hsl[2] < answer.hsl[2]) string += "Too Low ↑";
+    else if (guess.hsl[2] > answer.hsl[2]) string += "Too High ↓";
     string += "<br>"
 
     return string;
@@ -106,6 +121,7 @@ function findNth(string, char, num){
 }
 
 function endGame(){
+    clearInterval(loop);
     document.querySelector("#guessColor").style.backgroundColor = "rgb(" + guessColor.r * 255 + ", " + guessColor.g * 255 + ", " + guessColor.b * 255 + ")";
     document.querySelector("#answerColor").style.backgroundColor = "rgb(" + theColor.r * 255 + ", " + theColor.g * 255 + ", " + theColor.b * 255 + ")";
     document.querySelector("#game").style.position = "absolute";
@@ -125,7 +141,7 @@ function backToMenu(){
     round = 0;
     document.querySelector("#guessNum").innerHTML = round + " / 10";
     document.querySelector("#highOrLow").innerHTML = "";
-    document.querySelector("#theWord").innerHTML = "Your clue is...<br>\"";
+    document.querySelector("#theWord").innerHTML = "Your clue is...<br>\"\"";
 
 }
 
