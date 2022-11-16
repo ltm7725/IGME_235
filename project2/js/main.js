@@ -28,11 +28,13 @@ function startGame(){
     document.querySelector("#mainMenu").style.display = "none";
     document.querySelector("#pastGames").style.display = "none";
     document.querySelector("#mainFooter").style.display = "none";
-    document.querySelector("#game").style.margin = "0 auto";
+    document.querySelector("#game").style.display = "flex";
+    document.querySelector("#game").style.position = "absolute";
+    document.querySelector("#game").style.top = (window.innerHeight / 2) - (document.querySelector("#game").clientHeight / 2) + "px";
     loop = setInterval(() => gameLoop(), 1);
 
-    if(document.querySelector("#cp").clientHeight >= (window.innerHeight * 0.5)) document.querySelector("#luminanceBar").style.height = "20vw"
-    else document.querySelector("#luminanceBar").style.height = "25.4vw"
+    if(document.querySelector("#cp").clientHeight >= (window.innerHeight * 0.5)) document.querySelector("#luminanceBar").style.backgroundHeight = "20vw"
+    else document.querySelector("#luminanceBar").style.backgroundHeight = "25.4vw"
 }
 
 function loadData(){
@@ -47,8 +49,9 @@ function gameLoop(){
     if(baseWidth != window.innerWidth || baseHeight != window.innerHeight){
         document.querySelector(".cover").click();
         console.log("ar change!");
+        document.querySelector("#game").style.top = (window.innerHeight / 2) - (document.querySelector("#game").clientHeight / 2) + "px";
         baseWidth = window.innerWidth;
-        baseHeight = window.innerHeight;
+        baseHeight = window.innerHeight;  
     }
     
     if(document.querySelector("#cp").clientHeight >= (window.innerHeight * 0.5)) {
@@ -205,6 +208,7 @@ function backToMenu(){
     document.querySelector("#mainMenu").style.display = "flex";
     document.querySelector("#pastGames").style.display = "block";
     document.querySelector("#mainFooter").style.display = "block";
+    document.querySelector("#game").style.display = "none";
     round = 1;
     document.querySelector("#guessNum").innerHTML = round + " / 10";
     document.querySelector("#highOrLow").innerHTML = "";
