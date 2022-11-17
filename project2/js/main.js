@@ -55,12 +55,10 @@ function gameLoop(){
     }
     
     if(document.querySelector("#cp").clientHeight >= (window.innerHeight * 0.5)) {
-        document.querySelector("#theWord").style.marginLeft = window.innerWidth * 0.475 + (window.innerWidth * 1.1 - document.querySelector("#theWord").clientWidth) / 2;
-        document.querySelector("#luminanceBar").style.height = "20vw";
+        document.querySelector("#luminanceBar").style.width = "3.64166667vw";
     }
         else {
-            document.querySelector("#theWord").style.marginLeft = 0;
-            document.querySelector("#luminanceBar").style.height = "20vw";
+            document.querySelector("#luminanceBar").style.width = "3.5vw";
         }
 }
 

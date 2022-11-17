@@ -71,6 +71,7 @@ a {
 .sliders {
 	position: relative;
 	width: 30vw;
+	height: 1vw;
     margin-top: -14.3vw;
     float: right;
     margin-right: 8vw;
@@ -84,7 +85,6 @@ a {
 }
 .sliders div div {
 	height: 2vw;
-	margin-bottom: 0px;
 	margin-top: -.05vw;
 	border: none;
 	background-color: rgb(155, 155, 155);
@@ -536,7 +536,6 @@ body, html{
 	background-color: skyblue;
 	height: 100%;
 	width: 100%;
-	overflow: visible;
 	justify-content: center;
 	align-items: center;
 }
@@ -603,9 +602,9 @@ body, html{
 		margin-left: 38vw;
 	}
 	#theWord{
-		margin-top: 9vw;
-		margin-left: 60vw;
 		width: 30vw;
+		margin-top: 9vw;
+		margin-left: 88vw;
 	}
 	#guessButton{
 		margin-top: 18vw;
