@@ -20,8 +20,9 @@
         <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
         <script src="https://colorjs.io/dist/color.global.js"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/monolith.min.css"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/monolith.min.css">
         <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
+        <script defer src="libs/svgColor.js"></script>
         <link rel="stylesheet" href="css/main.css">
         <script defer src="js/main.js"></script>
     </head>
@@ -30,18 +31,29 @@
         <div id="mainMenu">
             <!-- <img id="bigLogo" src="media/newbox.png"> -->
             <!-- <img id="bigLogo" src="media/newbox_exp.png"> -->
-            <img id="bigLogo" src="media/CallMeByYourShade.png">
-            <h2>The phrase-to-color game you didn't know you didn't need</h2>
-            <button id="start">Start</button>
+            <div id="menuObj">
+                <img class="bigLogo" id="cmby" src="media/cmby.svg" alt="4/5 of the logo to the movie 'Call Me By Your Name'">
+                <img class="bigLogo" id="s" src="media/s.svg" alt="1/5 of the logo to the movie 'Call Me By Your Name'">
+                <div id="interactive">
+                    <h2>The phrase-to-color game you didn't know you didn't need</h2>
+                    <button id="start">Start</button>
+                </div>
+            </div>
         </div>
         <div id="pastGames">
             <h1>↓ <i>Past Games</i> ↓</h1>
             <div id="history"></div>
         </div>
-        <footer id="mainFooter"></footer>
+        <footer id="mainFooter">
+            <p>In <i><u>Call Me By Your Shade</u></i>—named cheaply after a seemingly good movie that I haven't gotten to see yet—you're given a pseudo-random phrase associated with a color in some way; your goal is to use the color controlls provided to match the secret color as close as you possibly can. Hints are provided after each of your 10 guesses, in the form of percentage in general-closeness and high-or-low position of color values (RGB/HSL). <b>Can you find the color? Try it out!!</b></p><br>
+            <i><u><b>'COLORS'</b></u></i> from <a href="https://www.colourlovers.com/api" target="_blank">ColourLovers API</a><br>
+            <a href="http://www.dematte.at/colorPicker/" target="_blank">Color Picker</a> by <a href="http://www.dematte.at/" target="_blank">Peter Dematté</a><br>
+            <a href="https://codepen.io/sosuke/pen/Pjoqqp" target="_blank">SVG-coloring</a> function by Barrett Sonntag<br><br>
+            © L. Mavroudakis 2022
+        </footer>
         <div id="game">
             <button id="guessButton">Make A Guess</button>
-            <!--EVERYTHING WITHIN THIS DIV IS NOT MY CODE-->
+            <!--EVERYTHING WITHIN THIS DIV (#cp) IS NOT MY CODE-->
             <div id="cp">
                 <div id="testPatch" style="background-color: rgba(161, 168, 204, 0.8); color: rgb(34, 34, 34);">#A1A8CC</div>
             
@@ -100,10 +112,10 @@
                 
                 <div id="description"><select></select></div>
     
-                <script type="text/javascript" src="libs/colorPicker-master/colors.js"></script>
-                <script type="text/javascript" src="libs/colorPicker-master/colorPicker.data.js"></script>
-                <script type="text/javascript" src="libs/colorPicker-master/colorPicker.js"></script>
-                <script type="text/javascript" src="libs/colorPicker-master/index.js"></script>
+                <script src="libs/colorPicker-master/colors.js"></script>
+                <script src="libs/colorPicker-master/colorPicker.data.js"></script>
+                <script src="libs/colorPicker-master/colorPicker.js"></script>
+                <script src="libs/colorPicker-master/index.js"></script>
                 
                 <div class="cp-opacity" style="background-color: rgb(159, 131, 205);"></div><div class="cp-exit"></div><div class="cp-resize"></div><div class="cp-resizer" style=""><div></div></div>
             </div>
