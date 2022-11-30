@@ -70,8 +70,8 @@ footer {
     display: block;
     font-size: 1vw;
     border-top: .6vw solid rgb(40, 0, 86);
-    background-color: rgba(119, 0, 255, .5);
-    width: 101.8%;
+    background-color: rgba(119, 0, 255, 0.5);
+    width: 101%;
     padding-top: 3vw;
     padding-bottom: 4vw;
     color: rgb(255, 255, 255);
@@ -97,13 +97,34 @@ footer {
     border: .6vw solid rgb(19, 67, 131);
     border-radius: 2vw;
 }
-#links1 {
-    padding-right: 2vw;
-    top: 5.5vw;
-    left: 2vw;
+#links2 h2{
+    position: sticky;
+    margin-top: 0;
+    padding-top: 1vw;
+    height: 4vw;
+    top: 0;
+    background-color: rgba(19, 68, 131, 0.5);
 }
-#links2 {
-  top: 7.5vw;
+#links1 h2{
+    position: sticky;
+    margin-top: -1.7vw;
+    top: 0;
+    background-color: rgba(19, 68, 131, 0.5);
+    height: 4vw;
+    padding-top: 1vw;
+}
+#links1 ul{
+    margin-top: 1.5vw;
+}
+#links2 ul{
+    margin-top: 1vw;
+}
+#links1, #links2 {
+  top: 4.5vw;
+  height: 39.5vw;
+  overflow: scroll;
+}
+#links2{
   right: 3vw;
 }
 .links {
@@ -118,4 +139,33 @@ footer {
     background-color: rgba(19, 68, 131, 0.5);
     padding: .1vw 0.75vw;
     border-radius: 2vw;
+}
+::-webkit-scrollbar{
+    width: 1vw;
+}
+#links2::-webkit-scrollbar, #links1::-webkit-scrollbar{
+    width: 1.5vw;
+}
+::-webkit-scrollbar-corner{
+    background: transparent;
+}
+::-webkit-scrollbar-track{
+    width: 1vw;
+    background-color: rgb(40, 0, 86);
+}
+::-webkit-scrollbar-thumb{
+    background-color: transparent;
+    background-image: url(../media/scrollbar.png);
+    background-size: 1vw 100%;
+    border-radius: 10%;
+}
+#links2::-webkit-scrollbar-thumb,#links1::-webkit-scrollbar-thumb{
+    background-color: transparent;
+    background-image: url(../media/scrollbar2.png);
+    background-size: 1.5vw 100%;
+    border-radius: 10%;
+}
+#links2::-webkit-scrollbar-track,#links1::-webkit-scrollbar-track{
+    width: 1.5vw;
+    background-color: transparent;
 }
