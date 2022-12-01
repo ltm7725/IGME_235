@@ -10,9 +10,9 @@ Color.defaults.deltaE = "2000";
 let black = new Color("rgb(0,0,0)");
 let white = new Color ("rgb(128,128,128)");
 document.querySelector("#backToMenu").onclick = backToMenu;
-document.querySelector("#cp").onmousemove = setBoxes;
-document.querySelector("#cp").onmousedown = setBoxes;
-document.querySelector("#cp").onclick = setBoxes;
+document.querySelector("body").onmousemove = setBoxes;
+document.querySelector("body").onmousedown = setBoxes;
+document.querySelector("body").onclick = setBoxes;
 let loop;
 let baseWidth = window.innerWidth;
 let baseHeight = window.innerHeight;
@@ -30,40 +30,24 @@ let l = Math.random() * 25 + 45;
 document.querySelector("#mainMenu").style.backgroundColor = "hsl(" + h + "," + s + "%," + l + "%)";
 document.querySelector("#mainFooter").style.backgroundColor = "hsl(" + h + "," + s + "%," + l + "%)";
 document.querySelector("#pastGames").style.backgroundColor = "hsl(" + (h + 5) + "," + s + "%," + (l - 10) + "%)";
-document.body.style.backgroundColor = "hsl(" + (h + 5) + "," + s + "%," + (l - 10) + "%)";
 document.querySelector("#pastGames").style.color = "hsl(" + (h + 5) + "," + (s - 25) + "%," + (l - 40) + "%)";
 document.querySelector("#pastGames div").style.color = "hsl(" + (h + 5) + "," + (s - 25) + "%," + (l + 25) + "%)";
 
 let i = 1;
 
-for(let d of document.querySelectorAll("#history div div")){
-    if(i==1){
-        d.style.borderTop = "0.2vw solid hsl(" + (h + 5) + "," + (s - 25) + "%," + (l - 30) + "%)";
-        d.style.borderLeft = "0.2vw solid hsl(" + (h + 5) + "," + (s - 25) + "%," + (l - 30) + "%)";
-        d.style.borderRight = "0.2vw solid hsl(" + (h + 5) + "," + (s - 25) + "%," + (l - 30) + "%)";
-        d.style.borderBottom = "none";
-        i = 2;
-    }
-    else{
-        d.style.borderBottom = "0.2vw solid hsl(" + (h + 5) + "," + (s - 25) + "%," + (l - 30) + "%)";
-        d.style.borderLeft = "0.2vw solid hsl(" + (h + 5) + "," + (s - 25) + "%," + (l - 30) + "%)";
-        d.style.borderRight = "0.2vw solid hsl(" + (h + 5) + "," + (s - 25) + "%," + (l - 30) + "%)";
-        d.style.borderTop = "none";
-        i = 1;
-    }
-}
+reloadHistoryColors();
 
 document.querySelector("#mainMenu").style.color = "hsl(" + (h + 5) + "," + (s - 25) + "%," + (l - 30) + "%)";
 document.querySelector("#mainFooter").style.color = "hsl(" + (h + 5) + "," + (s - 25) + "%," + (l - 30) + "%)";
 document.querySelector("#mainMenu button").style.backgroundColor = "hsl(" + (h + 7.5) + "," + s + "%," + (l - 20) + "%)";
 document.querySelector("#mainMenu button").style.color = "hsl(" + (h + 5) + "," + (s - 25) + "%," + (l + 15) + "%)";
-document.querySelector("#cp").style.backgroundColor = "hsl(" + h + "," + s + "%," + l + "%)";
+document.body.style.backgroundColor = "hsl(" + h + "," + s + "%," + l + "%)";
 document.querySelector("#game button").style.backgroundColor = "hsl(" + h + "," + s + "%," + l + "%)";
 document.querySelector("#game button").style.color = "hsl(" + (h + 5) + "," + (s - 25) + "%," + (l + 25) + "%)";
 document.querySelector("#guessNum").style.color = "hsl(" + (h + 5) + "," + (s - 25) + "%," + (l + 25) + "%)";
 document.querySelector("#theWord").style.color = "hsl(" + h + "," + s + "%," + l + "%)";
 document.querySelector("#theWord").style.backgroundColor = "hsl(" + (h + 5) + "," + (s - 25) + "%," + (l + 25) + "%)";
-document.querySelector("#highOrLow").style.color = "hsl(" + (h + 5) + "," + (s - 25) + "%," + (l + 25) + "%)";
+document.querySelector("#hol").style.color = "hsl(" + (h + 5) + "," + (s - 25) + "%," + (l + 25) + "%)";
 document.querySelector("#highOrLow").style.backgroundColor = "hsl(" + h + "," + s + "%," + l + "%)";
 document.querySelector("#distance").style.color = "hsl(" + h + "," + s + "%," + l + "%)";
 document.querySelector("#distance").style.backgroundColor = "hsl(" + (h + 5) + "," + (s - 25) + "%," + (l + 25) + "%)";
@@ -101,20 +85,17 @@ function startGame(){
     document.querySelector("#game").style.position = "absolute";
     document.querySelector("#game").style.top = (window.innerHeight / 2) - (document.querySelector("#game").clientHeight / 2) + "px";
     loop = setInterval(() => gameLoop(), 1);
-
-    if(document.querySelector("#cp").clientHeight >= (window.innerHeight * 0.5)) document.querySelector("#luminanceBar").style.backgroundHeight = "20vw"
-    else document.querySelector("#luminanceBar").style.backgroundHeight = "25.4vw"
 }
 
 // Runs after API data is fetched; Loads information from API into game system and screen
 function loadData(){
     let title = apiData.title;
-    if(title.length > 17){
-        let title1 = title.substring(0, title.length / 2);
-        let title2 = tite.substring(title.length / 2);
+    if(title.length > 14){
+        let title1 = title.substring(0, 15);
+        let title2 = title.substring(15);
         title = title1 + "-<br>-" + title2;
     }
-    document.querySelector("#theWord").innerHTML = "Your clue is...<br>\"" + title + "\"";
+    document.querySelector("#theClue").innerHTML = "Your clue is...<br>\"" + title + "\"";
     theColor = new Color("a98rgb-linear", [apiData.rgb.red / 255, apiData.rgb.green / 255, apiData.rgb.blue / 255]);
     setBoxes();
 }
@@ -124,38 +105,29 @@ function gameLoop(){
     document.querySelector("#game").style.top = (window.innerHeight - document.querySelector("#game").clientHeight) / 2;
     
     if(baseWidth != window.innerWidth || baseHeight != window.innerHeight){
-        document.querySelector(".cover").click();
         // console.log("ar change!");
-        document.querySelector("#game").style.top = (window.innerHeight / 2) - (document.querySelector("#game").clientHeight / 2) + "px";
         baseWidth = window.innerWidth;
         baseHeight = window.innerHeight;  
     }
 
-    if(document.querySelector("#highOrLow").innerHTML == ""){
+    if(document.querySelector("#hol").innerHTML == ""){
         document.querySelector("#highOrLow").style.display = "none";
     }
-    else document.querySelector("#highOrLow").style.display = "block";
+    else document.querySelector("#highOrLow").style.display = "flex";
 
     if(document.querySelector("#distance").innerHTML == ""){
         document.querySelector("#distance").style.display = "none";
     }
     else document.querySelector("#distance").style.display = "block";
-    
-    if(document.querySelector("#cp").clientHeight >= (window.innerHeight * 0.5)) {
-        document.querySelector("#luminanceBar").style.width = "3.64166667vw";
-    }
-        else {
-            document.querySelector("#luminanceBar").style.width = "3.6vw";
-        }
 }
 
 // Run when the user pressed the Guess button; Increments the round, triggers input analysis and prints color-closeness results to the screen
 function incrementRound(){
     round++;
-    document.querySelector("#guessNum").innerHTML = round + " / 10";
+    document.querySelector("#guessNum").innerHTML = "<u>" + round + " / 10" + "</u>";
     guessColor = new Color("a98rgb-linear", [document.querySelector("#colorValues").innerHTML.substring(document.querySelector("#colorValues").innerHTML.indexOf("(") + 1, document.querySelector("#colorValues").innerHTML.indexOf(",")) / 255, document.querySelector("#colorValues").innerHTML.substring(document.querySelector("#colorValues").innerHTML.indexOf(",") + 1, findNth(document.querySelector("#colorValues").innerHTML, ",", 2)) / 255, document.querySelector("#colorValues").innerHTML.substring(findNth(document.querySelector("#colorValues").innerHTML, ",", 2) + 1, findNth(document.querySelector("#colorValues").innerHTML, ",", 3)) / 255]);
     document.querySelector("#distance").innerHTML = "You're " + Color.deltaE(guessColor, theColor, "2000").toFixed(2) + "% away from the color!";
-    document.querySelector("#highOrLow").innerHTML = highOrLow(guessColor, theColor);
+    document.querySelector("#hol").innerHTML = highOrLow(guessColor, theColor);
     if(round > 10 || Color.deltaE(guessColor, theColor, "2000") == 0){
         endGame();
         return;
@@ -167,35 +139,35 @@ function incrementRound(){
 function highOrLow(guess, answer){
     let string = "";
 
-    string += "Red: "
+    string += "<b>Red</b>: "
     if(guess.r * 255 == answer.r * 255) string += "PERFECT!";
-    else if(guess.r < answer.r) string += "Too Low ↑";
-    else if (guess.r > answer.r) string += "Too High ↓";
+    else if(guess.r < answer.r) string += "Too Low 📉";
+    else if (guess.r > answer.r) string += "Too High 📈";
     string += "<br>"
-    string += "Green: "
+    string += "<b>Green</b>: "
     if(guess.g * 255 == answer.g * 255) string += "PERFECT!";
-    else if(guess.g < answer.g) string += "Too Low ↑";
-    else if (guess.g > answer.g) string += "Too High ↓";
+    else if(guess.g < answer.g) string += "Too Low 📉";
+    else if (guess.g > answer.g) string += "Too High 📈";
     string += "<br>"
-    string += "Blue: "
+    string += "<b>Blue</b>: "
     if(guess.b * 255 == answer.b * 255) string += "PERFECT!";
-    else if(guess.b < answer.b) string += "Too Low ↑";
-    else if (guess.b > answer.b) string += "Too High ↓";
+    else if(guess.b < answer.b) string += "Too Low 📉";
+    else if (guess.b > answer.b) string += "Too High 📈";
     string += "<br>"
-    string += "Hue: "
+    string += "<b>Hue</b>: "
     if(guess.hsl[0] == answer.hsl[0]) string += "PERFECT!";
-    else if(guess.hsl[0] < answer.hsl[0]) string += "Too Low ↑";
-    else if (guess.hsl[0] > answer.hsl[0]) string += "Too High ↓";
+    else if(guess.hsl[0] < answer.hsl[0]) string += "Too Low 📉";
+    else if (guess.hsl[0] > answer.hsl[0]) string += "Too High 📈";
     string += "<br>"
-    string += "Saturation: "
+    string += "<b>Saturation</b>: "
     if(guess.hsl[1] == answer.hsl[1]) string += "PERFECT!";
-    else if(guess.hsl[1] < answer.hsl[1]) string += "Too Low ↑";
-    else if (guess.hsl[1] > answer.hsl[1]) string += "Too High ↓";
+    else if(guess.hsl[1] < answer.hsl[1]) string += "Too Low 📉";
+    else if (guess.hsl[1] > answer.hsl[1]) string += "Too High 📈";
     string += "<br>"
-    string += "Luminance: "
+    string += "<b>Luminance</b>: "
     if(guess.hsl[2] == answer.hsl[2]) string += "PERFECT!";
-    else if(guess.hsl[2] < answer.hsl[2]) string += "Too Low ↑";
-    else if (guess.hsl[2] > answer.hsl[2]) string += "Too High ↓";
+    else if(guess.hsl[2] < answer.hsl[2]) string += "Too Low 📉";
+    else if (guess.hsl[2] > answer.hsl[2]) string += "Too High 📈";
     string += "<br>"
 
     return string;
@@ -308,20 +280,20 @@ function backToMenu(){
     document.querySelector("#game").style.display = "none";
     round = 1;
     document.querySelector("#guessNum").innerHTML = round + " / 10";
-    document.querySelector("#highOrLow").innerHTML = "";
-    document.querySelector("#theWord").innerHTML = "Your clue is...<br>\"\"";
+    document.querySelector("#hol").innerHTML = "";
+    document.querySelector("#theClue").innerHTML = "Your clue is...<br>\"\"";
 
 }
 
 // Updates the number boxes next to the color sliders on the game screen
 function setBoxes(){
-    document.querySelector("#tR").value = document.querySelector("#colorValues").innerHTML.substring(document.querySelector("#colorValues").innerHTML.indexOf("(") + 1, document.querySelector("#colorValues").innerHTML.indexOf(","));
-    document.querySelector("#tG").value = document.querySelector("#colorValues").innerHTML.substring(document.querySelector("#colorValues").innerHTML.indexOf(",") + 1, findNth(document.querySelector("#colorValues").innerHTML, ",", 2));
-    document.querySelector("#tB").value = document.querySelector("#colorValues").innerHTML.substring(findNth(document.querySelector("#colorValues").innerHTML, ",", 2) + 1, findNth(document.querySelector("#colorValues").innerHTML, ",", 3));
+    document.querySelector("#tR").innerHTML = document.querySelector("#colorValues").innerHTML.substring(document.querySelector("#colorValues").innerHTML.indexOf("(") + 1, document.querySelector("#colorValues").innerHTML.indexOf(","));
+    document.querySelector("#tG").innerHTML = document.querySelector("#colorValues").innerHTML.substring(document.querySelector("#colorValues").innerHTML.indexOf(",") + 1, findNth(document.querySelector("#colorValues").innerHTML, ",", 2));
+    document.querySelector("#tB").innerHTML = document.querySelector("#colorValues").innerHTML.substring(findNth(document.querySelector("#colorValues").innerHTML, ",", 2) + 1, findNth(document.querySelector("#colorValues").innerHTML, ",", 3));
     guessColor = new Color("a98rgb-linear", [document.querySelector("#colorValues").innerHTML.substring(document.querySelector("#colorValues").innerHTML.indexOf("(") + 1, document.querySelector("#colorValues").innerHTML.indexOf(",")) / 255, document.querySelector("#colorValues").innerHTML.substring(document.querySelector("#colorValues").innerHTML.indexOf(",") + 1, findNth(document.querySelector("#colorValues").innerHTML, ",", 2)) / 255, document.querySelector("#colorValues").innerHTML.substring(findNth(document.querySelector("#colorValues").innerHTML, ",", 2) + 1, findNth(document.querySelector("#colorValues").innerHTML, ",", 3)) / 255]);
-    document.querySelector("#tH").value = document.querySelector("#colorValues").innerHTML.substring(findNth(document.querySelector("#colorValues").innerHTML, "(", 3) + 1, findNth(document.querySelector("#colorValues").innerHTML, ",", 7));
-    document.querySelector("#tS").value = document.querySelector("#colorValues").innerHTML.substring(findNth(document.querySelector("#colorValues").innerHTML, ",", 7) + 1, findNth(document.querySelector("#colorValues").innerHTML, ",", 8) - 1);
-    document.querySelector("#tL").value = document.querySelector("#colorValues").innerHTML.substring(findNth(document.querySelector("#colorValues").innerHTML, ",", 8) + 1, findNth(document.querySelector("#colorValues").innerHTML, ",", 9) - 1);
+    document.querySelector("#tH").innerHTML = document.querySelector("#colorValues").innerHTML.substring(findNth(document.querySelector("#colorValues").innerHTML, "(", 3) + 1, findNth(document.querySelector("#colorValues").innerHTML, ",", 7));
+    document.querySelector("#tS").innerHTML = document.querySelector("#colorValues").innerHTML.substring(findNth(document.querySelector("#colorValues").innerHTML, ",", 7) + 1, findNth(document.querySelector("#colorValues").innerHTML, ",", 8) - 1);
+    document.querySelector("#tL").innerHTML = document.querySelector("#colorValues").innerHTML.substring(findNth(document.querySelector("#colorValues").innerHTML, ",", 8) + 1, findNth(document.querySelector("#colorValues").innerHTML, ",", 9) - 1);
 }
 
 // Adds the appropriate border to each game result div's inner color divs

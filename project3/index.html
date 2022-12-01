@@ -52,12 +52,14 @@
             © L. Mavroudakis 2022
         </footer>
         <div id="game">
-            <button id="guessButton">Make A Guess</button>
+            <div id="theWord"><p id="theClue">Your clue is...<br></p></div>
+            <button id="guessButton"><i>Take A Guess</i></button>
+            <div id="highOrLow"><p id="hol"></p></div>
             <!--EVERYTHING WITHIN THIS DIV (#cp) IS NOT MY CODE-->
             <div id="cp">
                 <div id="testPatch" style="background-color: rgba(161, 168, 204, 0.8); color: rgb(34, 34, 34);">#A1A8CC</div>
             
-                <div id="contrastPatch" style="background-color: rgb(255, 255, 255); color: rgba(161, 168, 204, 0.8);"><div style="background-color: rgba(204, 82, 37, 0.8);"></div><i>-Test-</i></div>
+                <div id="contrastPatch" style="background-color: rgb(255, 255, 255); color: rgba(161, 168, 204, 0.8);"><div style="z-index: 100; background-color: rgba(204, 82, 37, 0.8);"></div><i style="z-index: -100;">-Test-</i></div>
                 
                 <div id="hsv_map" class="">
                 <canvas id="surface" width="200" height="200"></canvas>
@@ -84,12 +86,12 @@
                 </div>
 
                 <div id="inputs">
-                    <input id="tR" type="number" readonly>
-                    <input id="tG" type="number" readonly>
-                    <input id="tB" type="number" readonly>
-                    <input id="tH" type="number" readonly>
-                    <input id="tS" type="number" readonly>
-                    <input id="tL" type="number" readonly>
+                    <div id="tR"></div>
+                    <div id="tG"></div>
+                    <div id="tB"></div>
+                    <div id="tH"></div>
+                    <div id="tS"></div>
+                    <div id="tL"></div>
                 </div>
 
                 <div id="sliders" class="sliders">
@@ -119,9 +121,7 @@
                 
                 <div class="cp-opacity" style="background-color: rgb(159, 131, 205);"></div><div class="cp-exit"></div><div class="cp-resize"></div><div class="cp-resizer" style=""><div></div></div>
             </div>
-            <div id="guessNum">1 / 10</div>
-            <div id="theWord">Your clue is...<br></div>
-            <div id="highOrLow"></div>
+            <div id="guessNum"><u>1 / 10</u></div>
             <div id="distance"></div>
         </div>
         <div id="endGame">

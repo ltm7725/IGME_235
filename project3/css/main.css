@@ -4,50 +4,47 @@ a {
 }
 
 #testPatch {
-	position: relative;
-    width: 10vw;
-	height: 4vw;
-    float: right;
-    margin-right: 25vw;
-	margin-top: 3.5vw;
-	padding-top: 1vw;
-	padding-bottom: 1vw;
+	font-weight: bolder;
+	position: absolute;
 	text-align: center;
-	line-height: 2vw;
 	font-family: Courier,mono;
-	font-size: 2vw;
-	border: 0.1vw solid #444;
 	cursor: default;
+    width: 16.25vw; /**/
+	height: 6.5vw; /**/
+	line-height: 6.5vw; /**/
+	font-size: 3vw; /**/
+	top: 19vw; /**/
+	left: 52vw; /**/
 }
 #contrastPatch {
-	position: relative;
+	font-weight: bolder;
+	position: absolute;
     float: right;
     clear: right;
-	width: 10vw;
-	height: 4vw;
-    margin-right: 12vw;
-    margin-top: -4vw;
+    width: 16.25vw; /**/
+	height: 6.5vw; /**/
+    top: 19vw; /**/
+	left: 69vw;
 	text-align: center;
-	line-height: 2vw;
+	line-height: 6.25vw; /**/
 	font-family: Courier,mono;
-	font-size: 2vw;
-	border: 0.1vw solid #444;
+	font-size: 3vw; /**/
 	cursor: default;
 }
 #contrastPatch div{
 	position: absolute;
-	top: .3vw;
-	right: 50%;
-	bottom: .3vw;
-	left: .3vw;
+	top: .3vw; /**/
+	right: 50%; /**/
+	bottom: .3vw; /**/
+	left: .3vw; /**/
 }
 #contrastPatch i{
-	display: block;
-	position: absolute;
-	top: 1vw;
 	width: 100%;
 	height: 100%;
 	font-weight: bold;
+}
+#testPatch, #contrastPatch{
+	border: .2vw solid rgb(181, 181, 181); /**/
 }
 #colorValues {
 	position: relative;
@@ -68,39 +65,41 @@ a {
 	background-color: #222;
 	cursor: default;
 }
-#testPatch, #contrastPatch{
-border: .2vw solid rgb(181, 181, 181);
-}
 #sliders div{
-	border: .2vw solid rgb(181, 181, 181);
+	border: .2vw solid rgb(181, 181, 181); /**/
+}
+#sliders{
+	position: absolute;
+	top: 48vw;
+	left: -3.5vw;
 }
 #sliders div div{
-	margin-top: -.2vw;
-	margin-left: -.2vw;
+	margin-top: -.2vw; /**/
+	margin-left: -.2vw; /**/
 	
-	border-right: 1vw solid rgb(85,85,85);
+	border-right: 1vw solid rgb(85, 85, 85); /**/
 }
 .sliders {
 	position: relative;
-	width: 30vw;
-	height: 1vw;
-    margin-top: -14.3vw;
+	width: 30vw; /**/
+	height: 1vw; /**/
+    margin-top: -14.3vw; /**/
     float: right;
-    margin-right: 8vw;
+    margin-right: 8vw; /**/
 }
 .sliders div {
-	height: 2vw;
-	margin-bottom: .45vw;
+	height: 2.5vw; /**/
+	margin-bottom: .45vw; /**/
 	border: 1px solid #444;
 	background-color: #222;
-	width: 29.9vw;
+	width: 36.5vw; /**/
 }
 .sliders div div {
-	height: 2vw;
-	margin-top: -.05vw;
+	height: 2.5vw; /**/
+	margin-top: -.05vw; /**/
 	border: none;
 	background-color: rgb(155, 155, 155);
-	border-right: 1.5vw solid #555;
+	border-right: 1.5vw solid #555; /**/
 }
 #rgbr{
 	content: "";
@@ -132,91 +131,87 @@ border: .2vw solid rgb(181, 181, 181);
 #cmyy div {
 	background-color: #ff0;
 }
-
-#rgbr:before, #rgbg:before, #rgbb:before,
-#hslh:before, #hsls:before, #hsll:before,
-#cmyc:before, #cmym:before, #cmyy:before{
+#rgbr:after, #rgbg:after, #rgbb:after,
+#hslh:after, #hsls:after, #hsll:after,
+#cmyc:after, #cmym:after, #cmyy:after{
 	z-index: 11;
-	display: block;
+	display: relative;
 	float: left;
-	margin-left: -2vw;
 	font-weight: bolder;
-	margin-top: -.4vw;
 	color: black;
 	
 	font-family: Courier,mono;
-	font-size: 2vw;
+	font-size: 2vw; /**/
 	cursor: default;
 }
-#rgbr:before {
+#rgbr:after {
 	content: '⠀⠀⠀⠀⠀ R';	
-	margin-left: -9.7vw;	
+	margin-top: -6vw; /**/
+	margin-left: 37.5vw; /**/
 }
-#rgbg:before {
+#rgbg:after {
 	content: '⠀⠀⠀⠀⠀ G';	
-	margin-left: -9.7vw;	
+	margin-left: 37.5vw; /**/
+	margin-top: -6vw; /**/
 }
-#rgbb:before {
+#rgbb:after {
 	content: '⠀⠀⠀⠀⠀ B';	
-	margin-left: -9.7vw;	
+	margin-left: 37.5vw; /**/
+	margin-top: -6vw; /**/
 }
-#hslh:before {
-	content: "°⠀⠀⠀⠀⠀H";
-	margin-left: -9.7vw;	
+#hslh:after {
+	content: "H⠀⠀⠀⠀⠀°";
+	margin-left: 37.5vw; /**/
+	margin-top: -3vw; /**/
 }
-#hsls:before {
-	content: "%⠀⠀⠀⠀⠀S";
-	margin-left: -9.7vw;	
+#hsls:after {
+	content: "S⠀⠀⠀⠀⠀%";
+	margin-left: 37.5vw; /**/
+	margin-top: -3vw; /**/
 }
-#hsll:before {
-	content: "%⠀⠀⠀⠀⠀L";
-	margin-left: -9.7vw;	
+#hsll:after {
+	content: "L⠀⠀⠀⠀⠀%";
+	margin-left: 37.5vw; /**/
+	margin-top: -3vw; /**/
 }
-#cmyc:before {
+#cmyc:after {
 	content: 'C';	
 }
-#cmym:before {
+#cmym:after {
 	content: 'M';	
 }
-#cmyy:before {
+#cmyy:after {
 	content: 'Y';	
 }
 #hsv_map {
     z-index: 1;
-	width: calc(100% - 12vw);
-	height: 0px;
-	position: relative;
-    margin-left: 7vw;
-	margin-top: 1vw;
+	width: 100%;
+	height: 100%;
 }
 #surface {
     color: white;
-	width: 20vw;
+	width: 100%;
+	position: absolute;
+	top: 0;
 }
 #hsv_map .cover {
     z-index: 2;
-    width: 20vw;
-    height: 20vw;
+    width: 31.6vw; /**/
+    height: 31.6vw; /**/
 	opacity: 0;
 	background-color: #000;
-	position: absolute;
-	top: 0;
 	border-radius: 50%;
 	cursor: crosshair;
 }
 .bar-bg, .bar-white, #luminanceBar, .hsv-barcursors{
     position: absolute;
-	width: 3.6vw;
-	height: 20vw;
-	margin-top: 2.5vw;
-	margin-right: -2vw;
 }
-#hsv_map .bar-bg, #hsv_map .bar-white {
+.bar-bg, .bar-white, #luminanceBar, .hsv-barcursors, #hsv_map .bar-bg, #hsv_map .bar-white{
 	position: absolute;
-	right: -1vw;
+	width: 9.6vw; /**/
+	height: 31.6vw; /**/
 	top: 0;
-	width: 3.6vw;
-	height: 20vw;
+	left: 33.5vw; /**/
 }
 #hsv_map .bar-white {
 	background-color: #fff;
@@ -243,19 +238,18 @@ border: .2vw solid rgb(181, 181, 181);
 	right: -1vw;
 	top: 0;
 	background: url("../media/tp.png");
+	background-size: 100% 100%;
 	/* background-color: red; */
 }
 .hsv-barcursors {
 	position: absolute;
 	right: -1vw;
-	width: 3.6vw;
 	top: 0;
-	height: 20vw;
 	overflow: hidden;
 }
 .hsv-barcursor-l, .hsv-barcursor-r {
 	position: absolute;
-	border: 4px solid transparent;
+	border: .5vw solid transparent; /**/
 	margin-top: -4px;
 }
 .hsv-barcursor-l {
@@ -274,17 +268,19 @@ border: .2vw solid rgb(181, 181, 181);
 }
 
 #color_squares {
-	position: relative;
-    top: 10px;
-    left: 2.3vw;
+	position: absolute;
+    top: -15vw; /**/
+	width: 204%;
+	transform: rotateZ(180deg) scale(110%) translateX(20vw);
 }
 #color_squares div {
     z-index: 3;
     position:relative;
-    display: block;
-	width: 3vw;
-	height: 3vw;
+    display: none;
+	width: 3.5vw; /**/
+	height: 3.5vw; /**/
 	margin-left: 0;
+	margin-right: 2.2vw; /**/
 	float: left;
 	border: .2vw solid rgb(85, 85, 85);
 }
@@ -293,19 +289,19 @@ border: .2vw solid rgb(181, 181, 181);
     margin-left: 1vw;
 }
 #color_squares div:nth-child(2){
-    margin-top: 10vw;
-    margin-left: -1vw;
+    margin-top: 10.5vw;
+    margin-left: -4.5vw;
 }
 #color_squares div:nth-child(3){
-    margin-top: 13vw;
+    margin-top: 14.75vw;
     margin-left: 1vw;
 }
 #color_squares div:nth-child(4), #color_squares div:nth-child(5){
-    margin-top: 14.5vw;
+    margin-top: 14.75vw;
     margin-left: 1vw;
 }
 #color_squares div:nth-child(6){
-    margin-top: 13vw;
+    margin-top: 14.75vw;
     margin-left: 1vw;
 }
 #color_squares div:nth-child(7){
@@ -314,7 +310,7 @@ border: .2vw solid rgb(181, 181, 181);
 }
 #color_squares div:nth-child(8){
     margin-top: 6vw;
-    margin-left: -1vw;
+    margin-left: -4.5vw;
 }
 
 /*FROM ME*/
@@ -352,13 +348,13 @@ h1{
 	width: 100%;
 	justify-content: center;
 	align-items: center;
-	margin-top: -7vh;
+	margin-top: -5vh;
 }
 .bigLogo{
 	position: relative;
     width: 60vw;
 	height: 30vw;
-	margin-top: -15vh;
+	margin-top: -19vh;
 }
 #cmby{
 	margin-right: -60%;
@@ -393,48 +389,63 @@ text{
 	display: none;
 	flex-direction: column;
 	align-items: center;
-	width: 100vw;
-	height: 50vw;
+	width: 100%;
+	height: 72.1vw;
 }
 #cp{
-	position: relative;
-	margin-top: 4vw;
-    height: 26.5vw;
-    width: 80vw;
+	position: absolute;
+	top: 18vw; /**/
+	width: 31.6vw; /**/
+	height: 31.6vw; /**/
+	left: 6.9vw; /**/
 }
 #theWord{
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	text-align: center;
 	position: absolute;
-	margin-top: 7vw;
-	margin-right: 50vw;
-	font-size: 2.5vw;
-	padding: 1vw;
-	text-align: center;
+	top: 12.4vw; /**/
+	left: 59vw; /**/
+	width: 33vw; /**/
+	height: 16vw; /**/
+	font-size: 3.5vw; /**/
+	padding-top: 2vw; /**/
 }
 #guessButton{
-	z-index: 2;
-	margin: 0 auto;
-	margin-top: 10vw;
-	width: 25vw;
-	height: 6vw;
-	font-size: 3.5vw;
+	position: absolute;
+	top: 7vw; /**/
+	left: 14vw; /**/
+	width: 32vw; /**/
+	height: 8.6vw; /**/
+	font-size: 5vw; /**/
+	line-height: 8.6vw; /**/
 }
 #guessNum{
 	position: absolute;
-	top: 0;
-	margin-top: 4vw;
-	font-size: 3vw;
+	text-align: center;
+	width: 18vw; /**/
+	top: 4vw; /**/
+	left: 66.1vw; /**/
+	font-size: 5vw; /**/
 }
 #highOrLow{
 	z-index: 1;
-	padding: 1vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	position: absolute;
-	top: 6.5vw;
-	left: 70vw;
-	font-size: 1.5vw;
-	line-height: 2vw;
+	width: 33vw;/**/
+	height: 22vw;
+	padding: 1vw;
+	top: 45vw;/**/
+	left: 59vw;/**/
+	font-size: 2.5vw;/**/
+	line-height: 3vw;/**/
 	float: left;
-	
+}
+#hol{
+	padding-top: 1.5vw;
 }
 #endGame{
 	display: none;
@@ -491,37 +502,29 @@ text{
 	flex-flow: column;
 }
 #tR, #tG, #tB, #tH, #tS, #tL{
+	font-weight: bolder;
+	color: white;
+	font-size: 2vw; /**/
+	margin-left: 36.3vw; /**/
 	z-index: 10;
-	width: 5vw;
-	height: 2.1vw;
-	margin-left: 6.5vw;
-	font-size: 2vw;
+	width: 5vw; /**/
+	height: 2.5vw; /**/
 	padding: 0;
 	text-align: center;
+	margin-bottom: .1vw; /**/
 }
 #tR{
-	margin-top: 8.3vw;
+	margin-top: 2.1vw; /**/
 }
 #tG, #tB, #tH, #tS, #tL{
-	margin-top: .35vw;
-}
-#tS:before, #tL:before{
-	display: block;
-	content: "%";
-	margin-left: -1.5vw;
-	font-weight: bolder;
-	margin-top: .3vw;
-	color: black;
-	
-	font-family: Courier,mono;
-	font-size: 1vw;
-	cursor: default;
+	margin-top: .35vw; /**/
 }
 #distance{
 	position: absolute;
-	padding: 1vw;
-	top: 17vw;
-	font-size: 2vw;
+	padding: 1vw;/**/
+	top: 30vw;/**/
+	right: 4vw; /**/
+	font-size: 2.5vw;/**/
 }
 div{
 	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -531,8 +534,7 @@ body{
 	align-items: center;
 }
 #luminanceBar{
-	height: 20vw;
-	border: .2vw solid rgb(85, 85, 85);
+	border: .2vw solid rgb(85, 85, 85); /**/
 }
 #pastGames{
 	float: left;
@@ -601,164 +603,205 @@ text{
 #description{
 	display: none;
 }
-
-@media only screen and (max-width: 700px) {
-	#testPatch{
-		font-size: .7em;
-	}
-}
-@media only screen and (max-width: 660px) {
-	#rgbr:before, #rgbg:before, #rgbb:before,
-	#hslh:before, #hsls:before, #hsll:before,
-	#cmyc:before, #cmym:before, #cmyy:before{
-		margin-left: -12vw;
-	}
-	#rgbr:before {
-		content: '⠀⠀⠀⠀ R';	
-		margin-left: -9.7vw;	
-	}
-	#rgbg:before {
-		content: '⠀⠀⠀⠀ G';	
-		margin-left: -9.7vw;	
-	}
-	#rgbb:before {
-		content: '⠀⠀⠀⠀ B';	
-		margin-left: -9.7vw;	
-	}
-	#hslh:before {
-		content: "°⠀⠀⠀⠀H";
-		margin-left: -9.7vw;	
-	}
-	#hsls:before {
-		content: "%⠀⠀⠀⠀S";
-		margin-left: -9.7vw;	
-	}
-	#hsll:before {
-		content: "%⠀⠀⠀⠀L";
-		margin-left: -9.7vw;	
-	}
-	#tR, #tG, #tB, #tH, #tS, #tL{
-		font-size: 1px;
-	}
-}
-/* When screen's aspect ratio is too slim for the game*/
-@media only screen and (min-aspect-ratio: 705/351){
+/*Launches when aspect ratio wider than game block*/
+@media only screen and (min-aspect-ratio: 1000/721){
 	#game{
-		width: 100vw;
-		margin: 0;
-		height: 100%;
+		height: 100vh;
+		width: 138.7vh;
+		margin-left: calc(50vw - 69.35vh);
 	}
-	#hsv_map{
-		margin-left: 8vw;
+	/*ALL THE TAGGED CODE CORRESPONDS TO BELOW*/ /**/
+	#hsv_map .cover {
+		width: calc(138.7vh * .316);
+		height: calc(138.7vh * .316);
 	}
 	#cp{
-		height: 97%;
-		width: 42vw;
-		float: left;
-		margin-top: -21.5vw;
-		margin-left: -40vw;
+		position: absolute;
+		top: calc(138.7vh * .18); 
+		width: calc(138.7vh * .316); 
+		height: calc(138.7vh * .316); 
+		left: calc(138.7vh * .05);
 	}
-	#guessNum, #guessButton, #highOrLow, #distance, #theWord{
-		float: right;
-		margin-left: 50vw;
+	.bar-bg, .bar-white, #luminanceBar, .hsv-barcursors, #hsv_map .bar-bg, #hsv_map .bar-white{
+		width: calc(138.7vh * .096); 
+		height: calc(138.7vh * .316); 
+		left: calc(138.7vh * .335); 
 	}
-	#guessNum{
-		margin-top: 2vw;
-		margin-left: 45vw;
-	}
-	#theWord{
-		width: 30vw;
-		margin-top: 7vw;
-		margin-left: 95.5vw;
-		padding: 0;
+	.hsv-barcursor-l, .hsv-barcursor-r {
+		border: calc(138.7vh * .005) solid transparent; 
 	}
 	#guessButton{
-		margin-top: 16vw;
-		margin-bottom: 0vw;
-		margin-right: 4vw;
-	}
-	#distance{
-		margin-top: 7vw;
-		margin-left: 46vw;
+		top: calc(138.7vh * .07); 
+		left: calc(138.7vh * .14); 
+		width: calc(138.7vh * .32); 
+		height: calc(138.7vh * .086); 
+		font-size: calc(138.7vh * .05); 
+		line-height: calc(138.7vh * .086); 
+		padding: 0;
 	}
 	#luminanceBar{
-		height: 20vw;
+		border: calc(138.7vh * .002) solid rgb(85, 85, 85); 
+	}
+	#theWord{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		position: absolute;
+		top: calc(138.7vh * .124); 
+		left: calc(138.7vh * .59); 
+		width: calc(138.7vh * .33); 
+		height: calc(138.7vh * .16); 
+		font-size: calc(138.7vh * .035); 
+		padding-top: calc(138.7vh * .03); 
+	}
+	#guessNum{
+		width: calc(138.7vh * .18);
+		top: calc(138.7vh * .04);
+		left: calc(138.7vh * .661);
+		font-size: calc(138.7vh * .05);
+	}
+	#distance{
+		padding: calc(138.7vh * .01);
+		top: calc(138.7vh * .3);
+		right: calc(138.7vh * .04); 
+		font-size: calc(138.7vh * .025);
 	}
 	#highOrLow{
-		margin-top: 24vw;
-		line-height: 2.5vw;
-		font-size: 2vw;
-		text-align: center;
-		margin-left: -7.5vw;
+		width: calc(138.7vh * .33);
+		height: calc(138.7vh * .22);
+		top: calc(138.7vh * .45);
+		left: calc(138.7vh * .59);
+		font-size: calc(138.7vh * .025);
+		line-height: calc(138.7vh * .03);
 	}
-	#testPatch,#contrastPatch{
-		z-index: 20;
-		margin-bottom: -100vw;
-		margin-top: 27vw;
+	#testPatch {
+		width: calc(138.7vh * .1625);
+		height: calc(138.7vh * .065);
+		line-height: calc(138.7vh * .065);
+		font-size: calc(138.7vh * .03);
+		top: calc(138.7vh * .19);
+		left: calc(138.7vh * .54);
 	}
-	#testPatch{
-		margin-right: 23.5vw;
+	#contrastPatch {
+		width: calc(138.7vh * .1625);
+		height: calc(138.7vh * .065);
+		top: calc(138.7vh * .19);
+		left: calc(138.7vh * .71);
+		line-height: calc(138.7vh * .0625);
+		font-size: calc(138.7vh * .03);
 	}
-	#contrastPatch{
-		margin-right: 7.5vw;
+	#contrastPatch div{
+		top: calc(138.7vh * .003);
+		bottom: calc(138.7vh * .003);
+		left: calc(138.7vh * .003);
 	}
-	#sliders{
-		margin-top: 8vw;
-		margin-right: 1vw;
-		z-index: 1;
-	}
-	#tR{
-		z-index: 25;
-		margin-top: 32.5vw;
-	}
-	#tL{
-		margin-bottom: -33vw;
-	}
-	#tR, #tG, #tB, #tH, #tS, #tL{
-		margin-left: -25.5vw;
-		border: .2vw solid rgb(181, 181, 181);
-	}
-	.bar-bg, .bar-white, #luminanceBar, .hsv-barcursors{
-		margin-right: 1vw;
-	}
-	#color_squares{
-		margin-top: 6vw;
-		margin-bottom: -10vw;
-		margin-left: 1vw;
-	}
-	@media only screen and (min-aspect-ratio: 604/289){
-		
-		#guessButton{
-			margin-right: 10.85vw;
-		}
-	}
-}
-@media only screen and (max-aspect-ratio: 1025/549){
-	#interactive{
-		margin-top: 0;
-	}
-}
-@media only screen and (min-aspect-ratio: 2140/953){
-	.bigLogo{
-		width: auto;
-		height: 50vh;
-	}
-	#cmby{
-		margin-right: -100vh;
-	}
-	#interactive{
-		z-index: 1000;
-		margin-top: -40vh;
-	}
-}
-@media only screen and (max-aspect-ratio: 10/6){
-	#cp{
-		margin-top: 7vw;
+	#testPatch, #contrastPatch{
+		border: calc(138.7vh * .002) solid rgb(181, 181, 181);
 	}
 	
-	#pastGames h1{
-		margin-top: 4vw;
-		font-size: 5vh;
-		float: left;
-	}
+#testPatch {
+    width: calc(138.7vh * .1625); 
+	height: calc(138.7vh * .065);
+	line-height: calc(138.7vh * .065);
+	font-size: calc(138.7vh * .03);
+	top: calc(138.7vh * .19);
+	left: calc(138.7vh * .52);
+}
+#contrastPatch {
+    width: calc(138.7vh * .1625);
+	height: calc(138.7vh * .065);
+    top: calc(138.7vh * .19);
+	left: calc(138.7vh * .69);
+	line-height: calc(138.7vh * .0625);
+	font-size: calc(138.7vh * .03);
+}
+#contrastPatch div{
+	top: calc(138.7vh * .003);
+	bottom: calc(138.7vh * .003);
+	left: calc(138.7vh * .003);
+}
+#testPatch, #contrastPatch{
+	border: calc(138.7vh * .002) solid rgb(181, 181, 181);
+}
+#sliders div{
+	border: calc(138.7vh * .002) solid rgb(181, 181, 181);
+}
+#sliders{
+	top: calc(138.7vh * .48);
+	left: calc(138.7vh * -.035);
+}
+#sliders div div{
+	margin-top: calc(138.7vh * -.002);
+	margin-left: calc(138.7vh * -.002);
+	
+	border-right: calc(138.7vh * .01) solid rgb(85,85,85);
+}
+.sliders {
+	width: calc(138.7vh * .3);
+	height: calc(138.7vh * .01);
+    margin-top: calc(138.7vh * -.143);
+    margin-right: calc(138.7vh * .08);
+}
+.sliders div {
+	height: calc(138.7vh * .025);
+	margin-bottom: calc(138.7vh * .0045);
+	width: calc(138.7vh * .365);
+}
+.sliders div div {
+	height: calc(138.7vh * .025);
+	margin-top: calc(138.7vh * -.0005);
+	border-right: calc(138.7vh * .015) solid #555;
+}
+#rgbr:after, #rgbg:after, #rgbb:after,
+#hslh:after, #hsls:after, #hsll:after,
+#cmyc:after, #cmym:after, #cmyy:after{
+	font-size: calc(138.7vh * .02);
+}
+#rgbr:after {
+	content: '⠀⠀⠀⠀⠀ R';	
+	margin-top: calc(138.7vh * -.06);
+	margin-left: calc(138.7vh * .375);
+}
+#rgbg:after {
+	content: '⠀⠀⠀⠀⠀ G';	
+	margin-top: calc(138.7vh * -.06);
+	margin-left: calc(138.7vh * .375);
+}
+#rgbb:after {
+	content: '⠀⠀⠀⠀⠀ B';	
+	margin-top: calc(138.7vh * -.06);
+	margin-left: calc(138.7vh * .375);
+}
+#hslh:after {
+	content: "H⠀⠀⠀⠀⠀°";
+	margin-top: calc(138.7vh * -.03);
+	margin-left: calc(138.7vh * .375);
+}
+#hsls:after {
+	content: "S⠀⠀⠀⠀⠀%";
+	margin-top: calc(138.7vh * -.03);
+	margin-left: calc(138.7vh * .375);
+}
+#hsll:after {
+	content: "L⠀⠀⠀⠀⠀%";
+	margin-top: calc(138.7vh * -.03);
+	margin-left: calc(138.7vh * .375);
+}
+#tR, #tG, #tB, #tH, #tS, #tL{
+	width: calc(138.7vh * .05);
+	height: calc(138.7vh * .025);
+	margin-left: calc(138.7vh * .36);
+	font-size: calc(138.7vh * .02);
+	margin-bottom: calc(138.7vh * .001);
+}
+#tR{
+	margin-top: calc(138.7vh * .021);
+}
+#tG, #tB, #tH, #tS, #tL{
+	margin-top: calc(138.7vh * .0035);
+}
+
+/*Hey bud. don't forget to mention the new layout in the documentation*/
+/*Btw the game's current minimum height cap is 400 pixels before it bugs out*/
 }
