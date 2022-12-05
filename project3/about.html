@@ -28,5 +28,11 @@
         <h1><u>About the Developer</u></h1>
         <a href="https://people.rit.edu/ltm7725/235/" target="_blank"><img id="face" src="media/face.png" alt="Face of L. Mavroudakis with a weird filter on it"></a>
         <p class="withH2">My name is Luke Mavroudakis, and I'm a 2nd-year Game Design & Development student (with a recently-enrolled minor in Modern Language - Japanese) at Rochester Institute of Technology. Since coming to school I've *developed* a love for development, mainly in things I just think are cool like my concept for this project. I hope for that love (and some successful projects that come from it) to take me far in the future, but as I work on myself in the meantime I hope to integrate my older love for art/music into the mix in larger ways than I have, maybe even somehow a bit into this itself.</p>
+        <h1><b>Development Log</b></h1>
+        <ul id="devlog">
+            <li>Replaced the game-screen layout with one mirroring my concept sketch<br></li>
+            <li class="indent">All values for positioning of the game-screen items had to be completely rewritten between screen aspect ratios that have longer width than height and vice versa, so I found a reliable way to have CSS calculate the equivalent value in terms of vw and vh, translating from one to another.</li>
+            <li class="indent">The screen now has a static layout, providing empty space where necessary to best center and fit the game-screen</li>
+        <ul>
     </body>
 </html>

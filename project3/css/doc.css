@@ -47,3 +47,10 @@ img{
     transform: rotateX(180deg);
     filter: drop-shadow(2vw 0 rgba(0,0,0,0.75));
 }
+#devlog{
+    text-align: left;
+    margin: 0 5vw 3vw 5vw
+}
+.indent{
+    margin-left: 3vw;
+}
