@@ -218,7 +218,7 @@ a {
 }
 .hsv-cursor {
 	position: absolute;
-	border: 1px solid #eee;
+	border: 1px solid rgb(255, 255, 255);
 	border-radius: 50%;
 	width: 9px;
 	height: 9px;
@@ -227,7 +227,7 @@ a {
 	cursor: crosshair;
 }
 .dark .hsv-cursor {
-	border-color: #333;
+	border-color: rgb(0, 0, 0);
 }
 .no-cursor .hsv-cursor, #hsv_map.no-cursor .cover {
 	cursor: none; /* also works in IE8 */

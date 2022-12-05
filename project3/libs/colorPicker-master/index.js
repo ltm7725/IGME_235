@@ -1,23 +1,6 @@
 ;(function(window, undefined){
 	"use strict"
 
-	let oldHSVHeight;
-	let hsv_map;
-	let hsv_mapCover;
-	let hsv_mapCursor;
-	let hsv_barBGLayer;
-	let hsv_barWhiteLayer;
-	let hsv_barCursors;
-	let hsv_barCursorsCln;
-	let hsv_Leftcursor;
-	let hsv_Rightcursor;
-	let colorDisc;
-	let colorDiscRadius;
-	let luminanceBar;
-	let hsvDown;
-	let hsvMove;
-	let renderHSVPicker;
-
 	if (1 === 2) { // to run ColorPicker on its own....
 		myColor = window.myColor = new window.ColorPicker({
 			imagePath: 'images/' // IE8-
@@ -25,8 +8,6 @@
 		});
 		return;
 	}
-
-	updateHSV();
 
 	// Some common use variables
 	var ColorPicker = window.ColorPicker,
@@ -195,13 +176,10 @@
 		stopRender();
 	});
 
-	function updateHSV(){
-		/* ---------------------------------- */
-		/* ---- HSV-circle color picker ----- */
-		/* ---------------------------------- */
-
-		oldHSVHeight = document.querySelector("#hsv_map .cover").clientHeight;
-		hsv_map = document.getElementById('hsv_map'),
+	/* ---------------------------------- */
+	/* ---- HSV-circle color picker ----- */
+	/* ---------------------------------- */
+	var hsv_map = document.getElementById('hsv_map'),
 		hsv_mapCover = hsv_map.children[1], // well...
 		hsv_mapCursor = hsv_map.children[2],
 		hsv_barBGLayer = hsv_map.children[3],
@@ -212,12 +190,12 @@
 		hsv_Rightcursor = hsv_barCursors.children[1],
 
 		colorDisc = document.getElementById('surface'),
-		colorDiscRadius = document.querySelector("#hsv_map .cover").clientHeight / 2,
+		colorDiscRadius = colorDisc.offsetHeight / 2,
 		luminanceBar = document.getElementById('luminanceBar'),
 
 		hsvDown = function(e) { // mouseDown callback
-
 			var target = e.target || e.srcElement;
+			colorDiscRadius = document.querySelector("#hsv_map .cover").clientHeight / 2;
 
 			if (e.preventDefault) e.preventDefault();
 
@@ -226,27 +204,14 @@
 			currentTargetHeight = currentTarget.offsetHeight; // as diameter of circle
 
 			Tools.addEvent(window, 'mousemove', hsvMove);
-			hsv_map.className = 'no-cursor';
-
-			if(oldHSVHeight != document.querySelector("#hsv_map .cover").clientHeight){
-				updateHSV();
-				return;
-			}
-
 			hsvMove(e);
 			startRender();
 		},
 		hsvMove = function(e) { // mouseMove callback
 			var r, x, y, h, s;
 
-			if(oldHSVHeight != document.querySelector("#hsv_map .cover").clientHeight){
-				updateHSV();
-				return;
-			}
-
 			if(currentTarget === hsv_map) { // the circle
-				r = document.querySelector("#hsv_map .cover").clientHeight / 2,
-				oldHSVHeight = document.querySelector("#hsv_map .cover").clientHeight;
+				r = currentTargetHeight / 2,
 				x = e.clientX - startPoint.left - r,
 				y = e.clientY - startPoint.top - r,
 				h = 360 - ((Math.atan2(y, x) * 180 / Math.PI) + (y < 0 ? 360 : 0)),
@@ -258,7 +223,7 @@
 				}, 'hsv');
 			}
 		},
-	/*		renderHSVPicker = function(color) { // used in renderCallback of 'new ColorPicker'
+/*		renderHSVPicker = function(color) { // used in renderCallback of 'new ColorPicker'
 			var pi2 = Math.PI * 2,
 				x = Math.cos(pi2 - color.hsv.h * pi2),
 				y = Math.sin(pi2 - color.hsv.h * pi2),
@@ -296,7 +261,7 @@
 			hsv_barCursors.className = color.RGBLuminance > 0.22 ? hsv_barCursorsCln + ' dark' : hsv_barCursorsCln;
 			hsv_Leftcursor.style.top = hsv_Rightcursor.style.top = ((1 - color.hsv.v) * colorDiscRadius * 2) + 'px';
 		};
-	*/		renderHSVPicker = function(color) { // used in renderCallback of 'new ColorPicker'
+*/		renderHSVPicker = function(color) { // used in renderCallback of 'new ColorPicker'
 			var pi2 = Math.PI * 2,
 				x = Math.cos(pi2 - color.hsv.h * pi2),
 				y = Math.sin(pi2 - color.hsv.h * pi2),
@@ -318,7 +283,6 @@
 			hsv_barCursors.className = color.RGBLuminance > 0.22 ? hsv_barCursorsCln + ' dark' : hsv_barCursorsCln;
 			if (hsv_Leftcursor) hsv_Leftcursor.style.top = hsv_Rightcursor.style.top = ((1 - color.hsv.v) * colorDiscRadius * 2) + 'px';
 		};
-	}
 
 	Tools.addEvent(hsv_map, 'mousedown', hsvDown); // event delegation
 	Tools.addEvent(window, 'mouseup', function() {
@@ -402,7 +366,7 @@
 		gradient.addColorStop(1,"black");
 
 		ctx.fillStyle = gradient;
-		ctx.fillRect(0, 0, document.querySelector("#luminanceBar").clientWidth, document.querySelector("#luminanceBar").clientHeight);
+		ctx.fillRect(0, 0, 30, 200);
 	}
 
 

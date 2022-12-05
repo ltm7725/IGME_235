@@ -33,6 +33,8 @@
             <li>Replaced the game-screen layout with one mirroring my concept sketch<br></li>
             <li class="indent">All values for positioning of the game-screen items had to be completely rewritten between screen aspect ratios that have longer width than height and vice versa, so I found a reliable way to have CSS calculate the equivalent value in terms of vw and vh, translating from one to another.</li>
             <li class="indent">The screen now has a static layout, providing empty space where necessary to best center and fit the game-screen</li>
+            <li>Fixed a bug with the color-wheel implementation that made a click outside of it on one of its sliders to cause the selector in the color wheel to jump to the edge of the wheel closest to what was clicked on</li>
         <ul>
+        <footer></footer>
     </body>
 </html>

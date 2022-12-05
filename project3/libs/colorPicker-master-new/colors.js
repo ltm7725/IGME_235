@@ -245,7 +245,7 @@
 				options.grey.r * colors.rgb.r +
 				options.grey.g * colors.rgb.g +
 				options.grey.b * colors.rgb.b;
-			colors.webSave = SAVE = getClosestWebColor(RGB, 50);
+			colors.webSave = SAVE = getClosestWebColor(RGB, 51);
 			// colors.webSave.HEX = convert.RGB2HEX(colors.webSave);
 			colors.webSmart = SMART = getClosestWebColor(RGB, 17);
 			// colors.webSmart.HEX = convert.RGB2HEX(colors.webSmart);
