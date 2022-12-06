@@ -14,8 +14,8 @@ document.querySelector("body").onmousemove = setBoxes;
 document.querySelector("body").onmousedown = setBoxes;
 document.querySelector("body").onclick = setBoxes;
 let loop;
-let baseWidth = window.innerWidth;
-let baseHeight = window.innerHeight;
+let baseWidth = document.innerWidth;
+let baseHeight = document.innerHeight;
 reloadHistory();
 
 // Get random color
@@ -72,9 +72,12 @@ gameLoop();
 // Runs when the START button is pressed on the main page; gets data from the API, and switches to Game screen
 function startGame(){
 
+    document.querySelector("#loading").style.display = "block";
+
     $.getJSON('https://www.colourlovers.com/api/colors/random?jsonCallback=?', (data) => {
         // console.log(data[0]);
         apiData = data[0];
+        document.querySelector("#loading").style.display = "none";
         loadData();
         });
 
@@ -92,11 +95,6 @@ function startGame(){
 // Runs after API data is fetched; Loads information from API into game system and screen
 function loadData(){
     let title = apiData.title;
-    if(title.length > 14){
-        let title1 = title.substring(0, 15);
-        let title2 = title.substring(15);
-        title = title1 + "-<br>-" + title2;
-    }
     document.querySelector("#theClue").innerHTML = "Your clue is...<br>\"" + title + "\"";
     theColor = new Color("a98rgb-linear", [apiData.rgb.red / 255, apiData.rgb.green / 255, apiData.rgb.blue / 255]);
     setBoxes();
@@ -105,8 +103,21 @@ function loadData(){
 // Runs frequently; checks several things regarding screen layout that can't be updated through css
 function gameLoop(){
     document.querySelector("#game").style.top = (window.innerHeight - document.querySelector("#game").clientHeight) / 2;
+
+    if(parseFloat(document.querySelector("#tL").innerHTML) > 50) document.querySelector("#testPatch").style.color = "rgb(34, 34, 34)";
+    else document.querySelector("#testPatch").style.color = "rgb(221, 221, 221)";
     
     if(baseWidth != window.innerWidth || baseHeight != window.innerHeight){
+        
+        //If window currently has extra horizontal space as opposed to vertical
+        if(baseHeight < baseWidth / 1.387){
+            colorDiscRadius = document.querySelector("#hsv_map .cover").clientHeight / 2;
+            document.querySelector("#hsv_map .hsv-cursor").style.top = parseFloat(document.querySelector("#hsv_map .hsv-cursor").style.top.substr(0, document.querySelector("#hsv_map .hsv-cursor").style.top.length - 2)) * (window.innerHeight / baseHeight);
+            document.querySelector("#hsv_map .hsv-cursor").style.left = parseFloat(document.querySelector("#hsv_map .hsv-cursor").style.left.substr(0, document.querySelector("#hsv_map .hsv-cursor").style.left.length - 2)) * (window.innerHeight / baseHeight);
+            document.querySelector(".hsv-barcursor-l").style.top = parseFloat(document.querySelector(".hsv-barcursor-l").style.top.substr(0, document.querySelector(".hsv-barcursor-l").style.top.length - 2)) * (window.innerHeight / baseHeight);
+            document.querySelector(".hsv-barcursor-r").style.top = parseFloat(document.querySelector(".hsv-barcursor-r").style.top.substr(0, document.querySelector(".hsv-barcursor-r").style.top.length - 2)) * (window.innerHeight / baseHeight);
+        }
+
         // console.log("ar change!");
         baseWidth = window.innerWidth;
         baseHeight = window.innerHeight;  

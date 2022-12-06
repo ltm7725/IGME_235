@@ -34,6 +34,11 @@
             <li class="indent">All values for positioning of the game-screen items had to be completely rewritten between screen aspect ratios that have longer width than height and vice versa, so I found a reliable way to have CSS calculate the equivalent value in terms of vw and vh, translating from one to another.</li>
             <li class="indent">The screen now has a static layout, providing empty space where necessary to best center and fit the game-screen</li>
             <li>Fixed a bug with the color-wheel implementation that made a click outside of it on one of its sliders to cause the selector in the color wheel to jump to the edge of the wheel closest to what was clicked on</li>
+            <li>Implemented (semi)-static color-wheel and brightness-slider cursor positions when in width-prominent aspect ratio, as they used to keep their top and left attributes static which would make them appear to fly away when changing window size in that case</li>
+            <li>Made the text on the testPatch change to black when on a color with luminance higher than 50, and white when lower than 50</li>
+            <li>Added loading graphic to clue box before the clue loads in</li>
+            <li>Optimized clue printing to not cut words in half (though idk why it wasn't just doing that in the first place, I DELETED CODE)</li>
+            <li>Modified external color-picker code to make test patch color 100% opacity</li>
         <ul>
         <footer></footer>
     </body>

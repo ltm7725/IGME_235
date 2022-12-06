@@ -1,6 +1,25 @@
 ;(function(window, undefined){
 	"use strict"
 
+	//L Mavroudakis - My Code
+	{
+		let width = document.innerWidth;
+		let height = document.innerHeight;
+		let loop = setInterval(() => Loop(), 100);
+
+		function Loop(){
+			//Anything that can't be set with css dynamically if the dimensions change
+			if(width != window.innerWidth || height != window.innerHeight){
+				// (Semi)-Static color-wheel and brightness-slider cursor positions when in width-prominent aspect ratio
+				if(height < width / 1.387){
+					colorDiscRadius = document.querySelector("#hsv_map .cover").clientHeight / 2;
+				}
+				width = window.innerWidth;
+				height = window.innerHeight;
+			}
+		}
+	}
+
 	if (1 === 2) { // to run ColorPicker on its own....
 		myColor = window.myColor = new window.ColorPicker({
 			imagePath: 'images/' // IE8-
@@ -24,9 +43,11 @@
 	var testPatch = document.getElementById('testPatch'),
 		renderTestPatch = function(color) { // used in renderCallback of 'new ColorPicker'
 			var RGB = color.RND.rgb;
-			testPatch.style.cssText =
-				'background-color: ' + (myColor.color || myColor).toString() + ';' +
-				'color: ' + (color.rgbaMixBlack.luminance > 0.22 ? '#222' : '#ddd');
+			testPatch.style.cssText +=
+				//L Mavroudakis - Made it so test patch color is at 100% opacity
+				'background-color: ' + (myColor.color || myColor).toString().substr(0, (myColor.color || myColor).toString().length - 6) + ');';
+				/*'background-color: ' + (myColor.color || myColor).toString() + ';' +
+				'color: ' + (color.rgbaMixBlack.luminance > 0.22 ? '#222' : '#ddd');*/
 			testPatch.firstChild.data = '#' + color.HEX;
 		};
 
@@ -195,6 +216,8 @@
 
 		hsvDown = function(e) { // mouseDown callback
 			var target = e.target || e.srcElement;
+
+			//Edited by LM
 			colorDiscRadius = document.querySelector("#hsv_map .cover").clientHeight / 2;
 
 			if (e.preventDefault) e.preventDefault();
@@ -268,6 +291,7 @@
 				r = color.hsv.s * (colorDiscRadius - 5);
 
 			hsv_mapCover.style.opacity = 1 - color.hsv.v;
+			if(color.hsv.v == 0) hsv_mapCover.style.opacity = 0.99;
 			// this is the faster version...
 			hsv_barWhiteLayer.style.opacity = 1 - color.hsv.s;
 			hsv_barBGLayer.style.backgroundColor = 'rgb(' +
