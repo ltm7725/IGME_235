@@ -87,8 +87,8 @@ function startGame(){
     document.querySelector("#game").style.display = "flex";
     document.querySelector("#game").style.position = "absolute";
     document.querySelector("#game").style.top = (window.innerHeight / 2) - (document.querySelector("#game").clientHeight / 2) + "px";
-    document.querySelector("#hsv_map .hsv-cursor").style.top = document.querySelector("#hsv_map #surface").clientHeight / 2;
-    document.querySelector("#hsv_map .hsv-cursor").style.left = document.querySelector("#hsv_map #surface").clientHeight / 2;
+    document.querySelector("#hsv_map .hsv-cursor").style.top = "50%";
+    document.querySelector("#hsv_map .hsv-cursor").style.left = "50%";
     loop = setInterval(() => gameLoop(), 1);
 }
 
