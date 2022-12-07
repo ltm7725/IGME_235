@@ -186,14 +186,15 @@ function foreverLoop(){
 
     if(x.matches && round > 1){
         if(window.innerHeight <= 520){
-            document.querySelector("#guessButton").style.top = (window.innerHeight * 0.2527 / 2) - (document.querySelector("#guessButton").clientHeight / 2);
+            document.querySelector("#guessButton").style.top = (window.innerHeight * 0.2527 / 2) - (document.querySelector("#guessButton").clientHeight / 2) + "px";
         }
     }
 }
 
 // Runs frequently; checks several things regarding screen layout that can't be updated through css
 function gameLoop(){
-    document.querySelector("#game").style.top = (window.innerHeight - document.querySelector("#game").clientHeight) / 2;
+    
+    document.querySelector("#game").style.top = ((window.innerHeight - document.querySelector("#game").clientHeight) / 2) + "px";
 
     if(parseFloat(document.querySelector("#tL").innerHTML) > 50){
         document.querySelector("#testPatch").style.color = "rgb(34, 34, 34)";
@@ -212,9 +213,13 @@ function gameLoop(){
         document.querySelector(".hsv-barcursor-l").style.top = parseFloat(document.querySelector(".hsv-barcursor-l").style.top.substr(0, document.querySelector(".hsv-barcursor-l").style.top.length - 2)) * (window.innerHeight / baseHeight);
         document.querySelector(".hsv-barcursor-r").style.top = parseFloat(document.querySelector(".hsv-barcursor-r").style.top.substr(0, document.querySelector(".hsv-barcursor-r").style.top.length - 2)) * (window.innerHeight / baseHeight);
 
-        if(round == 1){
+        var x = window.matchMedia("(min-aspect-ratio: 1000/721)")
+
+        if(round == 1 && x.matches){
             document.querySelector("#hsv_map .hsv-cursor").style.top = "50%";
             document.querySelector("#hsv_map .hsv-cursor").style.left = "50%";
+            document.querySelector(".hsv-barcursor-l").style.top = "0%";
+            document.querySelector(".hsv-barcursor-r").style.top = "0%";    
         }
 
         // console.log("ar change!");
