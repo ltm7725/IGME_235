@@ -35,10 +35,17 @@
             <li class="indent">The screen now has a static layout, providing empty space where necessary to best center and fit the game-screen</li>
             <li>Fixed a bug with the color-wheel implementation that made a click outside of it on one of its sliders to cause the selector in the color wheel to jump to the edge of the wheel closest to what was clicked on</li>
             <li>Implemented (semi)-static color-wheel and brightness-slider cursor positions when in width-prominent aspect ratio, as they used to keep their top and left attributes static which would make them appear to fly away when changing window size in that case</li>
-            <li>Made the text on the testPatch change to black when on a color with luminance higher than 50, and white when lower than 50</li>
+            <li>Made the text and border on the testPatch change to dark gray when on a color with luminance higher than 50, and light gray when lower than 50</li>
+            <li class="indent">Also implemented into historyPatch once created</li>
             <li>Added loading graphic to clue box before the clue loads in</li>
             <li>Optimized clue printing to not cut words in half (though idk why it wasn't just doing that in the first place, I DELETED CODE)</li>
             <li>Modified external color-picker code to make test patch color 100% opacity</li>
+            <li>Implemented a new menu layout specifically for round 1, with the guessButton in a more prominent position</l1>
+            <li class="indent">Transitions to the default game layout, allowing space for the distance and highOrLow blocks, once incremented past round 1</l1>
+            <li class="indent">Automatically resets to round 1 layout once game ends</l1>
+            <li>Optimized dynamics of mainMenu</li>
+            <li class="indent">Added media query to ensure nothing (untasefully) overlaps before the designated breaking point (height less than 400px)</li>
+            <li class="indent">Made the CMBYS logo able to dark/light on either of its components, based on a randomizer; the text below automatically turns light/dark to contrast the "SHADE" piece due to them needing to overlap at certain window aspect ratios</li>
         <ul>
         <footer></footer>
     </body>

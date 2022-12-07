@@ -34,7 +34,8 @@
 		Colors = window.Colors = function(options) {
 			this.colors = {RND: {}};
 			this.options = {
-				color: 'rgba(204, 82, 37, 0.8)', // init value(s)...
+				//L Mavroudakis - changed initial value and fixed testPatch bg in personal code
+				color: 'rgb(255, 255, 255)', // init value(s)...
 				XYZMatrix: XYZMatrix,
 				// XYZReference: {},
 				grey: grey,

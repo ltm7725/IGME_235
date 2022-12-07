@@ -13,6 +13,7 @@ document.querySelector("#backToMenu").onclick = backToMenu;
 document.querySelector("body").onmousemove = setBoxes;
 document.querySelector("body").onmousedown = setBoxes;
 document.querySelector("body").onclick = setBoxes;
+let mainLoop = setInterval(() => foreverLoop(), 1);
 let loop;
 let baseWidth = document.innerWidth;
 let baseHeight = document.innerHeight;
@@ -37,14 +38,15 @@ let i = 1;
 
 reloadHistoryColors();
 
-document.querySelector("#mainMenu").style.color = "hsl(" + (h + 5) + "," + (s - 25) + "%," + (l - 30) + "%)";
+document.querySelector("#mainMenu").style.color = "hsl(" + (h + 5) + "," + (s - 25) + "%," + (l + 25) + "%)";
 document.querySelector("#mainFooter").style.color = "hsl(" + (h + 5) + "," + (s - 25) + "%," + (l - 30) + "%)";
 document.querySelector("#mainMenu button").style.backgroundColor = "hsl(" + (h + 7.5) + "," + s + "%," + (l - 20) + "%)";
 document.querySelector("#mainMenu button").style.color = "hsl(" + (h + 5) + "," + (s - 25) + "%," + (l + 15) + "%)";
 document.body.style.backgroundColor = "hsl(" + h + "," + s + "%," + l + "%)";
 document.querySelector("#game button").style.backgroundColor = "hsl(" + h + "," + s + "%," + l + "%)";
 document.querySelector("#game button").style.color = "hsl(" + (h + 5) + "," + (s - 25) + "%," + (l + 25) + "%)";
-document.querySelector("#guessNum").style.color = "hsl(" + (h + 5) + "," + (s - 25) + "%," + (l + 25) + "%)";
+document.querySelector("#game button").style.border = "solid hsl(" + (h + 5) + "," + (s - 25) + "%," + (l + 25) + "%)";
+document.querySelector("#guessNumber").style.color = "hsl(" + (h + 5) + "," + (s - 25) + "%," + (l + 25) + "%)";
 document.querySelector("#theWord").style.color = "hsl(" + h + "," + s + "%," + l + "%)";
 document.querySelector("#theWord").style.backgroundColor = "hsl(" + (h + 5) + "," + (s - 25) + "%," + (l + 25) + "%)";
 document.querySelector("#hol").style.color = "hsl(" + (h + 5) + "," + (s - 25) + "%," + (l + 25) + "%)";
@@ -71,7 +73,6 @@ gameLoop();
 
 // Runs when the START button is pressed on the main page; gets data from the API, and switches to Game screen
 function startGame(){
-
     document.querySelector("#loading").style.display = "block";
 
     $.getJSON('https://www.colourlovers.com/api/colors/random?jsonCallback=?', (data) => {
@@ -89,6 +90,7 @@ function startGame(){
     document.querySelector("#game").style.top = (window.innerHeight / 2) - (document.querySelector("#game").clientHeight / 2) + "px";
     document.querySelector("#hsv_map .hsv-cursor").style.top = "50%";
     document.querySelector("#hsv_map .hsv-cursor").style.left = "50%";
+    
     loop = setInterval(() => gameLoop(), 1);
 }
 
@@ -100,22 +102,119 @@ function loadData(){
     setBoxes();
 }
 
+function foreverLoop(){
+
+    var x = window.matchMedia("(min-aspect-ratio: 1000/721)")
+
+    if(round > 1){
+        // Set all css positioning for layout unique to certain rounds (round 1 vs not round 1)
+        if(!x.matches){
+            document.querySelector("#testPatch").style.top = "19vw";
+            document.querySelector("#testPatch").style.left = "52vw";
+            document.querySelector("#historyPatch").style.top = "37vw";
+            document.querySelector("#historyPatch").style.left = "76vw";
+            document.querySelector("#sliders").style.top = "48vw";
+            document.querySelector("#sliders").style.left = "-1.5vw";
+            document.querySelector("#hsv_map").style.top = "0vw";
+            document.querySelector("#hsv_map").style.left = "0vw";
+            document.querySelector("#theWord").style.top = "12.4vw";
+            document.querySelector("#theWord").style.left = "59vw";
+            document.querySelector("#guessButton").style.top = "7vw";
+            document.querySelector("#guessButton").style.left = "14vw";
+            document.querySelector("#guessNumber").style.top = "4vw";
+            document.querySelector("#guessNumber").style.left = "66.1vw";
+            document.querySelector("#inputs").style.top = "31.3vw";
+            document.querySelector("#inputs").style.left = "2vw";
+        }
+        else if(x.matches){
+            document.querySelector("#testPatch").style.top = "calc(138.7vh * .19)";
+            document.querySelector("#testPatch").style.left = "calc(138.7vh * .54)";
+            document.querySelector("#historyPatch").style.top = "calc(138.7vh * .37)";
+            document.querySelector("#historyPatch").style.left = "calc(138.7vh * .76)";
+            document.querySelector("#sliders").style.top = "calc(138.7vh * .48)";
+            document.querySelector("#sliders").style.left = "calc(138.7vh * -.003)"
+            document.querySelector("#hsv_map").style.top = "0";
+            document.querySelector("#hsv_map").style.left = "calc(138.7vh * .019)";
+            document.querySelector("#theWord").style.top = "calc(138.7vh * .124)";
+            document.querySelector("#theWord").style.left = "calc(138.7vh * .59)";
+            document.querySelector("#guessButton").style.top = "calc(138.7vh * .07)";
+            document.querySelector("#guessButton").style.left = "calc(138.7vh * .14)";
+            document.querySelector("#guessNumber").style.top = "calc(138.7vh * .04)";
+            document.querySelector("#guessNumber").style.left = "calc(138.7vh * .661)";
+            document.querySelector("#inputs").style.top = "calc(138.7vh * .313)";
+            document.querySelector("#inputs").style.left = "calc(138.7vh * .0375)";
+        }
+    }
+    else
+    {
+        if(!x.matches){
+            document.querySelector("#testPatch").style.top = "21vw";
+            document.querySelector("#testPatch").style.left = "60.5vw";
+            document.querySelector("#sliders").style.top = "41vw";
+            document.querySelector("#sliders").style.left = "-1.5vw";
+            document.querySelector("#hsv_map").style.top = "-8vw";
+            document.querySelector("#hsv_map").style.left = "0vw";
+            document.querySelector("#theWord").style.top = "21vw";
+            document.querySelector("#theWord").style.left = "59vw";
+            document.querySelector("#guessButton").style.top = "47.5vw";
+            document.querySelector("#guessButton").style.left = "59.5vw";
+            document.querySelector("#guessNumber").style.top = "13vw";
+            document.querySelector("#guessNumber").style.left = "66.1vw";
+            document.querySelector("#inputs").style.top = "24.3vw";
+            document.querySelector("#inputs").style.left = "2vw";
+        }
+        else if(x.matches){
+            document.querySelector("#testPatch").style.top = "calc(138.7vh * .21)";
+            document.querySelector("#testPatch").style.left = "calc(138.7vh * .624)";
+            document.querySelector("#sliders").style.top = "calc(138.7vh * .41)";
+            document.querySelector("#sliders").style.left = "calc(138.7vh * .004)"
+            document.querySelector("#hsv_map").style.top = "calc(138.7vh * -.08)";
+            document.querySelector("#hsv_map").style.left = "calc(138.7vh * .019)";
+            document.querySelector("#theWord").style.top = "calc(138.7vh * .21)";
+            document.querySelector("#theWord").style.left = "calc(138.7vh * .59)";
+            document.querySelector("#guessButton").style.top = "calc(138.7vh * .475)";
+            document.querySelector("#guessButton").style.left = "calc(138.7vh * .595)";
+            document.querySelector("#guessNumber").style.top = "calc(138.7vh * .13)";
+            document.querySelector("#guessNumber").style.left = "calc(138.7vh * .661)";
+            document.querySelector("#inputs").style.top = "calc(138.7vh * .243)";
+            document.querySelector("#inputs").style.left = "calc(138.7vh * .042)";
+        }
+    }
+
+    document.querySelector("#testPatch").style.backgroundColor = "rgb(" + document.querySelector("#tR").innerHTML + "," + document.querySelector("#tG").innerHTML + "," + document.querySelector("#tB").innerHTML + ")";;
+    document.querySelector("#guessButton").style.lineHeight = document.querySelector("#guessButton").clientHeight + "px";
+
+    if(x.matches && round > 1){
+        if(window.innerHeight <= 520){
+            document.querySelector("#guessButton").style.top = (window.innerHeight * 0.2527 / 2) - (document.querySelector("#guessButton").clientHeight / 2);
+        }
+    }
+}
+
 // Runs frequently; checks several things regarding screen layout that can't be updated through css
 function gameLoop(){
     document.querySelector("#game").style.top = (window.innerHeight - document.querySelector("#game").clientHeight) / 2;
 
-    if(parseFloat(document.querySelector("#tL").innerHTML) > 50) document.querySelector("#testPatch").style.color = "rgb(34, 34, 34)";
-    else document.querySelector("#testPatch").style.color = "rgb(221, 221, 221)";
+    if(parseFloat(document.querySelector("#tL").innerHTML) > 50){
+        document.querySelector("#testPatch").style.color = "rgb(34, 34, 34)";
+        document.querySelector("#testPatch").style.borderColor = "rgb(100, 100, 100)";
+    }
+    else{
+         document.querySelector("#testPatch").style.color = "rgb(221, 221, 221)";
+         document.querySelector("#testPatch").style.borderColor = "rgb(155, 155, 155)";
+    }
     
     if(baseWidth != window.innerWidth || baseHeight != window.innerHeight){
         
-        //If window currently has extra horizontal space as opposed to vertical
-        if(baseHeight < baseWidth / 1.387){
-            colorDiscRadius = document.querySelector("#hsv_map .cover").clientHeight / 2;
-            document.querySelector("#hsv_map .hsv-cursor").style.top = parseFloat(document.querySelector("#hsv_map .hsv-cursor").style.top.substr(0, document.querySelector("#hsv_map .hsv-cursor").style.top.length - 2)) * (window.innerHeight / baseHeight);
-            document.querySelector("#hsv_map .hsv-cursor").style.left = parseFloat(document.querySelector("#hsv_map .hsv-cursor").style.left.substr(0, document.querySelector("#hsv_map .hsv-cursor").style.left.length - 2)) * (window.innerHeight / baseHeight);
-            document.querySelector(".hsv-barcursor-l").style.top = parseFloat(document.querySelector(".hsv-barcursor-l").style.top.substr(0, document.querySelector(".hsv-barcursor-l").style.top.length - 2)) * (window.innerHeight / baseHeight);
-            document.querySelector(".hsv-barcursor-r").style.top = parseFloat(document.querySelector(".hsv-barcursor-r").style.top.substr(0, document.querySelector(".hsv-barcursor-r").style.top.length - 2)) * (window.innerHeight / baseHeight);
+        colorDiscRadius = document.querySelector("#hsv_map .cover").clientHeight / 2;
+        document.querySelector("#hsv_map .hsv-cursor").style.top = parseFloat(document.querySelector("#hsv_map .hsv-cursor").style.top.substr(0, document.querySelector("#hsv_map .hsv-cursor").style.top.length - 2)) * (window.innerHeight / baseHeight);
+        document.querySelector("#hsv_map .hsv-cursor").style.left = parseFloat(document.querySelector("#hsv_map .hsv-cursor").style.left.substr(0, document.querySelector("#hsv_map .hsv-cursor").style.left.length - 2)) * (window.innerHeight / baseHeight);
+        document.querySelector(".hsv-barcursor-l").style.top = parseFloat(document.querySelector(".hsv-barcursor-l").style.top.substr(0, document.querySelector(".hsv-barcursor-l").style.top.length - 2)) * (window.innerHeight / baseHeight);
+        document.querySelector(".hsv-barcursor-r").style.top = parseFloat(document.querySelector(".hsv-barcursor-r").style.top.substr(0, document.querySelector(".hsv-barcursor-r").style.top.length - 2)) * (window.innerHeight / baseHeight);
+
+        if(round == 1){
+            document.querySelector("#hsv_map .hsv-cursor").style.top = "50%";
+            document.querySelector("#hsv_map .hsv-cursor").style.left = "50%";
         }
 
         // console.log("ar change!");
@@ -136,8 +235,19 @@ function gameLoop(){
 
 // Run when the user pressed the Guess button; Increments the round, triggers input analysis and prints color-closeness results to the screen
 function incrementRound(){
+    document.querySelector("#historyPatch").style.backgroundColor = "rgb(" + document.querySelector("#tR").innerHTML + "," + document.querySelector("#tG").innerHTML + "," + document.querySelector("#tB").innerHTML + ")";
+    if(parseFloat(document.querySelector("#tL").innerHTML) > 50){
+        document.querySelector("#historyPatch").style.color = "rgb(34, 34, 34)";
+        document.querySelector("#historyPatch").style.borderColor = "rgb(100, 100, 100)";
+    }
+    else{
+        document.querySelector("#historyPatch").style.color = "rgb(221, 221, 221)";
+        document.querySelector("#historyPatch").style.borderColor = "rgb(155, 155, 155)";
+    }
+    if(round == 1) firstGuessTransition();
+    document.querySelector("#historyPatch").innerHTML = round + "/10";
     round++;
-    document.querySelector("#guessNum").innerHTML = "<u>" + round + " / 10" + "</u>";
+    document.querySelector("#guessNumber").innerHTML = "<u>" + round + " / 10" + "</u>";
     guessColor = new Color("a98rgb-linear", [document.querySelector("#colorValues").innerHTML.substring(document.querySelector("#colorValues").innerHTML.indexOf("(") + 1, document.querySelector("#colorValues").innerHTML.indexOf(",")) / 255, document.querySelector("#colorValues").innerHTML.substring(document.querySelector("#colorValues").innerHTML.indexOf(",") + 1, findNth(document.querySelector("#colorValues").innerHTML, ",", 2)) / 255, document.querySelector("#colorValues").innerHTML.substring(findNth(document.querySelector("#colorValues").innerHTML, ",", 2) + 1, findNth(document.querySelector("#colorValues").innerHTML, ",", 3)) / 255]);
     document.querySelector("#distance").innerHTML = "You're " + Color.deltaE(guessColor, theColor, "2000").toFixed(2) + "% away from the color!";
     document.querySelector("#hol").innerHTML = highOrLow(guessColor, theColor);
@@ -145,6 +255,18 @@ function incrementRound(){
         endGame();
         return;
     }
+}
+
+//Rearranges game layout to fit appearing elements
+function firstGuessTransition(){
+    clearInterval(loop);
+
+    document.querySelector("#historyPatch").style.opacity = "0";
+    document.querySelector("#historyPatch").style.display = "block";
+    document.querySelector("#historyPatch").style.opacity = "1";
+
+    loop = setInterval(() => gameLoop(), 1);
+    return;
 }
 
 // Deciphers and returns to the incrementRound function the information to be put on the "high or low" portion of the game screen, in correct format
@@ -238,6 +360,7 @@ function endGame(){
     document.querySelector("#game").style.top = "-9999px";
     document.querySelector("#distance").innerHTML = "";
     document.querySelector("#endGame").style.display = "flex";
+    document.querySelector("#historyPatch").style.display = "none";
     if(round > 10){
         document.querySelector("#endGame p").innerHTML = "Ran out of guesses!"
     }
@@ -292,7 +415,7 @@ function backToMenu(){
     document.querySelector("#mainFooter").style.display = "block";
     document.querySelector("#game").style.display = "none";
     round = 1;
-    document.querySelector("#guessNum").innerHTML = round + " / 10";
+    document.querySelector("#guessNumber").innerHTML = round + " / 10";
     document.querySelector("#hol").innerHTML = "";
     document.querySelector("#theClue").innerHTML = "Your clue is...<br>\"\"";
 

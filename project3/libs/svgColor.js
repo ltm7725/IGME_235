@@ -298,6 +298,8 @@ function hexToRgb(hex) {
 }
 
 $(document).ready(() => {
+
+  let i = Math.ceil(Math.random() * 2);
   
   var c = $('#pastGames').css('color');
   var rgb = c.replace(/^rgba?\(|\s+|\)$/g,'').split(',');
@@ -311,9 +313,14 @@ $(document).ready(() => {
   let solver = new Solver(color);
   let result = solver.solve();
 
-  $('#cmby').attr('style', result.filter);
+  if(i == 1) c = $('#cmby').attr('style', result.filter);
+  else{
+    c = $('#s').attr('style', result.filter);
+    document.querySelector("#mainMenu").style.color = "white";
+  }
+  
 
-  c = $('#mainMenu').css('color');
+  c = $('#start').css('backgroundColor');
   rgb = c.replace(/^rgba?\(|\s+|\)$/g,'').split(',');
 
   if (rgb.length !== 3) {
@@ -325,5 +332,9 @@ $(document).ready(() => {
   solver = new Solver(color);
   result = solver.solve();
 
-  $('#s').attr('style', result.filter);
+  if(i == 1){
+    c = $('#s').attr('style', result.filter);
+    document.querySelector("#mainMenu").style.color = document.querySelector("#pastGames h1").style.color;
+  }
+  else c = $('#cmby').attr('style', result.filter);
 });
