@@ -1,6 +1,7 @@
 /*FROM COLORPICKER*/
 a {
 	color: #aaaaaa;
+	font-weight: bold;
 }
 
 /* #testPatch {
@@ -28,6 +29,26 @@ a {
 	font-size: 3vw; 
 	top: 21vw;
 	left: 60.5vw; 
+}
+#backGuess, #forwardGuess{
+	display: none;
+	cursor: pointer;
+	z-index: 1;
+	background-color: transparent;
+	position: absolute;
+	background-size: 100% 100%;
+	width: 3vw;
+	height: 3vw;
+}
+#backGuess{
+	background-image: url("../media/backClickableBlack.png");
+	top: 38.8vw;
+	left: 77vw;
+}
+#forwardGuess{
+	background-image: url("../media/frwdClickableBlack.png");
+	top: 38.8vw;
+	left: 88.25vw;
 }
 #historyPatch{
 	display: none;
@@ -107,6 +128,19 @@ a {
 	background-color: rgb(155, 155, 155);
 	border-right: 1.5vw solid #555; 
 }
+#slidersBack{
+	position: absolute;
+	height: 19vw;
+	width: 13.75vw;
+}
+#rolloverDiv{
+	display: none;
+}
+#numBack{
+	position: absolute;
+	width: 17.75vw;
+	height: 9vw;
+}
 #rgbr{
 	content: "";
 }
@@ -141,7 +175,6 @@ a {
 #hslh:after, #hsls:after, #hsll:after,
 #cmyc:after, #cmym:after, #cmyy:after{
 	z-index: 11;
-	display: relative;
 	float: left;
 	font-weight: bolder;
 	color: black;
@@ -166,17 +199,17 @@ a {
 	margin-top: -6vw; 
 }
 #hslh:after {
-	content: "H⠀⠀⠀⠀⠀°";
+	content: "H⠀⠀⠀⠀⠀⠀⠀°";
 	margin-left: 37.5vw; 
 	margin-top: -3vw; 
 }
 #hsls:after {
-	content: "S⠀⠀⠀⠀⠀%";
+	content: "S⠀⠀⠀⠀⠀⠀⠀%";
 	margin-left: 37.5vw; 
 	margin-top: -3vw; 
 }
 #hsll:after {
-	content: "L⠀⠀⠀⠀⠀%";
+	content: "L⠀⠀⠀⠀⠀⠀⠀%";
 	margin-left: 37.5vw; 
 	margin-top: -3vw; 
 }
@@ -206,9 +239,10 @@ a {
 	left: 0vw;
 }
 #surface {
+	position: absolute;
+	z-index: 0;
     color: white;
 	width: 100%;
-	position: absolute;
 	top: 0;
 }
 #hsv_map .cover {
@@ -234,6 +268,7 @@ a {
 	background-color: #fff;
 }
 .hsv-cursor {
+	z-index: 1;
 	position: absolute;
 	border: 1px solid rgb(255, 255, 255);
 	border-radius: 50%;
@@ -288,7 +323,6 @@ a {
 	position: absolute;
     top: -15vw; 
 	width: 204%;
-	transform: rotateZ(180deg) scale(110%) translateX(20vw);
 }
 #color_squares div {
     z-index: 3;
@@ -338,6 +372,12 @@ a {
     justify-content: center;
     align-items: center;
     z-index: 100;
+}
+#interactive{
+	color: white;
+}
+#mainMenu button{
+	color: white;
 }
 #menuObj{
 	display: flex;
@@ -391,6 +431,9 @@ button{
 	padding-bottom: 6vw;
 	margin-bottom: 15vh;
 }
+#changeColor{
+	width: 27.5vw;
+}
 .alpha-bg-w{
     display: none;
 	position: absolute;
@@ -402,12 +445,17 @@ button{
 text{
     display: block;
 }
-#game{
+#game, #tutorialScreen{
 	display: none;
 	flex-direction: column;
 	align-items: center;
 	width: 100%;
 	height: 72.1vw;
+}
+#tutorialScreen{
+	position: absolute;
+	background-size: 100% 100%;
+	z-index: 100;
 }
 #cp{
 	position: absolute;
@@ -441,7 +489,7 @@ text{
 	width: 33vw; 
 	height: 16vw; 
 	font-size: 3.5vw; 
-	padding-top: 2vw; 
+	padding-top: 1vw; 
 }
 /* #guessButton{
 	position: absolute;
@@ -452,14 +500,24 @@ text{
 	font-size: 5vw; 
 	line-height: 8.6vw; 
 } */
-#guessButton{
+#guessButton, #tutButton1, #tutButton2, #tutButton3, #tutButton4, #tutButton5{
 	position: absolute;
+	color: white;
 	top: 47.5vw; 
 	left: 59.5vw; 
 	width: 32vw; 
 	height: 8.6vw; 
 	font-size: 5vw; 
 	line-height: 8.6vw; 
+}
+#tutButton1, #tutButton2, #tutButton3, #tutButton4, #tutButton5{
+	display: none;
+}
+#tutButton2, #tutButton5{
+	line-height: 7vw; 
+	height: 15vw; 
+}
+#tutButton3{
 }
 /* #guessNumber{
 	position: absolute;
@@ -470,6 +528,7 @@ text{
 	font-size: 5vw; 
 } */
 #guessNumber{
+	color: white;
 	cursor: default;
 	position: absolute;
 	text-align: center;
@@ -479,21 +538,23 @@ text{
 	font-size: 5vw; 
 }
 #highOrLow{
+	cursor: default;
 	z-index: 1;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	position: absolute;
-	width: 33vw;
+	width: 35vw;
 	height: 22vw;
 	padding: 1vw;
 	top: 45vw;
-	left: 59vw;
+	left: 58vw;
 	font-size: 2.5vw;
 	line-height: 3vw;
 	float: left;
 }
 #hol{
+	color: white;
 	padding-top: 1.5vw;
 }
 #endGame{
@@ -559,10 +620,10 @@ text{
 	margin-left: 36.3vw; 
 	z-index: 10;
 	width: 5vw; 
-	height: 2.5vw; 
+	height: 2.5vw;
 	padding: 0;
 	text-align: center;
-	margin-bottom: .14vw; 
+	margin-bottom: .08vw; 
 }
 /* #inputs{
 	position: absolute;
@@ -571,8 +632,6 @@ text{
 } */
 #inputs{
 	position: absolute;
-	top: 24.3vw;
-	left: 2vw;
 }
 #tR{
 	margin-top: 2.1vw; 
@@ -581,6 +640,7 @@ text{
 	margin-top: .35vw; 
 }
 #distance{
+	cursor: default;
 	position: absolute;
 	padding: 1vw;
 	top: 30vw;
@@ -609,6 +669,9 @@ body{
 	margin-top: 1vw;
 	font-size: 3vw;
 	float: left;
+}
+#pastGames div{
+	color: white;
 }
 #history{
 	float: left;
@@ -673,10 +736,48 @@ text{
 	z-index: 5;
 	width: 7vw;
 }
+#arrows{
+	flex-direction: column;
+	z-index: 100;
+	position: absolute;
+}
+.up{
+	cursor: pointer;
+	background-image: url("../media/upArrow1.png");
+	background-size: 100% 100%;
+	width: 2vw;
+	height: 1vw;
+	margin-bottom: .2vw;
+}
+.up:hover{
+	background-image: url("../media/upArrow2.png");
+}
+.down{
+	cursor: pointer;
+	background-image: url("../media/downArrow1.png");
+	background-size: 100% 100%;
+	width: 2vw;
+	height: 1vw;
+	margin-bottom: .7vw;
+}
+.down:hover{
+	background-image: url("../media/downArrow2.png");
+}
+#hideCursorGlitchDiv{
+	position: absolute;
+	z-index: 100;
+	top: 7.5vw;
+	left: 4.5vw;
+	width: 5vw;
+	height: 5vw;
+}
+#tutorialScreen{
+	display: none;
+}
 
 /*Launches when aspect ratio wider than game block*/
 @media only screen and (min-aspect-ratio: 1000/721){
-#game{
+#game, #tutorialScreen{
 	height: 100vh;
 	width: 138.7vh;
 	margin-left: calc(50vw - 69.35vh);
@@ -717,7 +818,7 @@ text{
 	line-height: calc(138.7vh * .086); 
 	padding: 0;
 } */
-#guessButton{
+#guessButton, #tutButton1, #tutButton2, #tutButton3, #tutButton4, #tutButton5{
 	vertical-align: middle;
 	top: calc(138.7vh * .475); 
 	left: calc(138.7vh * .595); 
@@ -725,6 +826,10 @@ text{
 	height: calc(138.7vh * .086); 
 	font-size: calc(138.7vh * .05); 
 	line-height: calc(138.7vh * .086); 
+}
+#tutButton2, #tutButton5{
+	line-height: calc(138.7vh * .07); 
+	height: calc(138.7vh * .15); 
 }
 #luminanceBar{
 	border: calc(138.7vh * .002) solid rgb(85, 85, 85); 
@@ -757,7 +862,7 @@ text{
 	width: calc(138.7vh * .33); 
 	height: calc(138.7vh * .16); 
 	font-size: calc(138.7vh * .035); 
-	padding-top: calc(138.7vh * .02); 
+	padding-top: calc(138.7vh * .01); 
 }
 /* #guessNumber{
 	width: calc(138.7vh * .18);
@@ -778,10 +883,10 @@ text{
 	font-size: calc(138.7vh * .025);
 }
 #highOrLow{
-	width: calc(138.7vh * .33);
+	width: calc(138.7vh * .35);
 	height: calc(138.7vh * .22);
 	top: calc(138.7vh * .45);
-	left: calc(138.7vh * .59);
+	left: calc(138.7vh * .58);
 	font-size: calc(138.7vh * .025);
 	line-height: calc(138.7vh * .03);
 }
@@ -800,6 +905,18 @@ text{
 	font-size: calc(138.7vh * .03); 
 	top: calc(138.7vh * .21);
 	left: calc(138.7vh * .624); 
+}
+#backGuess, #forwardGuess{
+	width: calc(138.7vh * .03);
+	height: calc(138.7vh * .03);;
+}
+#backGuess{
+	top: calc(138.7vh * .388);
+	left: calc(138.7vh * .77);;
+}
+#forwardGuess{
+	top: calc(138.7vh * .388);
+	left: calc(138.7vh * .8825);;
 }
 #historyPatch{
 	width: calc(138.7vh * .1625);
@@ -845,38 +962,40 @@ text{
 	margin-top: calc(138.7vh * -.0005);
 	border-right: calc(138.7vh * .015) solid #555;
 }
+#slidersBack{
+	height: calc(138.7vh * .19);
+	width: calc(138.7vh * .1375);
+}
+#numBack{
+	width: calc(138.7vh * .1775);
+	height: calc(138.7vh * .09);
+}
 #rgbr:after, #rgbg:after, #rgbb:after,
 #hslh:after, #hsls:after, #hsll:after,
 #cmyc:after, #cmym:after, #cmyy:after{
 	font-size: calc(138.7vh * .02);
 }
 #rgbr:after {
-	content: '⠀⠀⠀⠀⠀ R';	
 	margin-top: calc(138.7vh * -.06);
 	margin-left: calc(138.7vh * .375);
 }
 #rgbg:after {
-	content: '⠀⠀⠀⠀⠀ G';	
 	margin-top: calc(138.7vh * -.06);
 	margin-left: calc(138.7vh * .375);
 }
 #rgbb:after {
-	content: '⠀⠀⠀⠀⠀ B';	
 	margin-top: calc(138.7vh * -.06);
 	margin-left: calc(138.7vh * .375);
 }
 #hslh:after {
-	content: "H⠀⠀⠀⠀⠀°";
 	margin-top: calc(138.7vh * -.03);
 	margin-left: calc(138.7vh * .375);
 }
 #hsls:after {
-	content: "S⠀⠀⠀⠀⠀%";
 	margin-top: calc(138.7vh * -.03);
 	margin-left: calc(138.7vh * .375);
 }
 #hsll:after {
-	content: "L⠀⠀⠀⠀⠀%";
 	margin-top: calc(138.7vh * -.03);
 	margin-left: calc(138.7vh * .375);
 }
@@ -885,7 +1004,7 @@ text{
 	height: calc(138.7vh * .025);
 	margin-left: calc(138.7vh * .36);
 	font-size: calc(138.7vh * .02);
-	margin-bottom: calc(138.7vh * .0014);
+	margin-bottom: calc(138.7vh * .0008);
 }
 /* #inputs{
 	top: calc(138.7vh * .313);
@@ -906,6 +1025,20 @@ text{
 	left: calc(138.7vh * .715);
 	width: calc(138.7vh * .07);
 }
+#hideCursorGlitchDiv{
+	width: calc(138.7vh * .05);
+	height: calc(138.7vh * .05);
+}
+.up{
+	width: calc(138.7vh * .02);
+	height: calc(138.7vh * .01);
+	margin-bottom: calc(138.7vh * .002);
+}
+.down{
+	width: calc(138.7vh * .02);
+	height: calc(138.7vh * .01);
+	margin-bottom: calc(138.7vh * .007);
+}
 
 @media only screen and (max-height: 455px){
 	#interactive{
@@ -913,5 +1046,8 @@ text{
 	}
 }
 
-/*Btw the game's current minimum height cap is 400 pixels before it bugs out*/
+@media only screen and (min-aspect-ratio: 1000/721){
+}
+
+/*Btw the game's current minimum height cap is 400 pixels and minimum width cap is 600 pixels before it bugs out*/
 }

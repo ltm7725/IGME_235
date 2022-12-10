@@ -1,25 +1,6 @@
 ;(function(window, undefined){
 	"use strict"
 
-	//L Mavroudakis - My Code
-	{
-		let width = document.innerWidth;
-		let height = document.innerHeight;
-		let loop = setInterval(() => Loop(), 100);
-
-		function Loop(){
-			//Anything that can't be set with css dynamically if the dimensions change
-			if(width != window.innerWidth || height != window.innerHeight){
-				// (Semi)-Static color-wheel and brightness-slider cursor positions when in width-prominent aspect ratio
-				if(height < width / 1.387){
-					colorDiscRadius = document.querySelector("#hsv_map .cover").clientHeight / 2;
-				}
-				width = window.innerWidth;
-				height = window.innerHeight;
-			}
-		}
-	}
-
 	if (1 === 2) { // to run ColorPicker on its own....
 		myColor = window.myColor = new window.ColorPicker({
 			imagePath: 'images/' // IE8-
@@ -573,5 +554,116 @@
 	window.conversionTest = conversionTest;
 
 	// conversionTest();
+
+	//L Mavroudakis - My Code
+	{
+		let width = document.innerWidth;
+		let height = document.innerHeight;
+		let loop = setInterval(() => Loop(), 100);
+		let isGameVisible = "";
+
+		function Loop(){
+			//Anything that can't be set with css dynamically if the dimensions change
+			if(width != window.innerWidth || height != window.innerHeight){
+				// (Semi)-Static color-wheel and brightness-slider cursor positions when in width-prominent aspect ratio
+				if(height < width / 1.387){
+					colorDiscRadius = document.querySelector("#hsv_map .cover").clientHeight / 2;
+				}
+				width = window.innerWidth;
+				height = window.innerHeight;
+			}
+
+			if(isGameVisible != document.querySelector("#game").style.display)
+			{
+				//console.log("Page swap!");
+				myColor.setColor("hsl(0,0,100)");
+				doRender(myColor.colors); 
+				document.querySelector("#hsv_map .hsv-cursor").style.top = "50%";
+				document.querySelector("#hsv_map .hsv-cursor").style.left = "50%";
+				isGameVisible = document.querySelector("#game").style.display;
+			}
+		}
+
+		document.querySelector("#rup").onclick = function() {
+			if((parseInt(document.querySelector("#tR").innerHTML) + 1) <= 255){
+				myColor.setColor("rgb(" + (parseInt(document.querySelector("#tR").innerHTML) + 1) + "," + (parseInt(document.querySelector("#tG").innerHTML)) + "," + (parseInt(document.querySelector("#tB").innerHTML)) + ")");
+				doRender(myColor.colors); 
+			}
+		}
+		document.querySelector("#rdown").onclick = function() {
+			if((parseInt(document.querySelector("#tR").innerHTML) - 1) >= 0){
+				myColor.setColor("rgb(" + (parseInt(document.querySelector("#tR").innerHTML) - 1) + "," + (parseInt(document.querySelector("#tG").innerHTML)) + "," + (parseInt(document.querySelector("#tB").innerHTML)) + ")");
+				doRender(myColor.colors); 
+			}
+		}
+		document.querySelector("#bup").onclick = function() {
+			if((parseInt(document.querySelector("#tG").innerHTML) + 1) <= 255){
+				myColor.setColor("rgb(" + (parseInt(document.querySelector("#tR").innerHTML)) + "," + (parseInt(document.querySelector("#tG").innerHTML) + 1) + "," + (parseInt(document.querySelector("#tB").innerHTML)) + ")");
+				doRender(myColor.colors); 
+			}
+		}
+		document.querySelector("#bdown").onclick = function() {
+			if((parseInt(document.querySelector("#tG").innerHTML) - 1) >= 0){
+				myColor.setColor("rgb(" + (parseInt(document.querySelector("#tR").innerHTML)) + "," + (parseInt(document.querySelector("#tG").innerHTML) - 1) + "," + (parseInt(document.querySelector("#tB").innerHTML)) + ")");
+				doRender(myColor.colors); 
+			}
+		}
+		document.querySelector("#gup").onclick = function() {
+			if((parseInt(document.querySelector("#tB").innerHTML) + 1) <= 255){
+				myColor.setColor("rgb(" + (parseInt(document.querySelector("#tR").innerHTML)) + "," + (parseInt(document.querySelector("#tG").innerHTML)) + "," + (parseInt(document.querySelector("#tB").innerHTML) + 1) + ")");
+				doRender(myColor.colors); 
+			}
+		}
+		document.querySelector("#gdown").onclick = function() {
+			if((parseInt(document.querySelector("#tB").innerHTML) - 1) >= 0){
+				myColor.setColor("rgb(" + (parseInt(document.querySelector("#tR").innerHTML)) + "," + (parseInt(document.querySelector("#tG").innerHTML)) + "," + (parseInt(document.querySelector("#tB").innerHTML) - 1) + ")");
+				doRender(myColor.colors); 
+			}
+		}
+		document.querySelector("#hup").onclick = function() {
+			if((parseInt(document.querySelector("#tH").innerHTML) + 1) <= 360){
+				myColor.setColor("hsl(" + (parseInt(document.querySelector("#tH").innerHTML) + 1) + "," + (parseInt(document.querySelector("#tS").innerHTML)) + "," + (parseInt(document.querySelector("#tL").innerHTML)) + ")");
+				doRender(myColor.colors); 
+			}
+			else{
+				myColor.setColor("hsl(" + 1 + "," + (parseInt(document.querySelector("#tS").innerHTML)) + "," + (parseInt(document.querySelector("#tL").innerHTML)) + ")");
+				doRender(myColor.colors); 
+			}
+		}
+		document.querySelector("#hdown").onclick = function() {
+			if((parseInt(document.querySelector("#tH").innerHTML) - 1) >= 0){
+				myColor.setColor("hsl(" + (parseInt(document.querySelector("#tH").innerHTML) - 1) + "," + (parseInt(document.querySelector("#tS").innerHTML)) + "," + (parseInt(document.querySelector("#tL").innerHTML)) + ")");
+				doRender(myColor.colors); 
+			}
+			else{
+				myColor.setColor("hsl(" + 359 + "," + (parseInt(document.querySelector("#tS").innerHTML)) + "," + (parseInt(document.querySelector("#tL").innerHTML)) + ")");
+				doRender(myColor.colors); 
+			}
+		}
+		document.querySelector("#sup").onclick = function() {
+			if((parseInt(document.querySelector("#tS").innerHTML) + 1) <= 100){
+				myColor.setColor("hsl(" + (parseInt(document.querySelector("#tH").innerHTML)) + "," + (parseInt(document.querySelector("#tS").innerHTML) + 1) + "," + (parseInt(document.querySelector("#tL").innerHTML)) + ")");
+				doRender(myColor.colors); 
+			}
+		}
+		document.querySelector("#sdown").onclick = function() {
+			if((parseInt(document.querySelector("#tS").innerHTML) - 1) >= 0){
+				myColor.setColor("hsl(" + (parseInt(document.querySelector("#tH").innerHTML)) + "," + (parseInt(document.querySelector("#tS").innerHTML) - 1) + "," + (parseInt(document.querySelector("#tL").innerHTML)) + ")");
+				doRender(myColor.colors); 
+			}
+		}
+		document.querySelector("#lup").onclick = function() {
+			if((parseInt(document.querySelector("#tL").innerHTML) + 1) <= 100){
+				myColor.setColor("hsl(" + (parseInt(document.querySelector("#tH").innerHTML)) + "," + (parseInt(document.querySelector("#tS").innerHTML)) + "," + (parseInt(document.querySelector("#tL").innerHTML) + 1) + ")");
+				doRender(myColor.colors); 
+			}
+		}
+		document.querySelector("#ldown").onclick = function() {
+			if((parseInt(document.querySelector("#tL").innerHTML) - 1) >= 0){
+				myColor.setColor("hsl(" + (parseInt(document.querySelector("#tH").innerHTML)) + "," + (parseInt(document.querySelector("#tS").innerHTML)) + "," + (parseInt(document.querySelector("#tL").innerHTML) - 1) + ")");
+				doRender(myColor.colors); 
+			}
+		}
+	}
 
 })(window);

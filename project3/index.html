@@ -17,13 +17,16 @@
     <head>
         <meta charset="UTF-8">
         <title>CMBYS</title>
+        <link rel="icon" href="media/favicon-16x16.png"/>
+        <link rel="icon" href="media/favicon-32x32.png"/>
         <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
         <script src="https://colorjs.io/dist/color.global.js"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/monolith.min.css">
         <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
-        <script defer src="libs/svgColor.js"></script>
+        <script defer src="libs/rgbToHex.js"></script>
         <script defer src="js/main.js"></script>
+        <script defer src="libs/svgColor.js"></script>
         <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
@@ -36,7 +39,11 @@
                 <img class="bigLogo" id="s" src="media/s.svg" alt="1/5 of the logo to the movie 'Call Me By Your Name'">
                 <div id="interactive">
                     <h2>The phrase-to-color game you didn't know you didn't need</h2>
-                    <button id="start">Play</button>
+                    <div id="mainButtons">
+                        <button id="start">Play</button>
+                        <button id="changeColor">Change Color</button>
+                        <button id="help">Help</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -46,12 +53,20 @@
         </div>
         <footer id="mainFooter">
             <p>In <i><u>Call Me By Your Shade</u></i>—named cheaply after a seemingly good movie that I haven't gotten to see yet—you're given a pseudo-random phrase associated with a color in some way; your goal is to use the color controlls provided to match the secret color as close as you possibly can. Hints are provided after each of your 10 guesses, in the form of percentage in general-closeness and high-or-low position of color values (RGB/HSL). <b>Can you find the color? Try it out!!</b></p><br>
-            <i><u><b>'COLORS'</b></u></i> from <a href="https://www.colourlovers.com/api" target="_blank">ColourLovers API</a><br>
+            <a href="https://people.rit.edu/ltm7725/235/project3/about.html" target="_blank">Documentation</a><br>
+            Colors & names from <a href="https://github.com/meodai/color-names" target="_blank">Color-Names API</a> by <a href="https://xn--w-25a.elastiq.ch/" target="_blank">David Aerne</a><br>
+            Buttons from <a href="https://icons8.com/" target="_blank">Icons8</a><br>
+            Sounds from <a href="https://mixkit.co/" target="_blank">Mixkit</a><br>
             <a href="http://www.dematte.at/colorPicker/" target="_blank">Color Picker</a> by <a href="http://www.dematte.at/" target="_blank">Peter Dematté</a><br>
-            <a href="https://codepen.io/sosuke/pen/Pjoqqp" target="_blank">SVG-coloring</a> function by Barrett Sonntag<br><br>
             © L. Mavroudakis 2022
         </footer>
         <div id="game">
+            <div id="hideCursorGlitchDiv"></div>
+            <div id="rolloverDiv"></div>
+            <div id="numBack"></div>
+            <div id="slidersBack"></div>
+            <div id="backGuess" onclick="setGuess(viewRound - 1)"></div>
+            <div id="forwardGuess" onclick="setGuess(viewRound + 1)"></div>
             <div id="theWord"><p id="theClue">Your clue is...<br><br></p></div>
             <img id="loading" src="media/Loading.gif" alt="rainbow loading graphic">
             <button id="guessButton"><i>Take A Guess</i></button>
@@ -95,6 +110,21 @@
                     <div id="tL"></div>
                 </div>
 
+                <div id="arrows">
+                    <div id="rup" class="up"></div>
+                    <div id="rdown" class="down"></div>
+                    <div id="bup" class="up"></div>
+                    <div id="bdown" class="down"></div>
+                    <div id="gup" class="up"></div>
+                    <div id="gdown" class="down"></div>
+                    <div id="hup" class="up"></div>
+                    <div id="hdown" class="down"></div>
+                    <div id="sup" class="up"></div>
+                    <div id="sdown" class="down"></div>
+                    <div id="lup" class="up"></div>
+                    <div id="ldown" class="down"></div>
+                </div>
+
                 <div id="sliders" class="sliders">
                     <div id="rgbr"><div style="width: 63.1373%;"></div></div>
                     <div id="rgbg"><div style="width: 65.8824%;"></div></div>
@@ -124,6 +154,13 @@
             </div>
             <div id="guessNumber"><u>1 / 10</u></div>
             <div id="distance"></div>
+        </div>
+        <div id="tutorialScreen">
+            <button id="tutButton1"></button>
+            <button id="tutButton2"></button>
+            <button id="tutButton3"></button>
+            <button id="tutButton4"></button>
+            <button id="tutButton5"></button>
         </div>
         <div id="endGame">
             <p></p>

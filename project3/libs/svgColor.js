@@ -316,7 +316,6 @@ $(document).ready(() => {
   if(i == 1) c = $('#cmby').attr('style', result.filter);
   else{
     c = $('#s').attr('style', result.filter);
-    document.querySelector("#mainMenu").style.color = "white";
   }
   
 
@@ -334,7 +333,48 @@ $(document).ready(() => {
 
   if(i == 1){
     c = $('#s').attr('style', result.filter);
-    document.querySelector("#mainMenu").style.color = document.querySelector("#pastGames h1").style.color;
   }
   else c = $('#cmby').attr('style', result.filter);
 });
+
+document.querySelector("#changeColor").onclick = function() {
+
+  setSiteColor();
+
+  let i = Math.ceil(Math.random() * 2);
+  
+  var c = $('#pastGames').css('color');
+  var rgb = c.replace(/^rgba?\(|\s+|\)$/g,'').split(',');
+
+  if (rgb.length !== 3) {
+    alert('Invalid format!');
+    return;
+  }
+
+  let color = new Clr(rgb[0], rgb[1], rgb[2]);
+  let solver = new Solver(color);
+  let result = solver.solve();
+
+  if(i == 1) c = $('#cmby').attr('style', result.filter);
+  else{
+    c = $('#s').attr('style', result.filter);
+  }
+  
+
+  c = $('#start').css('backgroundColor');
+  rgb = c.replace(/^rgba?\(|\s+|\)$/g,'').split(',');
+
+  if (rgb.length !== 3) {
+    alert('Invalid format!');
+    return;
+  }
+
+  color = new Clr(rgb[0], rgb[1], rgb[2]);
+  solver = new Solver(color);
+  result = solver.solve();
+
+  if(i == 1){
+    c = $('#s').attr('style', result.filter);
+  }
+  else c = $('#cmby').attr('style', result.filter);
+};
